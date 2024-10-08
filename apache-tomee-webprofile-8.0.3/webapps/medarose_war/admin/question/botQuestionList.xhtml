@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+                            <p:dataTable value="#{botQuestionListMg.questionLazyList}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="usr"
+                                         id="tb"
+                                         widgetVar="tb"
+                                         rowIndexVar="index" rowKey="#{usr._d}">
+
+                                <p:column styleClass="row-number text-center" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="کاربر">
+                                    <ui:repeat value="#{usr.usersRefList}" var="ref">
+                                        <ui:fragment rendered="#{ref.type.equals('patient')}">
+                                            <p:outputLabel value="#{ref.user.name}"/>
+                                        </ui:fragment>
+                                    </ui:repeat>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="پزشک">
+                                    <ui:repeat value="#{usr.usersRefList}" var="doc">
+                                        <ui:fragment rendered="#{doc.type.equals('owner')}">
+                                            <p:outputLabel value="#{doc.user.name}"/>
+                                        </ui:fragment>
+                                    </ui:repeat>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="پرداخت اولیه">
+                                    <p:outputLabel value="#{usr.payment}"/>
+                                </p:column>
+
+                                <p:column colspan="1" filterBy="#{usr.caseStatus}" filterable="true" headerText="وضعیت"
+                                          styleClass="text-center">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="باز" itemValue="open"/>
+                                            <f:selectItem itemLabel="بسته" itemValue="close"/>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <h:outputText value="#{usr.caseStatus}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="تاریخ ثبت">
+                                    <p:outputLabel styleClass="font-xsm" value="#{usr.createdAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.updatedAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="آخرین بروز رسانی">
+                                    <p:outputLabel styleClass="font-xsm" value="#{usr.updatedAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="تمدید" filterBy="#{usr.extendStatus}"
+                                          filterMatchMode="exact">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="تمدید شده" itemValue="1"/>
+                                            <f:selectItem itemLabel="تمدید نشده" itemValue="0"/>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <p:outputLabel styleClass="label-colorful font-xsm #{usr.extendStatusColor}"
+                                                   value="#{usr.extendStatusStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                    <a href="/admin/?page=34&amp;item=#{usr._id}" class="button-green ml-1">مشاهده</a>
+                                    <p:commandButton styleClass="button-pink" value="حذف"></p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

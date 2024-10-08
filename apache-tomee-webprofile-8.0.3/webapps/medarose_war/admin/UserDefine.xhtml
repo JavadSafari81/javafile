@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <p:dataTable value="#{adminUsersMg.usersLazyList}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="usr"
+                                         id="tb"
+                                         widgetVar="tb"
+                                         rowIndexVar="index" rowKey="#{usr.pk}"
+                                         selection="#{adminUsersMg.selectedData}"
+                                         selectionMode="single">
+
+                                <p:ajax event="rowSelect" listener="#{adminUsersMg.rowSelect}"
+                                        update="editbut,deletebut,changePass"/>
+                                <p:ajax event="rowUnselect" listener="#{adminUsersMg.rowUnSelect}"
+                                        update="editbut,deletebut,changePass"/>
+
+
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="نام" filterBy="#{usr.name}"
+                                          filterMatchMode="contains">
+                                    <p:outputLabel value="#{usr.name}"/>
+                                </p:column>
+
+                                <p:column colspan="1" filterBy="#{usr.phone}"
+                                          filterMatchMode="contains"
+                                          filterStyle="text-align: center"
+                                          headerText="تلفن" styleClass="text-center">
+                                    <h:outputText value="#{usr.phone}"/>
+                                </p:column>
+
+                                <p:column colspan="2" sortBy="#{usr.email}" filterBy="#{usr.email}"
+                                          filterMatchMode="contains"
+                                          filterStyle="text-align: center"
+                                          headerText="ایمیل" styleClass="text-center">
+                                    <h:outputText value="#{usr.email}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="تاریخ ثبت">
+                                    <h:outputText value="#{usr.createdAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="دسترسی" filterBy="#{usr.access}"
+                                          filterMatchMode="exact">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="ادمین" itemValue="admin"></f:selectItem>
+                                            <f:selectItem itemLabel="بیمار" itemValue="user"></f:selectItem>
+                                            <f:selectItem itemLabel="پزشک" itemValue="doctor"></f:selectItem>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <p:outputLabel value="#{usr.access}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="فعال" filterBy="#{usr.active}"
+                                          filterMatchMode="exact">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="فعال" itemValue="true"/>
+                                            <f:selectItem itemLabel="غیر فعال" itemValue="false"/>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <p:selectBooleanCheckbox disabled="true" value="#{usr.active}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="ادمین" filterBy="#{usr.admin}"
+                                          filterMatchMode="exact">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="ادمین" itemValue="true"/>
+                                            <f:selectItem itemLabel="سایر" itemValue="false"/>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <p:selectBooleanCheckbox disabled="true" value="#{usr.admin}"/>
+                                </p:column>
+
+                                <f:facet name="footer">
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionNew}">
+                                        <p:commandButton icon="pi pi-plus"
+                                                         id="newbut"
+                                                         oncomplete="PF('userDialog').show();"
+                                                         update="userDialog" value="جدید"
+                                                         actionListener="#{adminUsersMg.newData}"/>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionEdit}">
+                                        <p:commandButton icon="pi pi-pencil"
+                                                         id="editbut"
+                                                         disabled="#{adminUsersMg.disBut}"
+                                                         value="ویرایش"
+                                                         oncomplete="PF('userDialog').show();"
+                                                         update="userDialog"
+                                                         actionListener="#{adminUsersMg.editData}"/>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                        <p:commandButton icon="pi pi-times"
+                                                         id="deletebut"
+                                                         disabled="#{adminUsersMg.disBut}"
+                                                         onstart="return confdelete();"
+                                                         value="حذف"
+                                                         actionListener="#{adminUsersMg.deleteData}"
+                                                         update=":mainform"/>
+                                    </ui:fragment>
+
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionEdit}">
+                                        <p:commandButton id="changePass" disabled="#{adminUsersMg.disBut}"
+                                                         value="تغییر رمز عبور"
+                                                         oncomplete="PF('changePassDialog').show();"
+                                                         update="userDialog" actionListener="#{adminUsersMg.editData}"/>
+                                    </ui:fragment>
+                                </f:facet>
+                            </p:dataTable>
+                        </h:form>
+
+                        <h:form prependId="false">
+                            <p:dialog modal="true" id="changePassDialog" dir="rtl"
+                                      header="تغییر رمز عبور"
+                                      widgetVar="changePassDialog"
+                                      resizable="false"
+                                      showEffect="clip" hideEffect="fold">
+                                <h:panelGrid styleClass="rtl-table-padding" style="margin-top: 0!important;"
+                                             columns="2">
+                                    <h:outputLabel value="رمز جدید"></h:outputLabel>
+                                    <h:inputSecret type="password" value="#{adminUsersMg.password}"/>
+
+                                    <h:outputLabel value="تکرار رمز"></h:outputLabel>
+                                    <h:inputSecret type="password" value="#{adminUsersMg.confpass}"/>
+                                </h:panelGrid>
+
+                                <div class="text-center">
+                                    <p:commandButton image="ui-icon-save" value="تغییر رمز عبور"
+                                                     oncomplete="PF('changePassDialog').hide();"
+                                                     onstart="return confsure();"
+                                                     update="changePassDialog, growl"
+                                                     actionListener="#{adminUsersMg.changePass}"/>
+                                </div>
+                            </p:dialog>
+
+                            <p:dialog width="800"
+                                      modal="true" id="userDialog" dir="rtl"
+                                      header="تعریف کاربر"
+                                      widgetVar="userDialog"
+                                      resizable="false"
+                                      showEffect="clip" hideEffect="fold">
+
+                                <div class="container input-block-with-label">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <h:outputLabel value="نام"></h:outputLabel>
+                                                <h:inputText value="#{adminUsersMg.data.name}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <h:outputLabel value="گروه کاربری"></h:outputLabel>
+                                                <p:selectOneMenu converter="objectIdConverter"
+                                                                 value="#{adminUsersMg.data.adminUserGroup._id}">
+                                                    <f:selectItem itemLabel="- - -" itemValue="#{null}"></f:selectItem>
+                                                    <f:selectItems value="#{adminUsersMg.userGroupList}" var="ug"
+                                                                   itemLabel="#{ug.name}"
+                                                                   itemValue="#{ug._id}"></f:selectItems>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <h:outputLabel value="دسترسی"></h:outputLabel>
+                                                <p:selectOneMenu value="#{adminUsersMg.data.access}">
+                                                    <!--<f:selectItem itemLabel="ادمین" itemValue="admin"></f:selectItem>-->
+                                                    <f:selectItem itemLabel="بیمار" itemValue="user"></f:selectItem>
+                                                    <f:selectItem itemLabel="پزشک" itemValue="doctor"></f:selectItem>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <h:outputLabel value="تلفن"></h:outputLabel>
+                                                <h:inputText value="#{adminUsersMg.data.phone}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <h:outputLabel value="ایمیل"></h:outputLabel>
+                                                <h:inputText value="#{adminUsersMg.data.email}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <ui:fragment rendered="#{adminUsersMg.data._id==null}">
+                                                    <h:outputLabel value="رمز عبور"></h:outputLabel>
+                                                </ui:fragment>
+                                                <ui:fragment rendered="#{adminUsersMg.data._id==null}">
+                                                    <h:inputSecret value="#{adminUsersMg.password}"/>
+                                                </ui:fragment>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <h:outputLabel value="جنسیت"></h:outputLabel>
+                                                <p:selectOneMenu value="#{adminUsersMg.data.gender}">
+                                                    <f:selectItem itemLabel="مرد" itemValue="male"></f:selectItem>
+                                                    <f:selectItem itemLabel="زن" itemValue="female"></f:selectItem>
+                                                    <f:selectItem itemLabel="دیگر" itemValue="other"></f:selectItem>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper inline-label align-items-center">
+                                                <p:fileUpload listener="#{adminUsersMg.handleFileUpload}"
+                                                              label="تصویر پروفایل"
+                                                              mode="advanced"
+                                                              update="growl, avatarImage"
+                                                              auto="true"
+                                                              sizeLimit="1000000"
+                                                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+                                                <h:panelGroup id="avatarImage">
+                                                    <img width="120px"
+                                                         src="#{initParam['RFM']}#{adminUsersMg.data.avatarRef.path}"
+                                                         alt="avatar"/>
+                                                </h:panelGroup>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-wrapper inline-label">
+                                                <h:outputLabel value="ادمین"></h:outputLabel>
+                                                <p:selectBooleanCheckbox
+                                                        value="#{adminUsersMg.data.admin}"></p:selectBooleanCheckbox>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper inline-label">
+                                                <h:outputLabel value="فعال"></h:outputLabel>
+                                                <p:selectBooleanCheckbox
+                                                        value="#{adminUsersMg.data.active}"></p:selectBooleanCheckbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p:commandButton icon="pi pi-save" value="ذخیره"
+                                                 oncomplete="PF('userDialog').hide();"
+                                                 update="userDialog, growl, tb"
+                                                 onstart="return confsure()"
+                                                 styleClass="mt-3 button-blue"
+                                                 actionListener="#{adminUsersMg.saveData}"/>
+                            </p:dialog>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

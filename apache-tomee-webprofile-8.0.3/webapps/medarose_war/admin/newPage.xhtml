@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head>
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+</h:head>
+<h:body>
+
+    <h:form prependId="false">
+        <p:blockUI block="newEditPnl" trigger="saveBtn"/>
+
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:growl id="growlll" showDetail="true" sticky="false" life="4000"/>
+
+        <p:panel style="border: none!important;" id="newEditPnl">
+
+            <p:separator style="margin-top: 6px"></p:separator>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h:panelGrid columns="2" styleClass="vertical-top">
+                            <p:outputLabel value="عنوان"></p:outputLabel>
+                            <p:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                         value="#{newPageMg.data.name}"></p:inputText>
+
+                            <p:outputLabel value="نامک انگلیسی"></p:outputLabel>
+                            <p:inputText
+                                    style="width: 100%;padding: 6px;margin-bottom: 10px;direction: ltr!important;text-align: left!important;"
+                                    value="#{newPageMg.data.englishName}"></p:inputText>
+
+                            <p:outputLabel value="عنوان سئو"></p:outputLabel>
+                            <p:inputText style="width: 100%;padding: 6px;margin-bottom: 10px;"
+                                         value="#{newPageMg.data.seoTitle}"></p:inputText>
+
+                            <p:outputLabel value="خلاصه سئو"></p:outputLabel>
+                            <p:inputText style="width: 100%;padding: 6px;margin-bottom: 10px;"
+                                         value="#{newPageMg.data.seoSummaryDescription}"></p:inputText>
+
+
+
+                            <p:outputLabel value="متن"></p:outputLabel>
+
+                            <ui:insert name="input">
+                                <p:inputTextarea value="#{newPageMg.ckEditorValue}" id="editor1">
+                                </p:inputTextarea>
+
+                                <h:outputScript>
+                                    CKEDITOR.replace('editor1', {
+                                        filebrowserBrowseUrl: dialogCkV,
+                                        filebrowserUploadUrl: dialogCkV,
+                                        filebrowserImageBrowseUrl: dialogCkI,
+                                        filebrowserImageUploadUrl: dialogCkI,
+                                        height: '500px'
+                                    });
+                                    CKEDITOR.config.extraPlugins = "html5video";
+
+                                    function ckUpdate() {
+                                        for (instance in CKEDITOR.instances) {
+                                            CKEDITOR.instances[instance].updateElement();
+                                            instance.allowedContent = true;
+                                        }
+                                    }
+                                </h:outputScript>
+                            </ui:insert>
+                        </h:panelGrid>
+                    </div>
+                    <div class="col-md-4" style="border: 1px solid #ccc;border-radius: 3px;padding: 20px 10px;margin-top: 3px">
+                        <h:panelGrid columns="2" style="width: 100%">
+                            <p:outputLabel value="آخرین تغییر"></p:outputLabel>
+                            <p:outputLabel style="direction: ltr" value="#{newPageMg.data.lastChangeDateStr}"></p:outputLabel>
+
+                            <p:outputLabel value="قالب برگه"></p:outputLabel>
+                            <p:selectOneMenu style="width: 100%" value="#{newPageMg.data.templateId}">
+                                <f:selectItem itemValue="0" itemLabel="- - -"></f:selectItem>
+                                <f:selectItems value="#{newPageMg.templateList}" var="tmp" itemLabel="#{tmp.name}"
+                                               itemValue="#{tmp.namingId}"></f:selectItems>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="فعال"></p:outputLabel>
+                            <p:selectBooleanCheckbox value="#{newPageMg.data.active}"></p:selectBooleanCheckbox>
+
+                        </h:panelGrid>
+
+
+                        <p:commandButton styleClass="datatable-inline-edit" value="به روز رسانی" actionListener="#{newPageMg.saveUpdate}"
+                                         style="float: left;margin-top: 25px" id="saveBtn"
+                                         onclick="ckUpdate()"></p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:panel>
+
+
+    </h:form>
+</h:body>
+
+</html>

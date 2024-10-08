@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <h:form prependId="false" id="mainform">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{voucherMg.newData}"
+                                                     update="growl, voucherDialog"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     oncomplete="PF('voucherDialog').show()"
+                                                     value="افزودن کد تخفیف"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <p:dataTable value="#{voucherMg.voucherLazy}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="vch"
+                                         id="voucherTable"
+                                         widgetVar="voucherTable"
+                                         rowIndexVar="index">
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="کد"
+                                          filterable="true"
+                                          filterBy="#{vch.code}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.code}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="حداکثر استفاده"
+                                          sortBy="#{vch.maxUse}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.maxUse}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="استفاده شده"
+                                          sortBy="#{vch.count}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.count}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="درصد تخفیف"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.percent}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="مبلغ تخفیف"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.amount}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="نوع تخفیف"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.useType}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1"
+                                          sortBy="#{vch.expire}"
+                                          filterStyle="text-align: center"
+                                          headerText="تاریخ انقضا">
+                                    <h:outputText value="#{vch.expireStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                    <p:commandButton actionListener="#{voucherMg.editData(vch._id)}"
+                                                     oncomplete="PF('voucherDialog').show()"
+                                                     update="voucherDialog, dateTimeDialog"
+                                                     styleClass="button-blue mx-1"
+                                                     value="ویرایش"></p:commandButton>
+
+                                    <p:commandButton onstart="return confdelete()"
+                                                     actionListener="#{voucherMg.deleteData(vch._id)}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-pink"
+                                                     value="حذف"></p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p:dialog modal="true"
+                  width="800" widgetVar="voucherDialog"
+                  resizable="false" id="voucherDialog">
+            <div class="container input-block-with-label">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="کد"></p:outputLabel>
+                            <p:inputText value="#{voucherMg.data.code}"></p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="حداکثر استفاده"></p:outputLabel>
+                            <p:inputText value="#{voucherMg.data.maxUse}"></p:inputText>
+                        </div>
+                    </div>
+
+
+                    <div class="col col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="عنوان"></p:outputLabel>
+                            <p:inputText value="#{voucherMg.data.title}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="گروه کد تخفیف"></p:outputLabel>
+                            <p:selectOneMenu value="#{voucherMg.data.discountType}">
+                                <f:selectItem itemLabel="همه" itemValue="all"></f:selectItem>
+                                <f:selectItem itemLabel="افزایش اعتبار" itemValue="credit"></f:selectItem>
+                                <f:selectItem itemLabel="گروه  پزشکی خاص" itemValue="group"></f:selectItem>
+                                <f:selectItem itemLabel="تخصص خاص" itemValue="speciality"></f:selectItem>
+
+                                <p:ajax listener="#{voucherMg.justUpdate}" update="discountTypePanel"></p:ajax>
+                            </p:selectOneMenu>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <h:panelGroup id="discountTypePanel">
+                            <ui:fragment rendered="#{voucherMg.data.discountType eq 'group'}">
+                                <div class="input-wrapper">
+                                    <p:outputLabel value="انتخاب گروه پزشکی"></p:outputLabel>
+                                    <p:selectCheckboxMenu value="#{voucherMg.data.groups}"
+                                                          label="گروه پزشکی"
+                                                          converter="objectIdConverter">
+                                        <f:selectItems value="#{voucherMg.doctorGroupList}"
+                                                       var="dgr"
+                                                       itemLabel="#{dgr.name}"
+                                                       itemValue="#{dgr._id}"></f:selectItems>
+                                    </p:selectCheckboxMenu>
+                                </div>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{voucherMg.data.discountType eq 'speciality'}">
+                                <div class="input-wrapper">
+                                    <p:outputLabel value="انتخاب تخصص"></p:outputLabel>
+                                    <p:selectCheckboxMenu value="#{voucherMg.data.specialities}" label="تخصص">
+                                        <f:selectItems value="#{dataService.specialityList.entrySet().toArray()}"
+                                                       var="spe" itemLabel="#{spe.key}"
+                                                       itemValue="#{spe.value}">
+                                        </f:selectItems>
+                                    </p:selectCheckboxMenu>
+                                </div>
+                            </ui:fragment>
+                        </h:panelGroup>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="تاریخ انقضا"></p:outputLabel>
+                            <div class="d-flex align-items-end">
+                                <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                             value="#{voucherMg.data.expireStr}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="نوع کد تخفیف"></p:outputLabel>
+                            <p:selectOneMenu value="#{voucherMg.data.useType}">
+                                <f:selectItem itemLabel="درصد" itemValue="percent"></f:selectItem>
+                                <f:selectItem itemLabel="مبلغ" itemValue="value"></f:selectItem>
+
+                                <p:ajax listener="#{voucherMg.justUpdate}" update="discountUseTypePanel, doctorSharePanel"></p:ajax>
+                            </p:selectOneMenu>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <h:panelGroup id="discountUseTypePanel">
+                            <ui:fragment rendered="#{voucherMg.data.useType eq 'percent'}">
+                                <div class="input-wrapper">
+                                    <p:outputLabel value="درصد تخفیف"></p:outputLabel>
+                                    <p:inputText value="#{voucherMg.data.percent}"></p:inputText>
+                                </div>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{voucherMg.data.useType eq 'value'}">
+                                <div class="input-wrapper">
+                                    <p:outputLabel value="مبلغ تخفیف"></p:outputLabel>
+                                    <p:inputText value="#{voucherMg.data.amount}"></p:inputText>
+                                </div>
+                            </ui:fragment>
+                        </h:panelGroup>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <h:panelGroup id="doctorSharePanel">
+                            <ui:fragment rendered="#{voucherMg.data.useType eq 'percent'}">
+                                <div class="input-wrapper">
+                                    <p:outputLabel value="درصد پزشک"></p:outputLabel>
+                                    <p:inputText value="#{voucherMg.data.drPercent}"></p:inputText>
+                                </div>
+                            </ui:fragment>
+
+
+                            <ui:fragment rendered="#{voucherMg.data.useType eq 'value'}">
+                                <div class="input-wrapper">
+                                    <p:outputLabel value="مبلغ پزشک"></p:outputLabel>
+                                    <p:inputText value="#{voucherMg.data.drAmount}"></p:inputText>
+                                </div>
+                            </ui:fragment>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-4">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="شماره ترتیب"></p:outputLabel>
+                            <p:inputText value="#{voucherMg.data.sortOrder}"/>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <div class="input-wrapper inline-label">
+                            <p:outputLabel value="فعال"></p:outputLabel>
+                            <p:selectBooleanCheckbox value="#{voucherMg.data.active}"></p:selectBooleanCheckbox>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <div class="input-wrapper inline-label">
+                            <p:outputLabel value="نمایش عمومی"></p:outputLabel>
+                            <p:selectBooleanCheckbox value="#{voucherMg.data.publicView}"></p:selectBooleanCheckbox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col">
+                        <p:commandButton update="growl, dateTimeDialog"
+                                         actionListener="#{voucherMg.justUpdate()}"
+                                         styleClass="button-blue mx-3" icon="pi pi-calendar"
+                                         oncomplete="PF('dateTimeDialog').show()"
+                                         value="تاریخ و ساعت"></p:commandButton>
+
+                        <p:commandButton styleClass="button-blue"
+                                         update="growl, voucherTable"
+                                         icon="pi pi-save"
+                                         actionListener="#{voucherMg.saveData}"
+                                         oncomplete="PF('voucherDialog').hide();"
+                                         value="ذخیره"></p:commandButton>
+                    </div>
+                </div>
+            </div>
+
+            <h:outputScript>
+                renderCalendar();
+            </h:outputScript>
+        </p:dialog>
+
+
+        <p:dialog modal="true"
+                  width="800" widgetVar="dateTimeDialog"
+                  resizable="false" id="dateTimeDialog">
+            <div class="container input-block-with-label">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="تاریخ شروع"></p:outputLabel>
+                            <div class="d-flex align-items-end">
+                                <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                             value="#{voucherMg.data.specDates.startStr}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-6">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="تاریخ پایان"></p:outputLabel>
+                            <div class="d-flex align-items-end">
+                                <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                             value="#{voucherMg.data.specDates.endStr}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <p:commandButton styleClass="button-blue"
+                                         update="growl, timeTable"
+                                         icon="pi pi-save"
+                                         actionListener="#{voucherMg.addTime}"
+                                         value="افزودن بازه زمانی"></p:commandButton>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p:dataTable styleClass="my-3" value="#{voucherMg.data.specDates.hours}"
+                                     reflow="true"
+                                     paginator="false"
+                                     var="time"
+                                     id="timeTable"
+                                     widgetVar="timeTable"
+                                     rowIndexVar="index">
+                            <p:column styleClass="row-number" headerText="ردیف">
+                                <h:outputText value="#{index+1}"/>
+                            </p:column>
+
+                            <p:column styleClass="text-center" headerText="ساعت شروع">
+                                <p:spinner value="#{time.start}"
+                                           min="0"
+                                           max="23"
+                                           stepFactor="1"
+                                           round="true"/>
+                            </p:column>
+
+                            <p:column styleClass="text-center" headerText="ساعت پایان">
+                                <p:spinner value="#{time.end}"
+                                           min="0"
+                                           max="23"
+                                           stepFactor="1"
+                                           round="true"/>
+                            </p:column>
+
+                            <p:column styleClass="text-center" headerText="عملیات">
+                                <p:commandButton onstart="return confdelete()"
+                                                 actionListener="#{voucherMg.removeTime(index)}"
+                                                 update="growl, timeTable"
+                                                 styleClass="button-pink"
+                                                 value="حذف"></p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col">
+                        <p:commandButton styleClass="button-blue"
+                                         icon="pi pi-save"
+                                         actionListener="#{voucherMg.justUpdate()}"
+                                         oncomplete="PF('dateTimeDialog').hide();"
+                                         value="ذخیره"></p:commandButton>
+                    </div>
+                </div>
+            </div>
+
+            <h:outputScript>
+                renderCalendar();
+            </h:outputScript>
+        </p:dialog>
+    </h:form>
+
+</h:body>
+
+</html>

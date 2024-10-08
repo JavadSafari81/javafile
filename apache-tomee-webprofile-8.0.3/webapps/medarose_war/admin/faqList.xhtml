@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+</h:head>
+<h:body>
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:growl id="growlll" showDetail="true" sticky="false" life="2000"/>
+
+        <a href="/admin/index?page=19" style="color: #1070a0">سوال جدید</a>
+
+        <p:separator style="margin-top: 6px"></p:separator>
+
+        <p:dataTable value="#{faqListMg.faqList}" var="page" rowIndexVar="rowIndex" id="pageTb"
+                     styleClass="horizontal-line-table inline-button" emptyMessage="داده ای پیدا نشد">
+            <p:column headerText="ردیف">
+                <p:outputLabel value="#{rowIndex+1}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="نام">
+                <p:outputLabel value="#{page.name}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="تاریخ ایجاد">
+                <p:outputLabel value="#{page.regDateStr}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="عملیات">
+                <a class="datatable-inline-edit" href="/admin/index?page=19&amp;item=#{page.faqId}"
+                   style="color: #1070a0">ویرایش</a>
+
+                <p:commandButton styleClass="datatable-inline-delete" update="pageTb"
+                                 onstart="return confsure()"
+                                 actionListener="#{faqListMg.deleteFaq(page.faqId)}"
+                                 value="حذف"></p:commandButton>
+            </p:column>
+
+            <p:column style="width:16px">
+                <p:rowToggler/>
+            </p:column>
+
+            <p:rowExpansion>
+                <p:dataTable value="#{page.subItems}"
+                             id="subTable"
+                             rowKey="#{page.faqId}"
+                             var="sub" rowIndexVar="rdix"
+                             styleClass="horizontal-line-table inline-button none-header-subTable "
+                             emptyMessage="داده ای پیدا نشد">
+                    <p:column headerText="ردیف">
+                        <p:outputLabel value="#{rdix+1}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="نام">
+                        <p:outputLabel value="#{sub.name}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="تاریخ ایجاد">
+                        <p:outputLabel value="#{sub.regDateStr}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="عملیات">
+                        <a class="datatable-inline-edit"
+                           href="/admin/index?page=19&amp;item=#{sub.faqId}"
+                           style="color: #1070a0">ویرایش</a>
+
+                        <p:commandButton styleClass="datatable-inline-delete" update="pageTb"
+                                         onstart="return confsure()"
+                                         actionListener="#{faqListMg.deleteFaq(sub.faqId)}"
+                                         value="حذف"></p:commandButton>
+                    </p:column>
+
+                    <p:column style="width:16px">
+                    </p:column>
+                </p:dataTable>
+            </p:rowExpansion>
+        </p:dataTable>
+
+    </h:form>
+</h:body>
+</html>

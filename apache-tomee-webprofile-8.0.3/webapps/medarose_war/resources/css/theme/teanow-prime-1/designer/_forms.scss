@@ -1,0 +1,610 @@
+//Purchase the full version at https://www.primefaces.org/store to get full access to the complete UI suite
+
+body {
+  @include placeholder {
+    color: $inputPlaceholderTextColor;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+
+  .ui-inputfield {
+    min-height: 30px;
+    color: $secondaryTextColor;
+    font-size: 1rem - $fontRatio;
+    background: $inputBgColor;
+    padding: 0.4rem 0.5rem 0.2rem;
+    border: $inputBorder;
+    outline: 0 none;
+    box-shadow: none !important;
+    @include transition($inputTransition);
+    @include border-radius($borderRadius);
+    @include appearance(none);
+
+    &.ui-state-hover:not(.ui-state-error) {
+      border-color: $inputHoverBorderColor;
+    }
+
+    &.ui-state-focus:not(.ui-state-error) {
+      @include focused-input();
+    }
+
+    &.ui-state-error {
+      border-color: $inputErrorBorderColor;
+    }
+  }
+
+  .ui-chkbox {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    width: $checkboxWidth;
+    height: $checkboxHeight;
+
+    .ui-chkbox-box {
+      border: $inputBorder !important;
+      background-color: $inputBgColor;
+      background: $inputBgColor;
+      width: $checkboxWidth;
+      height: $checkboxHeight;
+      text-align: center;
+      position: relative;
+      @include border-radius($borderRadius);
+      @include transition($checkboxTransition);
+
+      &.ui-state-hover {
+        border: $inputBorder !important;
+      }
+
+      &.ui-state-focus {
+        border-color: $checkboxFocusBorderColor;
+        background-color: $checkboxFocusBgColor;
+        color: $checkboxFocusTextColor;
+        @include shadow($checkboxFocusShadow);
+      }
+
+      &.ui-state-active {
+        border-color: $checkboxActiveBorderColor;
+        background-color: $checkboxActiveBgColor;
+        color: $checkboxActiveTextColor;
+
+        &.ui-state-hover {
+          background-color: $checkboxActiveHoverBgColor;
+        }
+      }
+
+      .ui-chkbox-icon {
+        font-family: 'primeicons';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-indent: 0 !important;
+        text-align: center;
+        background: 0;
+        display: inline-block;
+        font-size: 1.25em;
+      }
+    }
+
+    .ui-chkbox-box.ui-state-active {
+      .ui-chkbox-icon:before {
+        content: '\e909';
+      }
+    }
+  }
+
+  .ui-selectonelistbox,
+  .ui-selectmanymenu {
+    padding: 0;
+    width: auto;
+    min-width: $inputListMinWidth;
+
+    .ui-selectlistbox-filter-container {
+      padding: $inputListHeaderPaddingTop $inputListHeaderPaddingRight $inputListHeaderPaddingBottom $inputListHeaderPaddingLeft;
+      margin: 0;
+      border-bottom: $inputListHeaderBorder;
+      background-color: $inputListHeaderBgColor;
+      color: $inputListHeaderTextColor;
+      @include border-radius-top($borderRadius);
+
+      .ui-selectlistbox-filter.ui-inputfield {
+        padding: $inputPadding;
+        width: 100%;
+        padding-left: $inputPadding * 2 + $iconWidth;
+      }
+
+      .ui-icon {
+        @include icon_override("\f002");
+        position: absolute;
+        left: $inputListHeaderPaddingLeft + $inputPadding;
+        top: 50%;
+        margin-top: -1 * $iconHeight / 2;
+        color: $inputListHeaderSearchIconColor;
+      }
+    }
+
+    .ui-selectlistbox-listcontainer {
+      padding: $inputListPadding;
+      line-height: normal;
+      border: 0 none;
+
+      .ui-selectlistbox-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        .ui-selectlistbox-item {
+          border: $inputListItemBorder;
+          margin: $inputListItemMargin;
+          padding: $inputListItemPadding;
+          background-color: $inputListItemBgColor;
+          color: $inputListItemTextColor;
+          @include border-radius($inputListItemBorderRadius);
+
+          &.ui-state-hover {
+            background-color: $inputListItemHoverBgColor;
+            color: $inputListItemHoverTextColor;
+          }
+
+          &.ui-state-highlight {
+            background-color: $inputListItemHighlightBgColor;
+            color: $inputListItemHighlightTextColor;
+          }
+
+          .ui-chkbox {
+            margin-right: $inlineSpacing;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+
+  .ui-selectonemenu {
+    background: #fff !important;
+
+    .ui-selectonemenu-trigger {
+      width: $selectOneMenuTriggerWidth !important;
+      background-color: $secondaryColor;
+      border: none !important;
+      color: $secondaryTextColor;
+
+      .ui-selectonemenu-label {
+        text-align: center;
+      }
+
+      .ui-icon {
+        background: none !important;
+        font-family: 'Font Awesome 5 Free';
+        line-height: 1rem;
+        color: $secondaryTextColor;
+
+        &:after {
+          content: '\f078';
+        }
+      }
+    }
+  }
+
+  .ui-selectcheckboxmenu {
+    background: #fff !important;
+    padding: 0.4rem 0.5rem 0.2rem;
+    padding-right: 28px;
+    display: block;
+    background: #fff;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+    .ui-selectcheckboxmenu-trigger {
+      border: 0 none;
+      cursor: pointer;
+      width: 1.8rem !important;
+      height: 100%;
+      position: absolute;
+      padding: 0;
+      background: #fff;
+
+      .ui-icon {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: #333;
+        background: none !important;
+        font-family: 'Font Awesome 5 Free' !important;
+        line-height: 1rem;
+        color: $secondaryTextColor;
+
+        &:after {
+          content: '\f078';
+        }
+      }
+    }
+
+    .ui-selectcheckboxmenu-label {
+      padding: 0;
+      color: #333;
+      margin-bottom: 0 !important;
+      text-align: left;
+      border: none !important;
+      background: #fff !important;
+    }
+  }
+
+  .ui-selectonemenu-panel {
+    .ui-selectonemenu-items {
+      padding: 0;
+
+      .ui-selectonemenu-item {
+        margin: 0;
+        border: none !important;
+        text-align: $text-alignment;
+        padding: 0.4rem 0.6rem;
+
+        &.ui-state-hover {
+          background: $primaryHoverColor;
+        }
+
+        &.ui-state-highlight {
+          background: $primaryColor;
+        }
+      }
+    }
+  }
+
+  .ui-autocomplete {
+    .ui-autocomplete-input {
+      width: 100%;
+    }
+
+    .ui-autocomplete-panel {
+      box-shadow: 0 1px 6px 1px #ddd !important;
+      border: 1px solid $primaryColor;
+      border-radius: 0.4rem;
+      left: auto !important;
+      right: 0 !important;
+
+      .ui-autocomplete-item {
+        border: none !important;
+
+        td {
+          padding: 0.4rem 0.5rem !important;
+          border: none !important;
+        }
+      }
+
+      .ui-state-highlight {
+        background: $primaryColor !important;
+      }
+    }
+  }
+
+  .ui-toggleswitch {
+    width: 3em;
+    height: 1.75em;
+
+    .ui-toggleswitch-slider {
+      transition: background-color .3s;
+      border-radius: 30px;
+      background: #ccc !important;
+    }
+
+    .ui-toggleswitch-slider {
+      &:before {
+        background-color: #fff;
+        height: 1.250em;
+        width: 1.250em;
+        left: .25em;
+        bottom: .25em;
+        border-radius: 50%;
+        -webkit-transition: .3s;
+        transition: .3s;
+      }
+    }
+  }
+
+  .ui-toggleswitch-checked .ui-toggleswitch-slider {
+    background-color: $primaryColor !important;
+
+    &:before {
+      -webkit-transform: translateX(1.25em);
+      -ms-transform: translateX(1.25em);
+      transform: translateX(1.25em);
+    }
+  }
+
+  .ui-selectcheckboxmenu-panel {
+    .ui-selectcheckboxmenu-list-item {
+      text-align: $text-alignment !important;
+
+      .ui-chkbox {
+        margin-top: 0px !important;
+        top: 4px !important;
+        left: 0.5em !important;
+      }
+    }
+  }
+
+  .ui-autocomplete-panel {
+    width: auto !important;
+
+    .ui-autocomplete-items {
+      width: auto !important;
+
+      .ui-selectonemenu-item {
+        margin: 0 !important;
+        border: none !important;
+        text-align: right !important;
+        padding: 0.4rem 0.6rem !important;
+      }
+
+      .ui-autocomplete-item.ui-state-highlight {
+        background: $primaryColor !important;
+      }
+    }
+  }
+
+  .ui-spinner {
+    .ui-spinner-input {
+      font-family: iranyekan;
+      padding-right: 2.857rem;
+    }
+
+    .ui-spinner-button {
+      cursor: default;
+      display: block;
+      font-size: .5em;
+      height: 50%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      vertical-align: middle;
+      width: 16px;
+      z-index: 100;
+
+      &.ui-button {
+        border-radius: 0 !important;
+        width: 2.357rem;
+        background: $primaryColor;
+        color: $primaryTextColor;
+        border: 1px solid $primaryDarkerColor;
+        margin: 0;
+        outline: 0 none;
+
+        .ui-icon {
+          font-size: 1rem !important;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-left: -0.5rem;
+          margin-top: -0.5rem;
+        }
+
+        &.ui-spinner-up {
+          border-top-right-radius: 4px !important;
+
+          .ui-icon {
+            font-family: 'primeicons' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            display: inline-block;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-indent: 0 !important;
+            background-image: none !important;
+          }
+
+          .ui-icon:before {
+            content: "\e903";
+          }
+        }
+
+        &.ui-spinner-down {
+          border-bottom-right-radius: 4px !important;
+
+          .ui-icon {
+            font-family: 'primeicons' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            display: inline-block;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-indent: 0 !important;
+            background-image: none !important;
+          }
+
+          .ui-icon:before {
+            content: "\e902";
+          }
+        }
+
+        &.ui-button-text-only {
+          .ui-button-text {
+            padding: 0.5rem 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .ui-selectoneradio {
+    label {
+      margin: 0 8px 0 16px;
+    }
+
+    .ui-radiobutton {
+      .ui-radiobutton-box {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        background: $primaryTextColor;
+
+        &.ui-state-active {
+          border-color: $primaryColor;
+          background: $primaryColor;
+          color: #ffffff;
+        }
+
+        .ui-radiobutton-icon {
+          background: #ffffff;
+          width: 12px;
+          height: 12px;
+          vertical-align: middle;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -6px;
+          margin-left: -6px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .ui-selectcheckboxmenu-multiple {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    .ui-selectcheckboxmenu-multiple-container {
+      padding: .2145em .429em;
+      display: inline-flex;
+      overflow: hidden;
+      padding: 0;
+      border: none;
+      max-width: 100%;
+      width: 100%;
+
+      .ui-selectcheckboxmenu-token {
+        padding: .10725em 0;
+        margin: 0 2px 1px;
+        background: $primaryColor;
+        color: #fff;
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+
+        .ui-selectcheckboxmenu-token-icon {
+          margin-top: -0.5em;
+          position: absolute;
+          font-family: 'primeicons';
+          speak: none;
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          display: inline-block;
+          text-indent: 0 !important;
+          text-align: center;
+          background: 0;
+          display: inline-block;
+          font-size: 1.25em;
+        }
+
+        .ui-selectcheckboxmenu-token-icon:before {
+          content: '\e90b';
+        }
+      }
+
+    }
+
+    .ui-selectcheckboxmenu-multiple-container:empty:after {
+      width: 100%;
+      text-align: left;
+      margin: 0 !important;
+    }
+
+    .ui-selectcheckboxmenu-multiple-container.ui-inputfield {
+      padding-right: 28px;
+
+    }
+  }
+
+  .ui-selectcheckboxmenu-panel {
+    .ui-selectcheckboxmenu-header {
+      border: 0 none;
+      background: #f8f9fa !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: ltr;
+      padding: 0.5rem 1rem;
+
+      .ui-selectcheckboxmenu-filter-container {
+        .ui-inputfield {
+          border: 1px solid #ccc;
+          direction: rtl;
+        }
+
+        .ui-icon-search {
+          font-family: "primeicons" !important;
+          font-style: normal;
+          font-weight: normal;
+          display: inline-block;
+          background: none;
+          position: absolute;
+          left: 0.5rem;
+          top: 50%;
+          right: auto;
+          bottom: auto;
+          margin-top: -0.65rem;
+          color: #6c757d;
+
+          &:before {
+            content: "\e908";
+          }
+        }
+      }
+
+      .ui-selectcheckboxmenu-close {
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        color: #6c757d;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        border-radius: 50%;
+        border: 0 none;
+        text-align: center;
+        line-height: 2rem;
+        padding: 0;
+        user-select: none;
+        margin-left: auto;
+        text-align: center;
+        margin-right: 0;
+
+        .ui-icon-circle-close {
+          font-family: "primeicons" !important;
+          font-style: normal;
+          font-weight: normal;
+          display: inline-block;
+          background: none;
+          float: none;
+
+          &:before {
+            content: "\e90b";
+          }
+        }
+      }
+    }
+  }
+}

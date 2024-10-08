@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+
+    <h:outputStylesheet>
+        .ui-selectcheckboxmenu {
+            width: 90% !important;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td:first-child {
+            width: 20%;
+        }
+
+        td:last-child {
+            width: 80%;
+        }
+
+        .info td:first-child {
+            width: 30%;
+        }
+    </h:outputStylesheet>
+</h:head>
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form id="mainform" prependId="false">
+                            <p:blockUI block="newEditPnl" trigger="saveBtn"/>
+
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton id="saveBtn" actionListener="#{singlePostMg.saveUpdate}"
+                                                     update="growl, mainform"
+                                                     onclick="ckUpdate()"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     value="ذخیره"></p:commandButton>
+                                </ui:fragment>
+
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionDelete and singlePostMg.data._id !=null}">
+                                    <p:commandButton actionListener="#{singlePostMg.deleteData}"
+                                                     onstart="return confdelete()"
+                                                     update="growl"
+                                                     styleClass="button-pink" icon="pi pi-times"
+                                                     value="حذف"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <p:panel style="border: none!important;" id="newEditPnl">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p:tabView prependId="false" dir="rtl" style="margin: 5px 0">
+
+                                            <p:tab title="عمومی">
+                                                <h:panelGrid columns="1" styleClass="vertical-top">
+                                                    <p:outputLabel value="عنوان"></p:outputLabel>
+                                                    <p:inputText
+                                                            style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                                            value="#{singlePostMg.data.subject}"></p:inputText>
+
+                                                    <p:outputLabel value="متن"></p:outputLabel>
+                                                    <p:inputTextarea autoResize="true" rows="10"
+                                                                     style="width: 100%;max-width: 100%"
+                                                                     value="#{singlePostMg.data.caption}"
+                                                                     id="editor1">
+                                                    </p:inputTextarea>
+
+
+                                                    <h:outputScript>
+                                                        showCkDefault('editor1', '400px');
+                                                    </h:outputScript>
+
+                                                    <p:fileUpload listener="#{singlePostMg.handleFileUpload}"
+                                                                  label="فایل"
+                                                                  mode="advanced"
+                                                                  update="growl, mediaTable"
+                                                                  auto="true"
+                                                                  sizeLimit="99900000"/>
+                                                </h:panelGrid>
+
+                                                <p:dataTable styleClass="my-3" value="#{singlePostMg.data.filesRef}"
+                                                             reflow="true"
+                                                             paginator="false"
+                                                             var="file"
+                                                             id="mediaTable"
+                                                             widgetVar="mediaTable"
+                                                             rowIndexVar="index">
+                                                    <p:column styleClass="row-number" headerText="ردیف">
+                                                        <h:outputText value="#{index+1}"/>
+                                                    </p:column>
+
+                                                    <p:column styleClass="text-center" headerText="نام">
+                                                        <ui:fragment rendered="#{file.fileType == 1}">
+                                                            <img width="120px" src="#{initParam['RFM']}#{file.path}"/>
+                                                        </ui:fragment>
+
+                                                        <ui:fragment rendered="#{file.fileType == 2}">
+                                                            <video width="120px" src="#{initParam['RFM']}#{file.path}"/>
+                                                        </ui:fragment>
+
+                                                        <ui:fragment rendered="#{file.fileType == 3}">
+                                                            <audio width="120px" src="#{initParam['RFM']}#{file.path}"/>
+                                                        </ui:fragment>
+                                                    </p:column>
+
+                                                    <p:column styleClass="text-center" headerText="MIME type">
+                                                        <p:outputLabel value="#{file.mimeType}"/>
+                                                    </p:column>
+
+                                                    <p:column styleClass="text-center" headerText="عملیات">
+                                                        <p:commandButton onstart="return confdelete()"
+                                                                         actionListener="#{singlePostMg.removeFile(index)}"
+                                                                         update="growl, mediaTable"
+                                                                         styleClass="button-pink"
+                                                                         value="حذف"></p:commandButton>
+                                                    </p:column>
+                                                </p:dataTable>
+                                            </p:tab>
+                                            <p:tab title="نظرات">
+                                                <ui:insert>
+                                                    <ui:include src="../components/commentTable.xhtml">
+                                                        <ui:param name="commentLazy"
+                                                                  value="#{singlePostMg.commentLazyList}"></ui:param>
+                                                        <ui:param name="renderWriter" value="true"></ui:param>
+                                                        <ui:param name="renderPost" value="false"></ui:param>
+                                                    </ui:include>
+                                                </ui:insert>
+                                            </p:tab>
+                                        </p:tabView>
+                                    </div>
+                                    <div class="col-md-4"
+                                         style="border: 1px solid #ccc;border-radius: 3px;padding: 20px 10px;margin-top: 3px">
+                                        <h:panelGrid columns="2" style="width: 100%" styleClass="info">
+                                            <p:outputLabel value="تاریخ ایجاد"></p:outputLabel>
+                                            <p:outputLabel style="direction: ltr"
+                                                           value="#{singlePostMg.data.createdAtStr}"></p:outputLabel>
+
+                                            <p:outputLabel value="آخرین تغییر"></p:outputLabel>
+                                            <p:outputLabel style="direction: ltr"
+                                                           value="#{singlePostMg.data.updatedAtStr}"></p:outputLabel>
+
+                                            <p:outputLabel value="دفعات مشاهده"></p:outputLabel>
+                                            <p:outputLabel style="direction: ltr"
+                                                           value="#{singlePostMg.data.viewCount}"></p:outputLabel>
+
+                                            <p:outputLabel value="تعداد لایک"></p:outputLabel>
+                                            <p:outputLabel style="direction: ltr"
+                                                           value="#{singlePostMg.data.likeCount}"></p:outputLabel>
+
+                                            <p:outputLabel value="تعداد نظر"></p:outputLabel>
+                                            <p:outputLabel
+                                                    value="#{singlePostMg.data.commentCount}"></p:outputLabel>
+
+                                            <p:outputLabel value="نوع"></p:outputLabel>
+                                            <p:selectOneMenu style="width: 90%"
+                                                             value="#{singlePostMg.data.type}">
+                                                <f:selectItem itemLabel="experience" itemValue="experience"/>
+                                                <f:selectItem itemLabel="article" itemValue="article"/>
+                                            </p:selectOneMenu>
+
+                                            <p:outputLabel value="نویسنده"></p:outputLabel>
+                                            <p:autoComplete completeMethod="#{singlePostMg.completeDoctors}"
+                                                            maxResults="6"
+                                                            value="#{singlePostMg.data.userRef.name}"
+                                                            styleClass="ltr-input light-gray-placeholder"
+                                                            style="width: 90%"
+                                                            var="sim" itemLabel="#{sim}" itemValue="#{sim}">
+                                                <p:ajax event="itemSelect"
+                                                        listener="#{singlePostMg.onWriterSelect}"></p:ajax>
+                                                <p:column>
+                                                    <h:outputText value="#{sim}"/>
+                                                </p:column>
+                                            </p:autoComplete>
+
+                                            <p:outputLabel value="فعال"></p:outputLabel>
+                                            <p:selectBooleanCheckbox
+                                                    value="#{singlePostMg.data.active}"></p:selectBooleanCheckbox>
+                                        </h:panelGrid>
+                                    </div>
+                                </div>
+                            </p:panel>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h:outputScript name="js/ckeditor.js"></h:outputScript>
+</h:body>
+
+</html>

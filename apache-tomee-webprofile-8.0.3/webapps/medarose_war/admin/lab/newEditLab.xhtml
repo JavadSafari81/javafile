@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form styleClass="input-block-with-label" prependId="false" id="mainform">
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{newEditLaboratoryMg.save}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-blue"
+                                                     icon="pi pi-save"
+                                                     value="ذخیره">
+                                    </p:commandButton>
+                                </ui:fragment>
+
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionDelete and newEditLaboratoryMg.data._id !=null}">
+                                    <p:commandButton actionListener="#{newEditLaboratoryMg.delete}"
+                                                     update="growl"
+                                                     styleClass="button-pink" icon="pi pi-times"
+                                                     value="حذف"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <p:tabView prependId="false" dir="rtl" style="margin: 5px 0">
+                                <p:tab title="اطلاعات کلی">
+                                    <ui:fragment rendered="#{newEditLaboratoryMg.data._id != null}">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="تاریخ ثبت: #{newEditLaboratoryMg.data.createdAtStr}"/>
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="آخرین تغییر: #{newEditLaboratoryMg.data.updatedAtStr}"/>
+                                        </div>
+                                    </ui:fragment>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="نام"></p:outputLabel>
+                                                <p:inputText value="#{newEditLaboratoryMg.data.name}"></p:inputText>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="نام انگلیسی"></p:outputLabel>
+                                                <p:inputText value="#{newEditLaboratoryMg.data.en_name}"></p:inputText>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="slug"></p:outputLabel>
+                                                <p:inputText value="#{newEditLaboratoryMg.data.slug}"></p:inputText>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="آدرس"></p:outputLabel>
+                                                <p:inputTextarea
+                                                        value="#{newEditLaboratoryMg.data.address}"></p:inputTextarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="آدرس انگلیسی"></p:outputLabel>
+                                                <p:inputTextarea
+                                                        value="#{newEditLaboratoryMg.data.en_address}"></p:inputTextarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <div class="input-wrapper inline-label">
+                                                <p:outputLabel value="فعال"></p:outputLabel>
+                                                <p:selectBooleanCheckbox styleClass="mx-2"
+                                                                         value="#{newEditLaboratoryMg.data.active}">
+                                                </p:selectBooleanCheckbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p:tab>
+
+                                <p:tab title="تلفن">
+                                    <div class="row mb-4">
+                                        <div class="col-sm-2">
+                                            <div class="input-wrapper" style="height: auto">
+                                                <p:commandButton actionListener="#{newEditLaboratoryMg.addPhone}"
+                                                                 update="phoneTb"
+                                                                 styleClass="button-blue"
+                                                                 icon="pi pi-plus"
+                                                                 value="افزودن"></p:commandButton>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p:dataTable value="#{newEditLaboratoryMg.data.phones}"
+                                                 reflow="true"
+                                                 rows="20"
+                                                 paginator="false"
+                                                 var="pho"
+                                                 id="phoneTb"
+                                                 widgetVar="phoneTb"
+                                                 rowIndexVar="index"
+                                                 rowKey="#{usr.pk}">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="شماره">
+                                            <p:inputText value="#{pho.phone}"></p:inputText>
+                                        </p:column>
+
+                                        <p:column exportable="false" styleClass="text-center" colspan="2"
+                                                  headerText="عملیات">
+                                            <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                                <p:commandButton onstart="return confdelete()"
+                                                                 update="mainform"
+                                                                 actionListener="#{newEditLaboratoryMg.removeTestFromList(index)}"
+                                                                 styleClass="button-pink" value="حذف"></p:commandButton>
+                                            </ui:fragment>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="آزمایش ها">
+                                    <div class="row mb-4">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper" style="height: auto">
+                                                <p:outputLabel value="افزودن آزمایش"></p:outputLabel>
+                                                <p:autoComplete completeMethod="#{newEditLaboratoryMg.completeTest}"
+                                                                maxResults="6"
+                                                                styleClass="ltr-input light-gray-placeholder"
+                                                                var="sim" itemLabel="#{sim}" itemValue="#{sim}">
+                                                    <p:ajax event="itemSelect" update="tb"
+                                                            listener="#{newEditLaboratoryMg.onTestSelect}"></p:ajax>
+                                                    <p:column>
+                                                        <h:outputText value="#{sim}"/>
+                                                    </p:column>
+                                                </p:autoComplete>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p:dataTable value="#{newEditLaboratoryMg.data.labTestPriceList}"
+                                                 reflow="true"
+                                                 rows="20"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                                 rowsPerPageTemplate="10,20,30"
+                                                 paginatorAlwaysVisible="false"
+                                                 paginatorPosition="top"
+                                                 var="tes"
+                                                 id="tb"
+                                                 widgetVar="tb"
+                                                 rowIndexVar="index"
+                                                 rowKey="#{usr.pk}">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="نام"
+                                                  filterBy="#{tes.laboratoryTests.title}"
+                                                  filterMatchMode="contains">
+                                            <h:outputLabel value="#{tes.laboratoryTests.title}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="نام انگلیسی"
+                                                  filterBy="#{tes.laboratoryTests.en_title}"
+                                                  filterMatchMode="contains">
+                                            <h:outputLabel value="#{tes.laboratoryTests.en_title}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="slug"
+                                                  filterBy="#{tes.laboratoryTests.slug}"
+                                                  filterMatchMode="contains">
+                                            <h:outputLabel value="#{tes.laboratoryTests.slug}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="قیمت">
+                                            <p:inputText value="#{tes.price}"/>
+                                        </p:column>
+
+                                        <p:column exportable="false" styleClass="text-center" colspan="2"
+                                                  headerText="عملیات">
+                                            <ui:fragment rendered="#{adminIndexMg.userAccess.actionEdit}">
+                                                <a href="/admin/?page=53&amp;item=#{tes.laboratoryTests._id}"
+                                                   target="_blank" class="button-green ml-1">مشاهده</a>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                                <p:commandButton onstart="return confdelete()"
+                                                                 update="mainform"
+                                                                 actionListener="#{newEditLaboratoryMg.removeTestFromList(index)}"
+                                                                 styleClass="button-pink" value="حذف"></p:commandButton>
+                                            </ui:fragment>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+                            </p:tabView>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

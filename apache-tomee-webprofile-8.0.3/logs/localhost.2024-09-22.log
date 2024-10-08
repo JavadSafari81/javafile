@@ -1,0 +1,2 @@
+22-Sep-2024 21:11:47.503 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded

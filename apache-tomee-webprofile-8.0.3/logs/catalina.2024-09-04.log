@@ -1,0 +1,147 @@
+04-Sep-2024 11:33:32.266 INFO [http-nio-8080-exec-9] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:5, serverValue:445}] to localhost:27017
+04-Sep-2024 11:42:44.847 SEVERE [http-nio-8080-exec-5] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at java.base/java.util.Arrays.copyOfRange(Arrays.java:4030)
+	at java.base/java.lang.StringCoding.decodeUTF8(StringCoding.java:723)
+	at java.base/java.lang.StringCoding.decode(StringCoding.java:257)
+	at java.base/java.lang.String.<init>(String.java:507)
+	at java.base/java.lang.String.<init>(String.java:561)
+	at org.bson.io.ByteBufferBsonInput.readString(ByteBufferBsonInput.java:160)
+	at org.bson.io.ByteBufferBsonInput.readCString(ByteBufferBsonInput.java:139)
+	at org.bson.BsonBinaryReader.readBsonType(BsonBinaryReader.java:123)
+	at org.bson.codecs.DocumentCodec.decode(DocumentCodec.java:149)
+	at org.bson.codecs.DocumentCodec.decode(DocumentCodec.java:45)
+	at com.mongodb.operation.CommandResultArrayCodec.decode(CommandResultArrayCodec.java:52)
+	at com.mongodb.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:60)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:84)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:41)
+	at org.bson.codecs.configuration.LazyCodec.decode(LazyCodec.java:47)
+	at org.bson.codecs.BsonDocumentCodec.readValue(BsonDocumentCodec.java:101)
+	at com.mongodb.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:63)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:84)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:41)
+	at com.mongodb.internal.connection.ReplyMessage.<init>(ReplyMessage.java:51)
+	at com.mongodb.internal.connection.InternalStreamConnection.getCommandResult(InternalStreamConnection.java:413)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:309)
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:259)
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.sendAndReceive(UsageTrackingInternalConnection.java:99)
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.sendAndReceive(DefaultConnectionPool.java:450)
+	at com.mongodb.internal.connection.CommandProtocolImpl.execute(CommandProtocolImpl.java:72)
+	at com.mongodb.internal.connection.DefaultServer$DefaultServerProtocolExecutor.execute(DefaultServer.java:218)
+	at com.mongodb.internal.connection.DefaultServerConnection.executeProtocol(DefaultServerConnection.java:269)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:131)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:123)
+	at com.mongodb.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:343)
+	at com.mongodb.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:334)
+
+04-Sep-2024 11:42:52.839 SEVERE [http-nio-8080-exec-3] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at org.bson.io.ByteBufferBsonInput.readString(ByteBufferBsonInput.java:160)
+	at org.bson.io.ByteBufferBsonInput.readCString(ByteBufferBsonInput.java:139)
+	at org.bson.BsonBinaryReader.readBsonType(BsonBinaryReader.java:123)
+	at org.bson.codecs.DocumentCodec.decode(DocumentCodec.java:149)
+	at org.bson.codecs.DocumentCodec.decode(DocumentCodec.java:45)
+	at com.mongodb.operation.CommandResultArrayCodec.decode(CommandResultArrayCodec.java:52)
+	at com.mongodb.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:60)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:84)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:41)
+	at org.bson.codecs.configuration.LazyCodec.decode(LazyCodec.java:47)
+	at org.bson.codecs.BsonDocumentCodec.readValue(BsonDocumentCodec.java:101)
+	at com.mongodb.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:63)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:84)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:41)
+	at com.mongodb.internal.connection.ReplyMessage.<init>(ReplyMessage.java:51)
+	at com.mongodb.internal.connection.InternalStreamConnection.getCommandResult(InternalStreamConnection.java:413)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:309)
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:259)
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.sendAndReceive(UsageTrackingInternalConnection.java:99)
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.sendAndReceive(DefaultConnectionPool.java:450)
+	at com.mongodb.internal.connection.CommandProtocolImpl.execute(CommandProtocolImpl.java:72)
+	at com.mongodb.internal.connection.DefaultServer$DefaultServerProtocolExecutor.execute(DefaultServer.java:218)
+	at com.mongodb.internal.connection.DefaultServerConnection.executeProtocol(DefaultServerConnection.java:269)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:131)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:123)
+	at com.mongodb.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:343)
+	at com.mongodb.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:334)
+	at com.mongodb.operation.CommandOperationHelper.executeCommandWithConnection(CommandOperationHelper.java:220)
+	at com.mongodb.operation.FindOperation$1.call(FindOperation.java:731)
+	at com.mongodb.operation.FindOperation$1.call(FindOperation.java:725)
+	at com.mongodb.operation.OperationHelper.withReadConnectionSource(OperationHelper.java:463)
+	at com.mongodb.operation.FindOperation.execute(FindOperation.java:725)
+
+04-Sep-2024 11:42:58.527 SEVERE [http-nio-8080-exec-7] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:43:24.542 SEVERE [http-nio-8080-exec-2] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:43:31.677 SEVERE [http-nio-8080-exec-4] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:43:37.623 SEVERE [http-nio-8080-exec-8] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:43:42.080 SEVERE [http-nio-8080-exec-6] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:43:47.092 SEVERE [http-nio-8080-exec-5] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:44:09.939 SEVERE [http-nio-8080-exec-2] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:44:13.849 SEVERE [http-nio-8080-exec-1] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:45:03.435 SEVERE [http-nio-8080-exec-6] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:45:07.528 SEVERE [http-nio-8080-exec-5] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:45:42.575 SEVERE [http-nio-8080-exec-1] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:45:47.028 SEVERE [http-nio-8080-exec-4] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:45:50.893 SEVERE [http-nio-8080-exec-8] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:45:55.015 SEVERE [http-nio-8080-exec-6] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:47:23.099 SEVERE [http-nio-8080-exec-7] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:47:26.906 SEVERE [http-nio-8080-exec-10] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:47:31.007 SEVERE [http-nio-8080-exec-2] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:47:34.882 SEVERE [http-nio-8080-exec-8] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:47:46.497 INFO [http-nio-8080-exec-9] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:7, serverValue:447}] to localhost:27017
+04-Sep-2024 11:47:46.497 INFO [http-nio-8080-exec-3] com.mongodb.diagnostics.logging.SLF4JLogger.info Opened connection [connectionId{localValue:6, serverValue:446}] to localhost:27017
+04-Sep-2024 11:48:25.614 SEVERE [http-nio-8080-exec-5] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:48:29.596 SEVERE [http-nio-8080-exec-9] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:48:33.969 SEVERE [http-nio-8080-exec-6] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:56:49.459 SEVERE [http-nio-8080-exec-2] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:56:52.338 SEVERE [http-nio-8080-exec-9] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:56:55.757 SEVERE [http-nio-8080-exec-5] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 11:57:13.452 SEVERE [http-nio-8080-exec-3] com.sun.faces.context.AjaxExceptionHandlerImpl.handlePartialResponseError java.lang.OutOfMemoryError: GC overhead limit exceeded
+
+04-Sep-2024 13:11:48.463 INFO [http-nio-8080-exec-4] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in the HTTP protocol [1 -1]
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:560)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:834)
+04-Sep-2024 18:35:20.299 INFO [http-nio-8080-exec-9] org.apache.coyote.http11.Http11Processor.service Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+	java.lang.IllegalArgumentException: Invalid character found in method name [0x040x010x00PZ0x970xabj0...]. HTTP method names must be tokens
+		at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+		at java.base/java.lang.Thread.run(Thread.java:834)

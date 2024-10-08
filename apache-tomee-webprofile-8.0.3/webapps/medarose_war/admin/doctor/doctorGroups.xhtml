@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <p:blockUI id="blockTable" widgetVar="blockTable" block="tb"/>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <h:commandLink styleClass="button-blue mb-2 d-inline-block" value="اکسل">
+                                <p:dataExporter type="xlsxstream" target="tb" fileName="docsGroups"/>
+                            </h:commandLink>
+
+                            <p:fileUpload id="excelUpload"
+                                          sizeLimit="100000000"
+                                          listener="#{doctorGroupListMg.uploadFromExcel}"
+                                          mode="advanced"
+                                          skinSimple="true"
+                                          auto="true"
+                                          process="@this"
+                                          onstart="PF('blockTable').show()"
+                                          oncomplete="PF('blockTable').hide()"
+                                          styleClass="mx-1"
+                                          update="mainform,growl"
+                                          label="آپلود اکسل">
+                            </p:fileUpload>
+
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+                            <p:dataTable value="#{doctorGroupListMg.groupLazyList}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15,50,100,200"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="usr"
+                                         id="tb"
+                                         widgetVar="tb"
+                                         rowIndexVar="index"
+                                         rowKey="#{usr.pk}">
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{usr.sortOrder}" styleClass="row-number" headerText="شماره ترتیب">
+                                    <p:inputText style="width: 50px; border: 1px solid #ddd!important;"
+                                                 value="#{usr.sortOrder}">
+                                        <p:ajax update="growl" event="change"
+                                                listener="#{doctorGroupListMg.updateSortOrder(usr)}"></p:ajax>
+                                    </p:inputText>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="نام" filterBy="#{usr.name}"
+                                          filterMatchMode="contains">
+                                    <p:outputLabel value="#{usr.name}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="تخصص"
+                                          filterBy="#{usr.speciality}"
+                                          filterMatchMode="exact">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItems value="#{dataService.specialityList.entrySet().toArray()}"
+                                                           var="spe" itemLabel="#{spe.key}"
+                                                           itemValue="#{spe.value}">
+                                            </f:selectItems>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <h:outputText value="#{usr.speciality}"/>
+                                </p:column>
+
+                                <p:column colspan="1" sortBy="#{usr.price}"
+                                          headerText="تعرفه" styleClass="text-center">
+                                    <p:outputLabel value="#{usr.price}"/>
+                                </p:column>
+
+                                <p:column colspan="1" sortBy="#{usr.extendPrice}"
+                                          headerText="تعرفه تمدید" styleClass="text-center">
+                                    <p:outputLabel value="#{usr.extendPrice}"/>
+                                </p:column>
+
+                                <p:column colspan="1" sortBy="#{usr.extendPrice}"
+                                          headerText="درصد پزشک" styleClass="text-center">
+                                    <p:outputLabel value="#{usr.ownerPercent}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="نوع"
+                                          styleClass="text-center"
+                                          filterBy="#{usr.type}"
+                                          filterMatchMode="exact">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="بزرگسال" itemValue="adult"/>
+                                            <f:selectItem itemLabel="کودک" itemValue="children"/>
+                                            <f:selectItem itemLabel="روانشناسی" itemValue="psychology"/>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+                                    <p:outputLabel value="#{usr.type}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="تاریخ ثبت">
+                                    <p:outputLabel styleClass="font-sm" value="#{usr.createdAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.isOnline}"
+                                          filterStyle="text-align: center"
+                                          headerText="وضعیت آنلاین">
+                                    <p:toggleSwitch styleClass="text-center"
+                                                    value="#{usr.isOnline}">
+                                        <p:ajax event="change" update="growl"
+                                                listener="#{doctorGroupListMg.updateStatus(usr)}"></p:ajax>
+                                    </p:toggleSwitch>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.isOnline}"
+                                          filterStyle="text-align: center"
+                                          headerText="تماس تلفنی">
+                                    <p:toggleSwitch styleClass="text-center"
+                                                    value="#{usr.isCallable}">
+                                        <p:ajax event="change" update="growl"
+                                                listener="#{doctorGroupListMg.updatePhoneCallStatus(usr)}"></p:ajax>
+                                    </p:toggleSwitch>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1"
+                                          sortBy="#{usr.active}"
+                                          filterBy="#{usr.active}"
+                                          filterStyle="text-align: center"
+                                          headerText="فعال">
+                                    <f:facet name="filter">
+                                        <p:selectOneMenu onchange="PF('tb').filter()"
+                                                         styleClass="custom-filter">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="فعال" itemValue="true"/>
+                                            <f:selectItem itemLabel="غیر فعال" itemValue="false"/>
+                                        </p:selectOneMenu>
+                                    </f:facet>
+
+                                    <p:toggleSwitch styleClass="text-center"
+                                                    value="#{usr.active}">
+                                        <p:ajax event="change" update="growl"
+                                                listener="#{doctorGroupListMg.active}"></p:ajax>
+                                    </p:toggleSwitch>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionEdit}">
+                                        <a href="/admin/?page=24&amp;item=#{usr._id}"
+                                           class="button-green ml-1">مشاهده</a>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                        <p:commandButton onstart="return confdelete();"
+                                                         actionListener="#{doctorGroupListMg.deleteData(usr._id)}"
+                                                         update="mainform"
+                                                         styleClass="button-pink"
+                                                         value="حذف"></p:commandButton>
+                                    </ui:fragment>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

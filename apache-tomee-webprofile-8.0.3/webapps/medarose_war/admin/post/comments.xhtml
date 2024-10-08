@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head></h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+                            <p:dataTable value="#{commentsMg.commentLazyList}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="usr"
+                                         id="tb"
+                                         widgetVar="tb"
+                                         rowIndexVar="index" rowKey="#{usr.pk}">
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column colspan="3"
+                                          styleClass="text-center" headerText="متن"
+                                          filterMatchMode="contains">
+                                    <p:outputLabel value="#{usr.text}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="توسط" styleClass="text-center">
+                                    <ui:fragment rendered="#{usr.userRef.access == 'doctor'}">
+                                        <a href="/admin/?page=22&amp;item=#{usr.userRef._id}">
+                                            #{usr.userRef.name}
+                                        </a>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{usr.userRef.access == 'user'}">
+                                        <a href="/admin/?page=12&amp;item=#{usr.userRef._id}" target="_blank">
+                                            #{usr.userRef.name}
+                                        </a>
+                                    </ui:fragment>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="پست" styleClass="text-center">
+                                    <a href="https://web.medafone.com/home/posts/#{usr.postRef.slug}" target="_blank">
+                                        #{usr.postRef.userRef.name}
+                                    </a>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="تاریخ ثبت">
+                                    <h:outputText value="#{usr.createdAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                    <ui:fragment rendered="#{!usr.active}">
+                                        <p:commandButton actionListener="#{commentsMg.changeStatus(usr._id)}"
+                                                         update="growl, mainform"
+                                                         styleClass="button-green mx-1" value="تایید"></p:commandButton>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{usr.active}">
+                                        <p:commandButton actionListener="#{commentsMg.changeStatus(usr._id)}"
+                                                         update="growl, mainform"
+                                                         styleClass="button-red mx-1" value="رد"></p:commandButton>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                        <p:commandButton onstart="return confdelete()"
+                                                         actionListener="#{commentsMg.deleteData(usr._id)}"
+                                                         update="growl, mainform"
+                                                         styleClass="button-pink mx-1" value="حذف"></p:commandButton>
+                                    </ui:fragment>
+                                </p:column>
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

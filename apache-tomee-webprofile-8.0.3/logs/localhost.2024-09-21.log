@@ -1,0 +1,14 @@
+21-Sep-2024 22:16:20.268 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+21-Sep-2024 22:38:17.748 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [Java heap space] with root cause
+	java.lang.OutOfMemoryError: Java heap space
+21-Sep-2024 22:38:16.605 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [Java heap space] with root cause
+	java.lang.OutOfMemoryError: Java heap space
+21-Sep-2024 22:38:16.605 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [Java heap space] with root cause
+	java.lang.OutOfMemoryError: Java heap space
+21-Sep-2024 22:48:07.131 SEVERE [http-nio-8080-exec-10] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [Java heap space] with root cause
+	java.lang.OutOfMemoryError: Java heap space
+21-Sep-2024 22:48:07.740 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [Java heap space] with root cause
+	java.lang.OutOfMemoryError: Java heap space
+21-Sep-2024 23:28:22.523 SEVERE [http-nio-8080-exec-10] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [Java heap space] with root cause
+	java.lang.OutOfMemoryError: Java heap space

@@ -1,0 +1,22 @@
+04-Sep-2024 11:47:51.761 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:47:54.875 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:47:57.451 SEVERE [http-nio-8080-exec-9] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:47:59.803 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:48:02.858 SEVERE [http-nio-8080-exec-7] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:55:02.873 SEVERE [http-nio-8080-exec-2] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:55:49.196 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:55:53.501 SEVERE [http-nio-8080-exec-10] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 11:57:25.482 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 12:10:40.612 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+04-Sep-2024 12:11:06.729 SEVERE [http-nio-8080-exec-5] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded

@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <div class="container-fluid">
+        <h:form prependId="false" id="mainform">
+            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{newEditDoctorMg.save}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     value="ذخیره"></p:commandButton>
+                                </ui:fragment>
+
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionDelete and newEditDoctorMg.data._id !=null}">
+                                    <p:commandButton actionListener="#{newEditDoctorMg.deleteData}"
+                                                     onstart="return confdelete()"
+                                                     update="growl"
+                                                     styleClass="button-pink" icon="pi pi-times"
+                                                     value="حذف"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <p:tabView prependId="false" dir="rtl" style="margin: 5px 0">
+                                <p:tab title="اطلاعات شخصی">
+                                    <ui:fragment rendered="#{newEditDoctorMg.data._id != null}">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <div>
+                                                <p:outputLabel styleClass="mb-0 light-black"
+                                                               value="امتیاز: #{newEditDoctorMg.data.rate}"/>
+                                                <i class="pi pi-star yellow"></i>
+                                            </div>
+
+                                            <div class="d-flex">
+                                                <p:outputLabel value="تعداد نظرات: " styleClass="ml-2"></p:outputLabel>
+                                                <p:outputLabel
+                                                        value="#{newEditDoctorMg.data.rateCount}"></p:outputLabel>
+                                            </div>
+
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="تاریخ عضویت: #{newEditDoctorMg.data.createdAtStr}"/>
+
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="آخرین تغییر: #{newEditDoctorMg.data.updatedAtStr}"/>
+                                        </div>
+                                    </ui:fragment>
+
+                                    <div class="input-block-with-label">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="نام"></p:outputLabel>
+                                                    <p:inputText value="#{newEditDoctorMg.data.name}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="تلفن"></p:outputLabel>
+                                                    <p:inputText value="#{newEditDoctorMg.data.phone}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="تخصص"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditDoctorMg.data.speciality}">
+                                                        <f:selectItems
+                                                                value="#{newEditDoctorMg.dataService.specialityList.entrySet().toArray()}"
+                                                                var="spe" itemLabel="#{spe.key}"
+                                                                itemValue="#{spe.value}">
+                                                        </f:selectItems>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="نامک"></p:outputLabel>
+                                                    <p:inputText
+                                                            value="#{newEditDoctorMg.data.slug}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="محل تحصیل"></p:outputLabel>
+                                                    <p:inputText
+                                                            value="#{newEditDoctorMg.data.university}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="تحصیلات"></p:outputLabel>
+                                                    <p:inputText
+                                                            value="#{newEditDoctorMg.data.education}"></p:inputText>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="شماره نظام"></p:outputLabel>
+                                                    <p:inputText value="#{newEditDoctorMg.data.code}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="اعتبار"></p:outputLabel>
+                                                    <p:inputText value="#{newEditDoctorMg.data.credit}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="ایمیل"></p:outputLabel>
+                                                    <p:inputText value="#{newEditDoctorMg.data.email}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <ui:fragment rendered="#{newEditDoctorMg.data._id==null}">
+                                                <div class="col-sm-4">
+                                                    <div class="input-wrapper">
+                                                        <p:outputLabel value="رمز عبور"></p:outputLabel>
+                                                        <p:password value="#{newEditDoctorMg.password}"/>
+                                                    </div>
+                                                </div>
+                                            </ui:fragment>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="جنسیت"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditDoctorMg.data.gender}">
+                                                        <f:selectItem itemLabel="مرد" itemValue="male"></f:selectItem>
+                                                        <f:selectItem itemLabel="زن" itemValue="female"></f:selectItem>
+                                                        <f:selectItem itemLabel="دیگر" itemValue="other"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="کد ملی"></p:outputLabel>
+                                                    <p:inputText maxlength="10"
+                                                                 value="#{newEditDoctorMg.data.nationalId}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="شماره کارت"></p:outputLabel>
+                                                    <p:inputText maxlength="16"
+                                                                 value="#{newEditDoctorMg.data.card}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="شهرها"></p:outputLabel>
+                                                    <p:selectCheckboxMenu label="شهرها" multiple="true"
+                                                                          filter="true" filterMatchMode="contains"
+                                                                          value="#{newEditDoctorMg.selectedCities}">
+                                                        <f:selectItems value="#{newEditDoctorMg.cityList}"
+                                                                       var="city"
+                                                                       itemLabel="#{city.name}"
+                                                                       itemValue="#{city.id}"></f:selectItems>
+                                                    </p:selectCheckboxMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="شبا(IR:)"></p:outputLabel>
+                                                    <p:inputText maxlength="24"
+                                                                 value="#{newEditDoctorMg.data.sheba}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <div class="input-wrapper inline-label">
+                                                    <p:outputLabel value="فعال"></p:outputLabel>
+                                                    <p:selectBooleanCheckbox styleClass="mx-2"
+                                                                             value="#{newEditDoctorMg.data.active}">
+                                                    </p:selectBooleanCheckbox>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="آدرس مطب"></p:outputLabel>
+                                                    <p:inputTextarea autoResize="true"
+                                                                     value="#{newEditDoctorMg.data.office}">
+                                                    </p:inputTextarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="توضیحات"></p:outputLabel>
+                                                    <p:inputTextarea autoResize="true"
+                                                                     value="#{newEditDoctorMg.data.about}">
+                                                    </p:inputTextarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel
+                                                            value="در خصوص این بیماری ها مشاوره میدهد"></p:outputLabel>
+                                                    <p:inputTextarea autoResize="true"
+                                                                     value="#{newEditDoctorMg.data.consult_diseases}">
+                                                    </p:inputTextarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-5">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper inline-label align-items-center">
+                                                    <p:fileUpload listener="#{newEditDoctorMg.handleFileUpload}"
+                                                                  label="تصویر پروفایل"
+                                                                  mode="advanced"
+                                                                  update="growl, avatarImage"
+                                                                  auto="true"
+                                                                  sizeLimit="10000000"
+                                                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+                                                    <h:panelGroup id="avatarImage">
+                                                        <img width="120px"
+                                                             src="#{initParam['RFM']}#{newEditDoctorMg.data.avatarRef.path}"
+                                                             alt="avatar"/>
+                                                    </h:panelGroup>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper inline-label align-items-center">
+                                                    <p:fileUpload listener="#{newEditDoctorMg.handleIntroduceUpload}"
+                                                                  label="معرفی"
+                                                                  mode="advanced"
+                                                                  update="growl, introduceImage"
+                                                                  auto="true"
+                                                                  sizeLimit="99900000"/>
+
+                                                    <h:panelGroup id="introduceImage">
+                                                        <video width="120px"
+                                                               controls="controls"
+                                                               src="#{initParam['RFM']}#{newEditDoctorMg.data.introduceRef.path}"
+                                                               alt="avatar"></video>
+                                                    </h:panelGroup>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p:tab>
+
+                                <p:tab title="اطلاعات تماس">
+                                    <div class="text-left mt-3 mb-2">
+                                        <p:commandButton actionListener="#{newEditDoctorMg.newHospital}"
+                                                         oncomplete="PF('hospitalDialog').show()"
+                                                         update="growl, hospitalDialog"
+                                                         styleClass="button-blue" icon="pi pi-plus"
+                                                         value="افزودن"></p:commandButton>
+                                    </div>
+
+                                    <p:dataTable styleClass="mb-3" value="#{newEditDoctorMg.data.hospitalList}"
+                                                 reflow="true"
+                                                 paginator="false"
+                                                 var="cnt"
+                                                 id="hospitalTable"
+                                                 widgetVar="hospitalTable"
+                                                 rowIndexVar="index">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="نام">
+                                            <h:outputText value="#{cnt.name}"/>
+                                        </p:column>
+
+                                        <p:column colspan="2" headerText="توضیحات">
+                                            <h:outputText value="#{cnt.description}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="عملیات">
+                                            <p:commandButton actionListener="#{newEditDoctorMg.editHospital(index)}"
+                                                             oncomplete="PF('hospitalDialog').show()"
+                                                             update="growl, hospitalDialog"
+                                                             styleClass="button-green ml-1"
+                                                             value="ویرایش"></p:commandButton>
+
+                                            <p:commandButton onstart="return confdelete()"
+                                                             actionListener="#{newEditDoctorMg.removeHospital(index)}"
+                                                             update="growl, hospitalTable"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="نظرات">
+                                    <p:dataTable styleClass="mb-3" value="#{newEditDoctorMg.rateLazyList}"
+                                                 lazy="true"
+                                                 reflow="true"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 paginatorAlwaysVisible="false"
+                                                 paginatorPosition="top"
+                                                 var="rate"
+                                                 id="rateTable"
+                                                 widgetVar="rateTable"
+                                                 rowIndexVar="index">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" styleClass="text-center" headerText="امتیاز">
+                                            <p:rating value="#{rate.rate}" styleClass="text-center" readonly="true"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" headerText="کاربر">
+                                            <a target="_blank" href="/admin/?page=12&amp;item=#{rate.userRef._id}">
+                                                #{rate.userRef.name}
+                                            </a>
+                                        </p:column>
+
+                                        <p:column colspan="2" headerText="متن">
+                                            <h:outputText value="#{rate.comment}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="عملیات">
+                                            <p:commandButton onstart="return confdelete()"
+                                                             actionListener="#{newEditDoctorMg.deleteComment(rate._id)}"
+                                                             update="growl, mainform"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="فعالیت‌ها">
+                                    <div class="input-block-with-label row mt-3">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="توضیحات"></p:outputLabel>
+                                                <p:inputTextarea autoResize="true"
+                                                                 value="#{newEditDoctorMg.data.activityRecord}">
+                                                </p:inputTextarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h4 class="card-title mb-1">
+                                                            کتاب‌ها
+                                                        </h4>
+
+                                                        <p:commandButton actionListener="#{newEditDoctorMg.newBook}"
+                                                                         oncomplete="PF('bookDialog').show()"
+                                                                         update="growl, bookDialog"
+                                                                         styleClass="button-blue mb-2" icon="pi pi-plus"
+                                                                         value="افزودن"></p:commandButton>
+                                                    </div>
+
+                                                    <p:dataTable styleClass="mb-3"
+                                                                 value="#{newEditDoctorMg.data.bookList}"
+                                                                 reflow="true"
+                                                                 paginator="false"
+                                                                 var="book"
+                                                                 id="booksTable"
+                                                                 widgetVar="booksTable"
+                                                                 rowIndexVar="index">
+                                                        <p:column styleClass="row-number" headerText="ردیف">
+                                                            <h:outputText value="#{index+1}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="نام">
+                                                            <h:outputText value="#{book.name}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="لینک">
+                                                            <a href="#{book.link}" target="_blank">
+                                                                لینک
+                                                            </a>
+                                                        </p:column>
+
+                                                        <p:column colspan="2" headerText="توضیحات">
+                                                            <h:outputText value="#{book.description}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="عملیات">
+                                                            <p:commandButton
+                                                                    actionListener="#{newEditDoctorMg.editBook(index)}"
+                                                                    update="growl, bookDialog"
+                                                                    oncomplete="PF('bookDialog').show()"
+                                                                    styleClass="button-green ml-1"
+                                                                    value="ویرایش"></p:commandButton>
+
+                                                            <p:commandButton onstart="return confdelete()"
+                                                                             actionListener="#{newEditDoctorMg.removeBook(index)}"
+                                                                             update="growl, mainform"
+                                                                             styleClass="button-pink"
+                                                                             value="حذف"></p:commandButton>
+                                                        </p:column>
+                                                    </p:dataTable>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h4 class="card-title mb-1">
+                                                            مقالات
+                                                        </h4>
+
+                                                        <p:commandButton actionListener="#{newEditDoctorMg.newArticle}"
+                                                                         oncomplete="PF('articleDialog').show()"
+                                                                         update="growl, articleDialog"
+                                                                         styleClass="button-blue mb-2" icon="pi pi-plus"
+                                                                         value="افزودن"></p:commandButton>
+                                                    </div>
+
+                                                    <p:dataTable styleClass="mb-3"
+                                                                 value="#{newEditDoctorMg.data.articleList}"
+                                                                 reflow="true"
+                                                                 paginator="false"
+                                                                 var="book"
+                                                                 id="articleTable"
+                                                                 widgetVar="articleTable"
+                                                                 rowIndexVar="index">
+                                                        <p:column styleClass="row-number" headerText="ردیف">
+                                                            <h:outputText value="#{index+1}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="نام">
+                                                            <h:outputText value="#{book.name}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="لینک">
+                                                            <a href="#{book.link}" target="_blank">
+                                                                لینک
+                                                            </a>
+                                                        </p:column>
+
+                                                        <p:column colspan="2" headerText="توضیحات">
+                                                            <h:outputText value="#{book.description}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="عملیات">
+                                                            <p:commandButton
+                                                                    actionListener="#{newEditDoctorMg.editArticle(index)}"
+                                                                    update="growl, articleDialog"
+                                                                    oncomplete="PF('articleDialog').show()"
+                                                                    styleClass="button-green ml-1"
+                                                                    value="ویرایش"></p:commandButton>
+
+                                                            <p:commandButton onstart="return confdelete()"
+                                                                             actionListener="#{newEditDoctorMg.removeArticle(index)}"
+                                                                             update="growl, mainform"
+                                                                             styleClass="button-pink"
+                                                                             value="حذف"></p:commandButton>
+                                                        </p:column>
+                                                    </p:dataTable>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h4 class="card-title mb-1">
+                                                            زبان‌ها
+                                                        </h4>
+
+                                                        <p:commandButton actionListener="#{newEditDoctorMg.newLanguage}"
+                                                                         oncomplete="PF('languageDialog').show()"
+                                                                         update="growl, languageDialog"
+                                                                         styleClass="button-blue mb-2" icon="pi pi-plus"
+                                                                         value="افزودن"></p:commandButton>
+                                                    </div>
+
+                                                    <p:dataTable styleClass="mb-3"
+                                                                 value="#{newEditDoctorMg.data.languageList}"
+                                                                 reflow="true"
+                                                                 paginator="false"
+                                                                 var="lang"
+                                                                 id="languageTable"
+                                                                 widgetVar="languageTable"
+                                                                 rowIndexVar="index">
+                                                        <p:column styleClass="row-number" headerText="ردیف">
+                                                            <h:outputText value="#{index+1}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="نام">
+                                                            <h:outputText value="#{lang.name}"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="سطح">
+                                                            <p:rating styleClass="text-center" value="#{lang.level}"
+                                                                      readonly="true"/>
+                                                        </p:column>
+
+                                                        <p:column styleClass="text-center" headerText="عملیات">
+                                                            <p:commandButton
+                                                                    actionListener="#{newEditDoctorMg.editLanguage(index)}"
+                                                                    update="growl, languageDialog"
+                                                                    oncomplete="PF('languageDialog').show()"
+                                                                    styleClass="button-green ml-1"
+                                                                    value="ویرایش"></p:commandButton>
+
+                                                            <p:commandButton onstart="return confdelete()"
+                                                                             actionListener="#{newEditDoctorMg.removeLanguage(index)}"
+                                                                             update="growl, mainform"
+                                                                             styleClass="button-pink"
+                                                                             value="حذف"></p:commandButton>
+                                                        </p:column>
+                                                    </p:dataTable>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p:tab>
+
+                                <p:tab title="سوالات">
+                                    <p:dataTable value="#{newEditDoctorMg.questionLazyList}"
+                                                 lazy="true"
+                                                 reflow="true"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 paginatorAlwaysVisible="false"
+                                                 paginatorPosition="top"
+                                                 var="usr"
+                                                 id="questionsTb"
+                                                 widgetVar="questionsTb"
+                                                 rowIndexVar="index" rowKey="#{usr._d}">
+
+                                        <p:column styleClass="row-number text-center" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="کاربر">
+                                            <ui:repeat value="#{usr.usersRefList}" var="ref">
+                                                <ui:fragment rendered="#{ref.type.equals('patient')}">
+                                                    <a target="_blank" href="/admin/?page=12&amp;item=#{ref.user._id}">
+                                                        #{ref.user.name}
+                                                    </a>
+                                                </ui:fragment>
+                                            </ui:repeat>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="پزشک">
+                                            <ui:repeat value="#{usr.usersRefList}" var="doc">
+                                                <ui:fragment rendered="#{doc.type.equals('owner')}">
+                                                    <a target="_blank" href="/admin/?page=22&amp;item=#{doc.user._id}">
+                                                        #{doc.user.name}
+                                                    </a>
+                                                </ui:fragment>
+                                            </ui:repeat>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="پرداخت اولیه">
+                                            <p:outputLabel value="#{usr.payment}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" filterBy="#{usr.caseStatus}" filterable="true"
+                                                  headerText="وضعیت"
+                                                  styleClass="text-center">
+                                            <f:facet name="filter">
+                                                <p:selectOneMenu onchange="PF('tb').filter()"
+                                                                 styleClass="custom-filter">
+                                                    <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                    <f:selectItem itemLabel="باز" itemValue="open"/>
+                                                    <f:selectItem itemLabel="بسته" itemValue="close"/>
+                                                </p:selectOneMenu>
+                                            </f:facet>
+                                            <h:outputText value="#{usr.caseStatus}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" filterBy="#{usr.lastMessageSender}" filterable="true"
+                                                  headerText="وضعیت پاسخ"
+                                                  styleClass="text-center">
+                                            <f:facet name="filter">
+                                                <p:selectOneMenu onchange="PF('tb').filter()"
+                                                                 styleClass="custom-filter">
+                                                    <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                    <f:selectItem itemLabel="پاسخ بیمار" itemValue="patientAnswer"/>
+                                                    <f:selectItem itemLabel="پاسخ پزشک" itemValue="doctorAnswer"/>
+                                                </p:selectOneMenu>
+                                            </f:facet>
+                                            <h:outputText value="#{usr.lastMessageSenderStr}"
+                                                          styleClass="label-colorful font-xsm text-center #{usr.lastMessageSenderColor}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                                  filterStyle="text-align: center"
+                                                  headerText="تاریخ ثبت">
+                                            <p:outputLabel styleClass="font-xsm" value="#{usr.createdAtStr}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" sortBy="#{usr.updatedAt}"
+                                                  filterStyle="text-align: center"
+                                                  headerText="آخرین بروز رسانی">
+                                            <p:outputLabel styleClass="font-xsm" value="#{usr.updatedAtStr}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="تمدید"
+                                                  filterBy="#{usr.extendStatus}"
+                                                  filterMatchMode="exact">
+                                            <f:facet name="filter">
+                                                <p:selectOneMenu onchange="PF('tb').filter()"
+                                                                 styleClass="custom-filter">
+                                                    <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                    <f:selectItem itemLabel="تمدید شده" itemValue="1"/>
+                                                    <f:selectItem itemLabel="تمدید نشده" itemValue="0"/>
+                                                </p:selectOneMenu>
+                                            </f:facet>
+                                            <p:outputLabel style="min-width: 80px"
+                                                           styleClass="label-colorful font-xsm text-center #{usr.extendStatusColor}"
+                                                           value="#{usr.extendStatusStr}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                            <a href="/admin/?page=34&amp;item=#{usr._id}"
+                                               class="button-green ml-1">مشاهده</a>
+                                            <p:commandButton actionListener="#{questionListMg.deleteData(usr._id)}"
+                                                             update="growl, questionsTb" onstart="return confdelete()"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="پست‌ها">
+                                    <p:dataTable value="#{newEditDoctorMg.postLazyList}"
+                                                 lazy="true"
+                                                 reflow="true"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 paginatorAlwaysVisible="false"
+                                                 paginatorPosition="top"
+                                                 var="usr"
+                                                 id="tb"
+                                                 widgetVar="tb"
+                                                 rowIndexVar="index" rowKey="#{usr.pk}">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="عنوان" filterBy="#{usr.subject}"
+                                                  filterMatchMode="contains">
+                                            <p:outputLabel value="#{usr.subject}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" headerText="نویسنده" styleClass="text-center">
+                                            <h:outputText value="#{usr.userRef.name}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                                  filterStyle="text-align: center"
+                                                  headerText="تاریخ ثبت">
+                                            <h:outputText value="#{usr.createdAtStr}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" sortBy="#{usr.updatedAtStr}"
+                                                  filterStyle="text-align: center"
+                                                  headerText="آخرین تغییر">
+                                            <h:outputText value="#{usr.updatedAtStr}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="فعال" filterBy="#{usr.active}"
+                                                  filterMatchMode="exact">
+                                            <f:facet name="filter">
+                                                <p:selectOneMenu onchange="PF('tb').filter()"
+                                                                 styleClass="custom-filter">
+                                                    <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                    <f:selectItem itemLabel="فعال" itemValue="true"/>
+                                                    <f:selectItem itemLabel="غیر فعال" itemValue="false"/>
+                                                </p:selectOneMenu>
+                                            </f:facet>
+                                            <p:selectBooleanCheckbox disabled="true" value="#{usr.active}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                            <a href="/admin/?page=32&amp;item=#{usr._id}"
+                                               class="button-green ml-1">مشاهده</a>
+                                            <p:commandButton onstart="return confdelete()"
+                                                             actionListener="#{postListMg.deleteData(usr._id)}"
+                                                             update="growl, mainform"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="پرداختی‌ها">
+                                    <div class="row align-items-end input-block-with-label">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تاریخ شروع"></p:outputLabel>
+
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 id="fromdate"
+                                                                 value="#{newEditDoctorMg.startDatePayment}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تاریخ پایان"></p:outputLabel>
+
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{newEditDoctorMg.endDatePayment}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <p:commandButton styleClass="button-blue"
+                                                             icon="pi pi-replay"
+                                                             value="گزارش"
+                                                             update="paymentTable"
+                                                             actionListener="#{newEditDoctorMg.reloadPayments}"
+                                            ></p:commandButton>
+                                        </div>
+                                    </div>
+                                    <h:outputScript>
+                                        renderCalendar();
+                                    </h:outputScript>
+
+
+                                    <p:dataTable styleClass="my-4"
+                                                 value="#{newEditDoctorMg.paymentList}"
+                                                 reflow="true"
+                                                 paginator="false"
+                                                 var="pay"
+                                                 id="paymentTable"
+                                                 widgetVar="paymentTable"
+                                                 rowIndexVar="index">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="نام">
+                                            <h:outputText value="#{book.name}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="مبلغ">
+                                            <p:outputLabel value="#{pay.amount}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="کاربر">
+                                            <p:outputLabel value="#{pay.userRef.name}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="گروه">
+                                            <p:outputLabel value="#{pay.groupRef.name}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="وضعیت">
+                                            <p:outputLabel value="#{pay.status}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="target">
+                                            <p:outputLabel value="#{pay.target}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="وضعیت بانک">
+                                            <p:outputLabel value="#{pay.verificationStatus}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="تاریخ ثبت">
+                                            <p:outputLabel value="#{pay.createdAtStr}"></p:outputLabel>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+                            </p:tabView>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p:dialog modal="true" width="400" widgetVar="hospitalDialog" resizable="false" id="hospitalDialog">
+                <div class="container input-block-with-label">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="عنوان"></p:outputLabel>
+                                <p:inputText value="#{newEditDoctorMg.hospital.name}"></p:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="توضیح"></p:outputLabel>
+                                <p:inputTextarea rows="2"
+                                                 value="#{newEditDoctorMg.hospital.description}"></p:inputTextarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p:commandButton styleClass="button-blue"
+                                             update="hospitalTable"
+                                             icon="pi pi-save"
+                                             actionListener="#{newEditDoctorMg.insertHospital}"
+                                             oncomplete="PF('hospitalDialog').hide();"
+                                             value="اضافه به لیست"></p:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </p:dialog>
+
+            <p:dialog modal="true" width="400" widgetVar="bookDialog" resizable="false" id="bookDialog">
+                <div class="container input-block-with-label">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="عنوان"></p:outputLabel>
+                                <p:inputText value="#{newEditDoctorMg.book.name}"></p:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="لینک"></p:outputLabel>
+                                <p:inputText value="#{newEditDoctorMg.book.link}"></p:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="توضیح"></p:outputLabel>
+                                <p:inputTextarea rows="2"
+                                                 value="#{newEditDoctorMg.book.description}"></p:inputTextarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p:commandButton styleClass="button-blue"
+                                             update="booksTable"
+                                             icon="pi pi-save"
+                                             actionListener="#{newEditDoctorMg.insertBook}"
+                                             oncomplete="PF('bookDialog').hide();"
+                                             value="اضافه به لیست"></p:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </p:dialog>
+
+            <p:dialog modal="true" width="400" widgetVar="articleDialog" resizable="false" id="articleDialog">
+                <div class="container input-block-with-label">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="عنوان"></p:outputLabel>
+                                <p:inputText value="#{newEditDoctorMg.article.name}"></p:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="لینک"></p:outputLabel>
+                                <p:inputText value="#{newEditDoctorMg.article.link}"></p:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="توضیح"></p:outputLabel>
+                                <p:inputTextarea rows="2"
+                                                 value="#{newEditDoctorMg.article.description}"></p:inputTextarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p:commandButton styleClass="button-blue"
+                                             update="articleTable"
+                                             icon="pi pi-save"
+                                             actionListener="#{newEditDoctorMg.insertArticle}"
+                                             oncomplete="PF('articleDialog').hide();"
+                                             value="اضافه به لیست"></p:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </p:dialog>
+
+            <p:dialog modal="true" width="400" widgetVar="languageDialog" resizable="false" id="languageDialog">
+                <div class="container input-block-with-label">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="عنوان"></p:outputLabel>
+                                <p:inputText value="#{newEditDoctorMg.language.name}"></p:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-wrapper">
+                                <p:outputLabel value="سطح"></p:outputLabel>
+                                <p:rating styleClass="text-right" value="#{newEditDoctorMg.language.level}"></p:rating>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p:commandButton styleClass="button-blue"
+                                             update="languageTable"
+                                             icon="pi pi-save"
+                                             actionListener="#{newEditDoctorMg.insertLanguage}"
+                                             oncomplete="PF('languageDialog').hide();"
+                                             value="اضافه به لیست"></p:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </p:dialog>
+        </h:form>
+    </div>
+</h:body>
+
+</html>

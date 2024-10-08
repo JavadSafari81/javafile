@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet>
+        body .ui-datatable tbody .ui-datatable-even.light-red, body .ui-datatable tbody .ui-datatable-odd.light-red {
+            background-color: #fee !important;
+        }
+
+        .tb-overflow {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .tb-overflow .ui-datatable {
+            width: 1500px;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <p:accordionPanel activeIndex="-1" styleClass="input-block-with-label mb-3"
+                                              widgetVar="basic">
+                                <p:tab title="فیلتر">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="تاریخ ثبت(از)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{questionListMg.customFilters[0].dateValue1Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="تاریخ ثبت(تا)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{questionListMg.customFilters[0].dateValue2Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="آخرین بروزرسانی(از)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{questionListMg.customFilters[1].dateValue1Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="آخرین بروزرسانی(تا)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{questionListMg.customFilters[1].dateValue2Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--                                    <div class="row">-->
+                                    <!--                                        <div class="col-sm-4">-->
+                                    <!--                                            <div class="input-wrapper inline-label pt-0 mb-4">-->
+                                    <!--                                                <p:outputLabel value="کمیسیون"></p:outputLabel>-->
+                                    <!--                                                <div class="d-flex align-items-end">-->
+                                    <!--                                                    <p:triStateCheckbox-->
+                                    <!--                                                            value="#{questionListMg.customFilters[2].booleanValue}"/>-->
+                                    <!--                                                </div>-->
+                                    <!--                                            </div>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <p:commandButton styleClass="button-blue mt-3"
+                                                             icon="pi pi-replay"
+                                                             value="فیلتر"
+                                                             update="tb"
+                                                             actionListener="#{questionListMg.doFilter}"
+                                            ></p:commandButton>
+                                        </div>
+                                    </div>
+                                </p:tab>
+                            </p:accordionPanel>
+
+                            <div class="tb-overflow">
+
+                                <p:dataTable value="#{questionListMg.questionLazyList}"
+                                             lazy="true"
+                                             reflow="true"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                             rowsPerPageTemplate="5,10,15"
+                                             paginatorAlwaysVisible="false"
+                                             paginatorPosition="top"
+                                             var="usr"
+                                             id="tb"
+                                             rowStyleClass="#{usr.isCommittee ? 'light-red' : 'normal'}"
+                                             widgetVar="tb"
+                                             rowIndexVar="index" rowKey="#{usr._d}">
+
+                                    <p:column styleClass="row-number text-center" headerText="ردیف">
+                                        <h:outputText value="#{index+1}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="کاربر">
+                                        <ui:repeat value="#{usr.usersRefList}" var="ref">
+                                            <ui:fragment rendered="#{ref.type.equals('patient')}">
+                                                <a target="_blank" href="/admin/?page=12&amp;item=#{ref.user._id}">
+                                                    #{ref.user.name}
+                                                </a>
+                                            </ui:fragment>
+                                        </ui:repeat>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="پزشک">
+                                        <ui:repeat value="#{usr.usersRefList}" var="doc">
+                                            <ui:fragment rendered="#{doc.type.equals('owner')}">
+                                                <a target="_blank" href="/admin/?page=22&amp;item=#{doc.user._id}">
+                                                    #{doc.user.name}
+                                                </a>
+                                            </ui:fragment>
+                                        </ui:repeat>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="پرداخت اولیه">
+                                        <p:outputLabel value="#{usr.payment}"/>
+                                    </p:column>
+
+                                    <p:column colspan="1" filterBy="#{usr.caseStatus}" filterable="true"
+                                              headerText="وضعیت"
+                                              styleClass="text-center">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="باز" itemValue="open"/>
+                                                <f:selectItem itemLabel="بسته" itemValue="close"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <h:outputText value="#{usr.caseStatus}"/>
+                                    </p:column>
+
+                                    <p:column colspan="1" filterBy="#{usr.isCallable}" filterable="true"
+                                              headerText="نوع"
+                                              styleClass="text-center">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="متنی" itemValue="false"/>
+                                                <f:selectItem itemLabel="تلفنی" itemValue="true"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <h:outputText value="#{usr.isCallable?'تلفنی':'متنی'}"
+                                                      styleClass="label-colorful font-xsm text-center #{usr.isCallable?'blue-bg':'green-bg'}"/>
+                                    </p:column>
+
+                                    <p:column colspan="1" filterBy="#{usr.lastMessageSender}" filterable="true"
+                                              headerText="وضعیت پاسخ"
+                                              styleClass="text-center">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="پاسخ بیمار" itemValue="patientAnswer"/>
+                                                <f:selectItem itemLabel="پاسخ پزشک" itemValue="doctorAnswer"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <h:outputText value="#{usr.lastMessageSenderStr}"
+                                                      styleClass="label-colorful font-xsm text-center #{usr.lastMessageSenderColor}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" colspan="1" sortBy="#{usr.createdAt}"
+                                              filterStyle="text-align: center"
+                                              headerText="تاریخ ثبت">
+                                        <p:outputLabel styleClass="font-xsm" value="#{usr.createdAtStr}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" colspan="1" sortBy="#{usr.lastMessageDate}"
+                                              filterStyle="text-align: center"
+                                              headerText="آخرین بروز رسانی">
+                                        <p:outputLabel styleClass="font-xsm" value="#{usr.lastMessageDateStr}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="تمدید" filterBy="#{usr.extendStatus}"
+                                              filterMatchMode="exact">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="تمدید شده" itemValue="1"/>
+                                                <f:selectItem itemLabel="تمدید نشده" itemValue="0"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <p:outputLabel style="min-width: 80px"
+                                                       styleClass="label-colorful font-xsm text-center #{usr.extendStatusColor}"
+                                                       value="#{usr.extendStatusStr}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="آنلاین" filterBy="#{usr.isOnline}"
+                                              filterMatchMode="exact">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="آنلاین" itemValue="true"/>
+                                                <f:selectItem itemLabel="آفلاین" itemValue="false"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <p:outputLabel styleClass="#{usr.isOnline?'led-green':'led-gray'}"
+                                                       value=""/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="کمیسیون"
+                                              filterBy="#{usr.isCommittee}"
+                                              filterMatchMode="exact">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="کمیسیون" itemValue="true"/>
+                                                <f:selectItem itemLabel="تک" itemValue="false"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <p:outputLabel value="#{usr.isCommittee?'بله':'خیر'}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                        <a href="/admin/?page=34&amp;item=#{usr._id}"
+                                           class="button-green ml-1">مشاهده</a>
+                                        <p:commandButton actionListener="#{questionListMg.deleteData(usr._id)}"
+                                                         update="growl, mainform" onstart="return confdelete()"
+                                                         styleClass="button-pink ml-1" value="حذف"></p:commandButton>
+
+                                        <p:commandButton actionListener="#{questionListMg.showSmsList(usr._id)}"
+                                                         update="growl, mainform" oncomplete="PF('smsDialog').show()"
+                                                         styleClass="button-blue mx-1" value="پیامک"></p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            <p:dialog modal="true" width="900" widgetVar="smsDialog" resizable="false"
+                                      id="smsDialog">
+
+                                <p:dataTable value="#{questionListMg.smsList}"
+                                             reflow="true"
+                                             rows="5"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                             rowsPerPageTemplate="5,10,15"
+                                             paginatorAlwaysVisible="false"
+                                             paginatorPosition="top"
+                                             var="sms"
+                                             id="smsTable"
+                                             widgetVar="smsTable"
+                                             rowIndexVar="index" rowKey="#{sms._id}">
+
+                                    <p:column styleClass="row-number text-center" headerText="ردیف">
+                                        <h:outputText value="#{index+1}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="متن">
+                                        <h:outputLabel value="#{sms.text}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="تاریخ">
+                                        <h:outputLabel value="#{sms.createdAtStr}"/>
+                                    </p:column>
+                                </p:dataTable>
+                                <div class="container input-block-with-label">
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="نوع"></p:outputLabel>
+                                                <p:selectOneMenu style="width: 200px;"
+                                                                 value="#{questionListMg.sms.type}">
+                                                    <f:selectItem itemLabel="پاسخ" itemValue="1"></f:selectItem>
+                                                    <f:selectItem itemLabel="پاسخ بعدی" itemValue="2"></f:selectItem>
+                                                    <f:selectItem itemLabel="گزارش مشکل" itemValue="3"></f:selectItem>
+
+                                                    <p:ajax listener="#{questionListMg.changeSmsText}"
+                                                            update="smsText"></p:ajax>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="ارسال به"></p:outputLabel>
+                                                <p:selectOneMenu style="width: 200px;"
+                                                                 value="#{questionListMg.sms.sendTo}">
+                                                    <f:selectItem itemLabel="owner" itemValue="1"></f:selectItem>
+                                                    <f:selectItem itemLabel="coordinator" itemValue="2"></f:selectItem>
+
+                                                    <p:ajax listener="#{questionListMg.changeSmsText}"
+                                                            update="smsText"></p:ajax>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="متن"></p:outputLabel>
+                                                <p:inputTextarea id="smsText" rows="2"
+                                                                 value="#{questionListMg.sms.text}"></p:inputTextarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <p:commandButton styleClass="button-blue"
+                                                             update="growl,smsTable"
+                                                             icon="pi pi-save"
+                                                             id="sendSMSButton"
+                                                             actionListener="#{questionListMg.sendSms()}"
+                                                             value="ارسال پیام"></p:commandButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p:dialog>
+
+                            <p:blockUI block="sendSMSButton" trigger="sendSMSButton"/>
+
+                            <h:outputScript>
+                                renderCalendar();
+                            </h:outputScript>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

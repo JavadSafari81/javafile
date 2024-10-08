@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form styleClass="input-block-with-label" prependId="false" id="mainform">
+
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{newEditDoctorGroupMg.save}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     value="ذخیره"></p:commandButton>
+                                </ui:fragment>
+
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionDelete and newEditDoctorGroupMg.data._id !=null}">
+                                    <p:commandButton actionListener="#{newEditDoctorGroupMg.delete}"
+                                                     update="growl"
+                                                     styleClass="button-pink" icon="pi pi-times"
+                                                     value="حذف"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <p:tabView prependId="false" dir="rtl" style="margin: 5px 0">
+                                <p:tab title="اطلاعات کلی">
+                                    <ui:fragment rendered="#{newEditDoctorGroupMg.data._id != null}">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <div class="d-flex">
+                                                <p:outputLabel styleClass="mb-0 light-black"
+                                                               value="امتیاز: #{newEditDoctorGroupMg.data.rate}"/>
+                                                <i class="pi pi-star yellow"></i>
+                                            </div>
+
+                                            <div class="d-flex">
+                                                <p:outputLabel value="تعداد نظرات: " styleClass="ml-2"></p:outputLabel>
+                                                <p:outputLabel
+                                                        value="#{newEditDoctorGroupMg.data.rateCount}"></p:outputLabel>
+                                            </div>
+
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="تاریخ ثبت: #{newEditDoctorGroupMg.data.createdAtStr}"/>
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="آخرین تغییر: #{newEditDoctorGroupMg.data.updatedAtStr}"/>
+                                        </div>
+                                    </ui:fragment>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="نام"></p:outputLabel>
+                                                <p:inputText value="#{newEditDoctorGroupMg.data.name}"></p:inputText>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تخصص"></p:outputLabel>
+                                                <p:selectOneMenu value="#{newEditDoctorGroupMg.data.speciality}">
+                                                    <f:selectItems
+                                                            value="#{newEditDoctorGroupMg.dataService.specialityList.entrySet().toArray()}"
+                                                            var="spe" itemLabel="#{spe.key}" itemValue="#{spe.value}">
+                                                    </f:selectItems>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="نوع"></p:outputLabel>
+                                                <p:selectOneMenu value="#{newEditDoctorGroupMg.data.type}">
+                                                    <f:selectItem itemLabel="کودک" itemValue="children"></f:selectItem>
+                                                    <f:selectItem itemLabel="بزرگسال" itemValue="adult"></f:selectItem>
+                                                    <f:selectItem itemLabel="روانشناسی"
+                                                                  itemValue="psychology"></f:selectItem>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تعرفه ثبت کیس(تومان)"></p:outputLabel>
+                                                <p:inputText value="#{newEditDoctorGroupMg.data.price}"></p:inputText>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تعرفه تمدید کیس(تومان)"></p:outputLabel>
+                                                <p:inputText
+                                                        value="#{newEditDoctorGroupMg.data.extendPrice}"></p:inputText>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="مدت(روز)"></p:outputLabel>
+                                                <p:inputText
+                                                        value="#{newEditDoctorGroupMg.data.duration}"></p:inputText>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="درصد پزشک"></p:outputLabel>
+                                                <p:inputText
+                                                        value="#{newEditDoctorGroupMg.data.ownerPercent}"></p:inputText>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="درصد هماهنگ‌کننده"></p:outputLabel>
+                                                <p:inputText
+                                                        value="#{newEditDoctorGroupMg.data.coordinatorPercent}"></p:inputText>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تعرفه ثبت کیس آنلاین(تومان)"></p:outputLabel>
+                                                <p:inputText
+                                                        value="#{newEditDoctorGroupMg.data.onlinePrice}"></p:inputText>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="متوسط زمان پاسخگویی(ثانیه)"></p:outputLabel>
+                                                <p:spinner id="rounded"
+                                                           value="#{newEditDoctorGroupMg.data.averageResponse}"
+                                                           min="3600"
+                                                           stepFactor="3600"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="وضعیت پزشک(آنلاین/آفلاین)"></p:outputLabel>
+                                                <p:toggleSwitch disabled="true" styleClass="text-center"
+                                                                value="#{newEditDoctorGroupMg.data.isOnline}">
+                                                    <p:ajax event="change"
+                                                            listener="#{newEditDoctorGroupMg.updateStatus}"></p:ajax>
+                                                </p:toggleSwitch>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="آخرین تاریخ تغییر وضعیت آنلاین"></p:outputLabel>
+                                                <p:outputLabel id="onlineChange"
+                                                               value="#{newEditDoctorGroupMg.data.onlineChangeStr}"></p:outputLabel>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="مهلت پاسخ دهی آنلاین(ثانیه)"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.data.onlineDuration}"
+                                                           min="0"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="نمایش در ربات"></p:outputLabel>
+                                                <p:selectOneMenu value="#{newEditDoctorGroupMg.data.botRecommend}">
+                                                    <f:selectItem itemLabel="- - -" itemValue="#{null}"></f:selectItem>
+                                                    <f:selectItem itemLabel="cancer" itemValue="cancer"></f:selectItem>
+                                                    <f:selectItem itemLabel="activity"
+                                                                  itemValue="activity"></f:selectItem>
+                                                    <f:selectItem itemLabel="nutrition"
+                                                                  itemValue="nutrition"></f:selectItem>
+                                                </p:selectOneMenu>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="درصد تخفیف"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.data.discountPercent}"
+                                                           min="0"
+                                                           max="100"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="درصد تخفیف مدیر"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.data.discountOwnerPercent}"
+                                                           min="0"
+                                                           max="100"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="input-wrapper inline-label">
+                                                <p:outputLabel value="بیمه تامین اجتماعی"></p:outputLabel>
+                                                <p:selectBooleanCheckbox styleClass="mx-2"
+                                                                         value="#{newEditDoctorGroupMg.data.insuranceTamin}">
+                                                </p:selectBooleanCheckbox>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <div class="input-wrapper inline-label">
+                                                <p:outputLabel value="فعال"></p:outputLabel>
+                                                <p:selectBooleanCheckbox styleClass="mx-2"
+                                                                         value="#{newEditDoctorGroupMg.data.active}">
+                                                </p:selectBooleanCheckbox>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <div class="input-wrapper inline-label">
+                                                <p:outputLabel value="کمیته راهنما"></p:outputLabel>
+                                                <p:selectBooleanCheckbox styleClass="mx-2"
+                                                                         value="#{newEditDoctorGroupMg.data.helpDoctor}">
+                                                </p:selectBooleanCheckbox>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper inline-label align-items-center">
+                                                <p:fileUpload listener="#{newEditDoctorGroupMg.handleFileUpload}"
+                                                              label="تصویر پروفایل"
+                                                              mode="advanced"
+                                                              update="growl, avatarImage"
+                                                              auto="true"
+                                                              sizeLimit="1000000"
+                                                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+                                                <h:panelGroup id="avatarImage">
+                                                    <img width="120px"
+                                                         src="#{initParam['RFM']}#{newEditDoctorGroupMg.data.avatarRef.path}"
+                                                         alt="avatar"/>
+                                                </h:panelGroup>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="توضیحات"></p:outputLabel>
+                                                <p:inputTextarea value="#{newEditDoctorGroupMg.data.description}"
+                                                                 rows="1">
+                                                </p:inputTextarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="input-wrapper" style="height: auto">
+                                                <p:outputLabel value="مدیر"></p:outputLabel>
+                                                <p:autoComplete completeMethod="#{newEditDoctorGroupMg.completeDoctors}"
+                                                                maxResults="6"
+                                                                value="#{newEditDoctorGroupMg.data.ownerRef.name}"
+                                                                styleClass="ltr-input light-gray-placeholder"
+                                                                var="sim" itemLabel="#{sim}" itemValue="#{sim}">
+                                                    <p:ajax event="itemSelect" update="ownerPanel"
+                                                            listener="#{newEditDoctorGroupMg.onOwnerSelect}"></p:ajax>
+                                                    <p:column>
+                                                        <h:outputText value="#{sim}"/>
+                                                    </p:column>
+                                                </p:autoComplete>
+                                            </div>
+
+                                            <p:panel id="ownerPanel" styleClass="border-0 mt-2">
+                                                <ui:fragment
+                                                        rendered="#{newEditDoctorGroupMg.data.ownerRef!=null and newEditDoctorGroupMg.data.ownerRef._id!=null}">
+                                                    <div class="row">
+                                                        <div class="col-8 offset-2 mr-auto">
+                                                            <div class="card-image-top border rounded">
+                                                                <img src="#{initParam['RFM']}#{newEditDoctorGroupMg.data.ownerRef.avatarRef.path}"
+                                                                     alt="coordinator"/>
+                                                                <div>
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>نام : </span>
+                                                                            #{newEditDoctorGroupMg.data.ownerRef.name}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>تحصیلات : </span>
+                                                                            #{newEditDoctorGroupMg.data.ownerRef.education}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>سن : </span>
+                                                                            #{newEditDoctorGroupMg.data.ownerRef.age}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>درباره : </span>
+                                                                            #{newEditDoctorGroupMg.data.ownerRef.about}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ui:fragment>
+                                            </p:panel>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="input-wrapper" style="height: auto">
+                                                <p:outputLabel value="هماهنگ کننده"></p:outputLabel>
+                                                <p:autoComplete completeMethod="#{newEditDoctorGroupMg.completeDoctors}"
+                                                                maxResults="6"
+                                                                value="#{newEditDoctorGroupMg.data.coordinatorRef.name}"
+                                                                styleClass="ltr-input light-gray-placeholder"
+                                                                var="sim" itemLabel="#{sim}" itemValue="#{sim}">
+                                                    <p:ajax event="itemSelect" update="coordinatorPanel"
+                                                            listener="#{newEditDoctorGroupMg.onCoordinatorSelect}"></p:ajax>
+                                                    <p:column>
+                                                        <h:outputText value="#{sim}"/>
+                                                    </p:column>
+                                                </p:autoComplete>
+                                            </div>
+
+                                            <p:panel id="coordinatorPanel" styleClass="border-0 mt-2">
+                                                <ui:fragment
+                                                        rendered="#{newEditDoctorGroupMg.data.coordinatorRef!=null and newEditDoctorGroupMg.data.coordinatorRef._id!=null}">
+                                                    <div class="row">
+                                                        <div class="col-8 offset-2 mr-auto">
+                                                            <div class="card-image-top border rounded">
+                                                                <img src="#{initParam['RFM']}#{newEditDoctorGroupMg.data.coordinatorRef.avatarRef.path}"
+                                                                     alt="coordinator"/>
+                                                                <div>
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>نام : </span>
+                                                                            #{newEditDoctorGroupMg.data.coordinatorRef.name}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>تحصیلات : </span>
+                                                                            #{newEditDoctorGroupMg.data.coordinatorRef.education}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>سن : </span>
+                                                                            #{newEditDoctorGroupMg.data.coordinatorRef.age}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>درباره : </span>
+                                                                            #{newEditDoctorGroupMg.data.coordinatorRef.about}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ui:fragment>
+                                            </p:panel>
+                                        </div>
+                                    </div>
+                                </p:tab>
+
+                                <p:tab title="تماس تلفنی">
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تماس تلفنی"></p:outputLabel>
+                                                <p:toggleSwitch disabled="true" styleClass="text-center"
+                                                                value="#{newEditDoctorGroupMg.data.isCallable}">
+                                                </p:toggleSwitch>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-left mt-3 mb-2">
+                                        <p:commandButton actionListener="#{newEditDoctorGroupMg.newCallInfo}"
+                                                         oncomplete="PF('callDialog').show()"
+                                                         update="growl, callDialog"
+                                                         styleClass="button-blue" icon="pi pi-plus"
+                                                         value="افزودن"></p:commandButton>
+                                    </div>
+
+                                    <p:dataTable styleClass="mb-3" value="#{newEditDoctorGroupMg.data.callsInfo}"
+                                                 reflow="true"
+                                                 paginator="false"
+                                                 var="cnt"
+                                                 id="callTable"
+                                                 widgetVar="callTable"
+                                                 rowIndexVar="index">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="تعرفه تماس">
+                                            <h:outputText value="#{cnt.callPrice}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="طول تماس">
+                                            <h:outputText value="#{cnt.callDuration}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="مهلت پاسخ دهی">
+                                            <h:outputText value="#{cnt.callTimeout}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="هزینه تمدید">
+                                            <h:outputText value="#{cnt.extendCallPrice}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="زمان انقضا()">
+                                            <h:outputText value="#{cnt.callExpire}"/>
+                                        </p:column>
+
+                                        <p:column colspan="2" styleClass="text-center" headerText="عملیات">
+                                            <p:commandButton
+                                                    actionListener="#{newEditDoctorGroupMg.editCallInfo(index)}"
+                                                    oncomplete="PF('callDialog').show()"
+                                                    update="growl, callDialog"
+                                                    styleClass="button-green ml-1"
+                                                    value="ویرایش"></p:commandButton>
+
+                                            <p:commandButton onstart="return confdelete()"
+                                                             actionListener="#{newEditDoctorGroupMg.removeCallInfo(index)}"
+                                                             update="growl, callTable"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                            </p:tabView>
+
+
+                            <p:dialog modal="true" width="600" id="callDialog" widgetVar="callDialog" resizable="false">
+                                <div class="container input-block-with-label">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="تعرفه تماس تلفنی(تومان)"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.callInfo.callPrice}"
+                                                           round="true"
+                                                           min="0"
+                                                           stepFactor="1"></p:spinner>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="طول تماس صوتی(ثانیه)"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.callInfo.callDuration}"
+                                                           min="0"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel
+                                                        value="مهلت پاسخ دهی به تماس تلفنی(ثانیه)"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.callInfo.callTimeout}"
+                                                           min="0"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="هزینه تمدید تماس(تومان)"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.callInfo.extendCallPrice}"
+                                                           min="0"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="زمان انقضای تماس(ثانیه)"></p:outputLabel>
+                                                <p:spinner value="#{newEditDoctorGroupMg.callInfo.callExpire}"
+                                                           min="0"
+                                                           stepFactor="1"
+                                                           round="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <p:commandButton styleClass="button-blue"
+                                                             update="callTable"
+                                                             icon="pi pi-save"
+                                                             actionListener="#{newEditDoctorGroupMg.insertCallInfo}"
+                                                             oncomplete="PF('callDialog').hide();"
+                                                             value="اضافه به لیست"></p:commandButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p:dialog>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

@@ -1,0 +1,270 @@
+@import './variables';
+@import './_fonts';
+@import './designer/_core';
+@import './_extensions';
+
+$light-black: #777;
+$green: #21d19f;
+$green2: #29dcaa;
+$orange: #ff9505;
+$blue: #00a5cf;
+$pink: #ff579f;
+$yellow: #fd1;
+$red: #ff5645;
+$gray: #eee;
+
+* {
+  text-shadow: none !important;
+}
+
+.label-colorful {
+  display: inline-block;
+  padding: 0.2rem 0.6rem 0.2rem;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.font-xsm {
+  font-size: 0.8rem - $fontRatio !important;
+}
+
+.font-sm {
+  font-size: 0.9rem - $fontRatio !important;
+}
+
+.font-nr {
+  font-size: 1rem - $fontRatio !important;
+}
+
+.font-md {
+  font-size: 1.2rem - $fontRatio !important;
+}
+
+.font-lg {
+  font-size: 1.4rem - $fontRatio !important;
+}
+
+.font-xlg {
+  font-size: 1.8rem - $fontRatio !important;
+}
+
+.light-black {
+  color: $light-black !important;
+}
+
+.green-bg {
+  background-color: $green;
+}
+
+.orange-bg {
+  background-color: $orange;
+}
+
+.blue-bg {
+  background-color: $blue;
+}
+
+.pink-bg {
+  background-color: $pink;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.yellow-bg {
+  background-color: $yellow;
+}
+
+.red-bg {
+  background-color: $red;
+}
+
+.gray-bg {
+  background-color: $gray;
+}
+
+.button-green, .button-pink, .button-blue {
+  color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.3rem 0.6rem !important;
+  border-radius: 3px !important;
+  font-size: 0.9rem - $fontRatio !important;
+
+  .ui-button-text {
+    padding: 0 !important;
+  }
+}
+
+.ui-button-text-icon-left {
+  padding: 0.4rem 0.6rem 0.3rem 1.6rem !important;
+}
+
+.button-green {
+  background: $green2 !important;
+}
+
+.button-pink {
+  background: $pink !important;
+}
+
+.button-blue {
+  background: $blue !important;
+}
+
+.button-red {
+  background: $red !important;
+}
+
+.divider-2 {
+  display: block;
+  height: 1px;
+  border-bottom: 2px solid #ddd;
+}
+
+.chat-page {
+  border: none !important;
+  background: url("/resources/images/background/chat.png") !important;
+  background-repeat: repeat !important;
+  background-size: 200px !important;
+  padding: 20px 30px !important;
+
+  .chat-message {
+    display: flex;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    max-width: 60%;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    align-items: center;
+    padding: 0.5rem 1rem;
+
+    img {
+      width: 4rem;
+      margin: 0 0 0 1rem;
+    }
+
+    > div {
+      flex-grow: 1;
+    }
+
+    .chat-name {
+      color: #ccc;
+    }
+
+    .chat-message {
+      color: #aaa;
+    }
+  }
+
+  .other {
+    margin-right: auto;
+    flex-direction: row-reverse;
+
+    img {
+      margin: 0 1rem 0 0;
+    }
+  }
+}
+
+.dropdown-menu {
+  box-shadow: 0 1px 5px 2px #ddd !important;
+  border-radius: 0.3rem;
+}
+
+//-------------input-block-with-label----------------------
+.input-block-with-label {
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 1.8rem;
+  }
+
+  .inline-label {
+    flex-direction: row;
+    align-items: flex-end;
+
+    > :not(label) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  label {
+    display: block;
+    text-align: $text-alignment;
+    margin-bottom: 0;
+    color: #ccc;
+  }
+
+  input, textarea {
+    //margin-bottom: 1rem;
+    display: block;
+    width: 100%;
+    border: none !important;
+    border-bottom: 1px solid $primaryColor !important;
+    border-radius: 0;
+    padding-bottom: 0.2rem;
+    color: #999;
+    padding: 0rem 0.5rem 0.2rem;
+  }
+
+  .ui-autocomplete {
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    //margin-bottom: 1rem;
+  }
+
+  .ui-selectonemenu {
+    border: none !important;
+    border-bottom: 1px solid $primaryColor !important;
+    border-radius: 0 !important;
+    width: 100%;
+    //margin-bottom: 1rem;
+
+    .ui-selectonemenu-label {
+      border-bottom-left-radius: 0 !important;
+      padding-top: 0;
+    }
+
+    .ui-selectonemenu-trigger {
+      border-bottom-right-radius: 0 !important;
+    }
+  }
+
+  .ui-selectcheckboxmenu {
+    border: none !important;
+    border-bottom: 1px solid $primaryColor !important;
+    border-radius: 0 !important;
+    width: 100%;
+  }
+}
+
+.card-image-top {
+  img {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  > div {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.top-buttons {
+  display: block;
+  direction: ltr;
+  text-align: left;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 1rem;
+
+  button {
+    margin-left: 0.4rem;
+  }
+}

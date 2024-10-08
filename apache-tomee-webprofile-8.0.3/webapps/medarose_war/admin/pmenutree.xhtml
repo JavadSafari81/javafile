@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <h:outputScript name="js/ktskey.js"></h:outputScript>
+</h:head>
+
+<h:body style="margin-top:0px ">
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:messages for="Message1" id="messages1" showDetail="true" closable="true"/>
+
+        <p:scrollPanel style="height:450px;" mode="native">
+            <p:tree id="treeSingle" selectionMode="single"
+                    style="width:100%;height:100%;border-width:0;font-size: 12px!important;"
+                    dynamic="true"
+                    selection="#{menuMg.selectedNode}" value="#{menuMg.root}" var="node">
+                <p:ajax event="expand" listener="#{menuMg.nodeExpand}"/>
+                <p:ajax listener="#{menuMg.onNodeSelect}" update="mdg" event="select"/>
+                <p:treeNode type="root">
+                    <h:outputText value="#{node.name}"/>
+                </p:treeNode>
+
+                <p:treeNode type="menu">
+                    <h:outputText value="#{node.name}"/>
+                </p:treeNode>
+            </p:tree>
+
+            <p:contextMenu nodeType="root" style="background-color:#dddddd;" for="treeSingle">
+
+                <p:menuitem async="true" style="color: #000000;" value="جدید" update="panel,messages1"
+                            oncomplete="PF('mdg').show()" actionListener="#{menuMg.newData}"
+                            icon="ui-icon-circle-plus"/>
+            </p:contextMenu>
+
+            <p:contextMenu
+                    nodeType="menu" style="background-color:#dddddd;" for="treeSingle">
+                <p:menuitem style="color: #000000;" value="ویرایش" oncomplete="PF('mdg').show()" update="panel,messages1"
+                            actionListener="#{menuMg.editData}"
+                            icon="ui-icon-scissors"/>
+                <p:menuitem async="true" style="color: #000000;" value="جدید" update="panel,messages1"
+                            actionListener="#{menuMg.newData}"
+                            icon="ui-icon-circle-plus"/>
+                <p:menuitem async="true" style="color: #000000;" value="حذف" update="treeSingle,messages1"
+                            onstart="return confdelete();"
+                            actionListener="#{menuMg.deletData}" icon="ui-icon-circle-close"/>
+            </p:contextMenu>
+        </p:scrollPanel>
+        <p:dialog widgetVar="mdg" width="400" id="mdg"
+                  resizable="false" styleClass="grid" header="تعریف منو" modal="true">
+            <p:growl id="messages"/>
+            <p:panel id="panel">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{msg['name']}"/>
+                    <p:inputText styleClass="kts-mnv-2" value="#{menuMg.data.name}" style="width:300px"/>
+                    <h:outputLabel value="url"/>
+                    <p:inputText styleClass="ltr-input" value="#{menuMg.data.menuUrl}" style="width:300px"/>
+                    <h:outputLabel for="active" value="فعال"/>
+                    <h:selectBooleanCheckbox id="active" value="#{menuMg.data.active}"/>
+                </h:panelGrid>
+                <center>
+                    <p:commandButton icon="ui-icon-save" value="ذخیره" oncomplete="PF('mdg').hide();"
+                                     update="treeSingle"
+                                     onstart="return confsaveval();" actionListener="#{menuMg.saveData}"/>
+                </center>
+            </p:panel>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

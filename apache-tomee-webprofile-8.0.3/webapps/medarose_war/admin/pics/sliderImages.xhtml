@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+
+<h:body>
+    <h:form id="mainform" prependId="false" enctype="multipart/form-data">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <div class="top-buttons">
+            <p:commandButton styleClass="datatable-inline-edit margin-10"
+                             update="growl, imagesTb"
+                             icon="ui-icon-plus"
+                             value="جدید" actionListener="#{sliderImagesMg.addNewImage(1)}"></p:commandButton>
+        </div>
+        <p:growl id="growlll" life="2000" showDetail="true" sticky="false"/>
+        <h:panelGroup styleClass="cart-table" style="width: 100%;overflow-y: auto;display: block">
+            <p:dataTable var="img" value="#{sliderImagesMg.sliderImagesList}"
+                         scrollWidth="1000"
+                         style="width: 2400px"
+                         rows="5"
+                         paginator="true"
+                         paginatorAlwaysVisible="false"
+                         paginatorPosition="top"
+                         draggableRows="true" id="imagesTb"
+                         rowIndexVar="rdix">
+
+                <p:column headerText="شماره ترتیب">
+                    <p:inputText style="width: 40px" value="#{img.sortNumber}"/>
+                </p:column>
+
+                <p:column headerText="انتخاب تصویر">
+                    <p:commandLink actionListener="#{sliderImagesMg.setSelectedImageRowNumber(rdix)}"
+                                   oncomplete="showDialog('tableImageTempSrc','imgdialog','updateTableImages')">
+                        <ui:fragment rendered="#{img.type==1}">
+                            <img width="60" height="60" id="asdf"
+                                 src="#{initParam['RFMT']}#{img.url}"/>
+                        </ui:fragment>
+
+                        <ui:fragment rendered="#{img.type==2}">
+                            <video width="60" height="60"
+                                   src="#{img.url}"/>
+                        </ui:fragment>
+                    </p:commandLink>
+                </p:column>
+
+                <p:column filterable="true" filterBy="#{img.description}" filterMatchMode="contains" colspan="2" headerText="توضیح">
+                    <p:inputTextarea rows="2" value="#{img.description}"></p:inputTextarea>
+                </p:column>
+
+                <p:column headerText="نمایش دکمه">
+                    <h:selectBooleanCheckbox value="#{img.bHasButton}"></h:selectBooleanCheckbox>
+                </p:column>
+
+                <p:column colspan="2" headerText="متن دکمه">
+                    <p:inputText value="#{img.buttonText}"></p:inputText>
+                </p:column>
+
+                <p:column headerText="رنگ متن">
+                    <p:colorPicker value="#{img.textColor}"/>
+                </p:column>
+
+                <p:column colspan="1" headerText="رنگ بک گراند (RGBA)">
+                    <p:inputText value="#{img.textBgColor}"></p:inputText>
+                </p:column>
+
+                <p:column colspan="1" headerText="سایز متن">
+                    <p:spinner style="width: 80px" value="#{img.textFontSize}" prefix="px" stepFactor="1"/>
+                </p:column>
+
+                <p:column colspan="1" headerText="ارتفاع خطوط">
+                    <p:spinner style="width: 80px" value="#{img.textLineHeight}" prefix="px" stepFactor="1"/>
+                </p:column>
+
+                <p:column colspan="1" headerText="padding">
+                    <p:spinner style="width: 80px" value="#{img.textPadding}" prefix="px" stepFactor="1"/>
+                </p:column>
+
+                <p:column colspan="1" headerText="طول متن">
+                    <p:spinner style="width: 80px" value="#{img.textPartWidth}" prefix="%" stepFactor="1"/>
+                </p:column>
+
+                <p:column colspan="1" headerText="اندازه متن دکمه">
+                    <p:spinner style="width: 80px" value="#{img.buttonTextSize}" prefix="px" stepFactor="1"/>
+                </p:column>
+
+                <p:column headerText="اکشن دکمه">
+                    <p:selectOneMenu style="width: 100px" value="#{img.buttonAction}">
+                        <f:selectItem itemValue="0" itemLabel="- - -"></f:selectItem>
+                        <f:selectItem itemValue="1" itemLabel="لینک"></f:selectItem>
+                        <f:selectItem itemValue="2" itemLabel="پاپ آپ ویدیو"></f:selectItem>
+                        <p:ajax listener="#{img.getButtonAction()}" update="imagesTb"></p:ajax>
+                    </p:selectOneMenu>
+                </p:column>
+
+                <p:column headerText="لینک">
+                    <p:inputText rendered="#{img.buttonAction==1?true:false}" value="#{img.slideLink}"></p:inputText>
+
+                </p:column>
+
+                <p:column headerText="فعال">
+                    <h:selectBooleanCheckbox value="#{img.bActive}"></h:selectBooleanCheckbox>
+                </p:column>
+
+                <p:column colspan="2" headerText="عملیات">
+
+                    <p:commandButton styleClass="datatable-inline-edit padding-zero" update="growl,@this"
+                                     actionListener="#{sliderImagesMg.save(img)}"
+                                     value="ذخیره"></p:commandButton>
+
+                    <p:commandButton styleClass="datatable-inline-delete padding-zero" update="growl,imagesTb"
+                                     actionListener="#{sliderImagesMg.deleteImage(rdix)}"
+                                     value="حذف"></p:commandButton>
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:commandButton styleClass="datatable-inline-edit" update="mainform"
+                                     value="جدید" actionListener="#{sliderImagesMg.addNewImage(1)}">
+                    </p:commandButton>
+                </f:facet>
+            </p:dataTable>
+        </h:panelGroup>
+
+        <p:remoteCommand update="imagesTb,tableImageTempSrc" name="updateTableImages"
+                         actionListener="#{sliderImagesMg.changeTableImage}">
+        </p:remoteCommand>
+
+        <p:remoteCommand update="imagesTb,tableVideoTempSrc" name="updateTableVideos"
+                         actionListener="#{sliderImagesMg.changeTableVideo}">
+        </p:remoteCommand>
+
+
+
+        <h:outputScript>
+            var remoteCommandname = "";
+
+            function showDialog(imageId, dialogId, remoteCommandId) {
+                // document.getElementById("imageFrame").src = "http://localhost/filemanager/filemanager/dialog.php?type=1&amp;field_id=" + imageId + "&amp;crossdomain=1";
+                open_popup(dialog + imageId);
+                remoteCommandname = remoteCommandId;
+                // PF('imgdialog').show();
+            }
+
+            function open_popup(url) {
+                var w = 880;
+                var h = 570;
+                var l = Math.floor((screen.width - w) / 2);
+                var t = Math.floor((screen.height - h) / 2);
+                var win = window.open(url, 'ResponsiveFilemanager', "scrollbars=1,width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+            }
+
+            function responsive_filemanager_callback(field_id) {
+                window[remoteCommandname]();
+            }
+        </h:outputScript>
+
+        <h:inputHidden id="tableImageTempSrc" value="#{sliderImagesMg.tempImageSrc}"/>
+        <h:inputHidden id="tableVideoTempSrc" value="#{sliderImagesMg.tempVideoSrc}"/>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,86 @@
+28-Aug-2024 07:43:26.735 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:43:43.582 SEVERE [http-nio-8080-exec-9] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:43:46.562 SEVERE [http-nio-8080-exec-10] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:43:59.861 SEVERE [http-nio-8080-exec-4] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:44:11.690 SEVERE [http-nio-8080-exec-14] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:47:58.784 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:48:11.102 SEVERE [http-nio-8080-exec-6] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:48:32.799 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:51:51.166 SEVERE [http-nio-8080-exec-8] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:52:40.796 SEVERE [http-nio-8080-exec-14] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:53:12.786 SEVERE [http-nio-8080-exec-1] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:53:43.236 SEVERE [http-nio-8080-exec-3] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [Faces Servlet] in context with path [] threw exception [GC overhead limit exceeded] with root cause
+	java.lang.OutOfMemoryError: GC overhead limit exceeded
+28-Aug-2024 07:54:01.180 WARNING [main] org.apache.catalina.session.StandardSession.doWriteObject Cannot serialize session attribute [openWebBeansSessionContext] for session [C2E0B15D780D9402E7CF976E4DC43C5C]
+	java.io.NotSerializableException: com.objects.User
+		at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1185)
+		at java.base/java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1553)
+		at java.base/java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1510)
+		at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1433)
+		at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1179)
+		at java.base/java.io.ObjectOutputStream.defaultWriteFields(ObjectOutputStream.java:1553)
+		at java.base/java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1510)
+		at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1433)
+		at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1179)
+		at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:349)
+		at java.base/java.util.HashMap.internalWriteEntries(HashMap.java:1857)
+		at java.base/java.util.HashMap.writeObject(HashMap.java:1412)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at java.base/java.io.ObjectStreamClass.invokeWriteObject(ObjectStreamClass.java:1145)
+		at java.base/java.io.ObjectOutputStream.writeSerialData(ObjectOutputStream.java:1497)
+		at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1433)
+		at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1179)
+		at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:349)
+		at org.apache.webbeans.context.PassivatingContext.writeExternal(PassivatingContext.java:87)
+		at java.base/java.io.ObjectOutputStream.writeExternalData(ObjectOutputStream.java:1460)
+		at java.base/java.io.ObjectOutputStream.writeOrdinaryObject(ObjectOutputStream.java:1431)
+		at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1179)
+		at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:349)
+		at org.apache.catalina.session.StandardSession.doWriteObject(StandardSession.java:1702)
+		at org.apache.catalina.session.StandardSession.writeObjectData(StandardSession.java:1057)
+		at org.apache.catalina.session.StandardManager.doUnload(StandardManager.java:315)
+		at org.apache.catalina.session.StandardManager.unload(StandardManager.java:267)
+		at org.apache.catalina.session.StandardManager.stopInternal(StandardManager.java:382)
+		at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+		at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5393)
+		at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+		at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1400)
+		at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1389)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:976)
+		at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+		at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1400)
+		at org.apache.catalina.core.ContainerBase$StopChild.call(ContainerBase.java:1389)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+		at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+		at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+		at org.apache.catalina.core.ContainerBase.stopInternal(ContainerBase.java:976)
+		at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+		at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:473)
+		at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+		at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:992)
+		at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+		at org.apache.catalina.startup.Catalina.stop(Catalina.java:706)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:668)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:343)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:474)

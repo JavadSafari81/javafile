@@ -1,0 +1,60 @@
+//Purchase the full version at https://www.primefaces.org/store to get full access to the complete UI suite
+.ui-widget-overlay {
+  opacity: 0.5 !important;
+  background: #555 !important;
+}
+
+.ui-dialog {
+  max-height: 90% !important;
+  overflow-y: auto !important;
+
+  .ui-dialog-titlebar {
+    background: #fafafa;
+    /* border-bottom: 1px solid #eee; */
+    box-shadow: 0 0px 6px 1px #ddd !important;
+    padding: 0.6rem 1rem;
+
+    .ui-dialog-titlebar-icon {
+      color: #848484;
+      border: 0 none;
+      padding: 0;
+      margin-left: .429em;
+      -moz-transition: color .3s;
+      -o-transition: color .3s;
+      -webkit-transition: color .3s;
+      transition: color .3s;
+      background: transparent;
+
+      .ui-icon-closethick {
+        font-family: 'primeicons';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-indent: 0 !important;
+        text-align: center;
+        background: 0;
+        display: inline-block;
+        font-size: 1.5rem;
+        background: none !important;
+        position: relative;
+        top: 4px;
+
+        &:before {
+          content: '\e90b';
+        }
+      }
+    }
+  }
+}
+
+@media all and(max-width: 768px) {
+  .ui-dialog {
+    width: 96% !important;
+  }
+}

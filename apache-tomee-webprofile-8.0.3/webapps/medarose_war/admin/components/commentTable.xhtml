@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+    <p:dataTable value="#{commentLazy}"
+                 lazy="true"
+                 reflow="true"
+                 rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                 rowsPerPageTemplate="5,10,15"
+                 paginatorAlwaysVisible="false"
+                 paginatorPosition="top"
+                 var="cmt"
+                 id="tb"
+                 widgetVar="tb"
+                 rowIndexVar="index">
+        <p:column styleClass="row-number" headerText="ردیف">
+            <h:outputText value="#{index+1}"/>
+        </p:column>
+
+        <p:column rendered="#{renderWriter}" colspan="1" headerText="نویسنده" styleClass="text-center">
+            <h:outputText value="#{cmt.userRef.name}"/>
+        </p:column>
+
+        <p:column rendered="#{renderPost}" colspan="1" headerText="پست" styleClass="text-center">
+            <h:outputText value="#{cmt.postRef.subject}"/>
+        </p:column>
+
+        <p:column colspan="2"
+                  headerText="متن پیام">
+            <h:outputText value="#{cmt.text}"/>
+        </p:column>
+
+        <p:column styleClass="text-center" colspan="1"
+                  sortBy="#{cmt.createdAt}"
+                  filterStyle="text-align: center"
+                  headerText="تاریخ ثبت">
+            <h:outputText value="#{cmt.createdAtStr}"/>
+        </p:column>
+
+        <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+            <a target="_blank" href="/admin/?page=32&amp;item=#{cmt.post}"
+               class="button-green ml-1">مشاهده</a>
+
+            <p:commandButton onstart="return confdelete()"
+                             actionListener="#{singlePostMg.deleteComment(cmt._id)}"
+                             update="growl, mainform"
+                             styleClass="button-pink"
+                             value="حذف"></p:commandButton>
+        </p:column>
+    </p:dataTable>
+</ui:composition>
+</html>

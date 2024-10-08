@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+    <style type="text/css">
+        .all-ltr, .all-ltr * {
+            direction: ltr !important;
+        }
+
+        .weekly-container {
+            padding: 20px 0;
+        }
+
+        .border-gray-radius {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .pie-chart-container {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-radius: 4px;
+        }
+
+        .pie-chart-container > div {
+            margin: auto;
+        }
+
+        .all-rtl, .all-rtl * {
+            direction: rtl !important;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIndexMg.init}"/>
+
+        <p:growl id="growlll" showDetail="true" sticky="false" life="2000"/>
+
+    </h:form>
+</h:body>
+</html>

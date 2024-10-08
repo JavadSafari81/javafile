@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head></h:head>
+
+<h:body styleClass="row-margin-0">
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+        <div class="row">
+            <table class="rtl-table-padding">
+                <tr>
+                    <td width="100px">
+                        <p:fileUpload fileUploadListener="#{userInfoMg.fileUploadListener}"
+                                      process="@form"
+                                      update="@form,userImg,growl"
+                                      mode="advanced"
+                                      dragDropSupport="true"
+                                      multiple="false"
+                                      auto="true"
+                                      style="width: 200px!important;"
+                                      label="تصویر پروفایل"
+                                      id="startButton2"
+                                      sizeLimit="2000000"
+                                      allowTypes="/(\.|\/)(gif|jpe?g|png|jpg)$/"/>
+                    </td>
+                    <td colspan="2">
+                        <h:panelGroup id="userImg">
+                            <img style="display: inline-block;border-radius: 50%"
+                                 width="80px" height="80px"
+                                 src="/images/raaz/users/#{userInfoMg.user.avatar}"></img>
+                        </h:panelGroup>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:outputLabel value="درباره شما"></h:outputLabel>
+                    </td>
+                    <td colspan="2">
+                        <h:inputTextarea style="padding:7px;width: 60%;border-radius: 3px;border: 1px solid #ddd"
+                                         rows="4"
+                                         value="#{userInfoMg.user.about}">
+                        </h:inputTextarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p:commandButton styleClass="btn-primary-costum"
+                                 update="growl"
+                                 value="ذخیره"
+                                 onstart="return confsaveval();"
+                                 actionListener="#{userInfoMg.saveData}"></p:commandButton>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

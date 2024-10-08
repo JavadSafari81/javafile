@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+    <p:blockUI widgetVar="tabBlock" block="tab"></p:blockUI>
+
+    <div class="container-fluid">
+        <h:form prependId="false">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <ui:repeat value="#{newEditQuestionMg.data.usersRefList}" var="ref">
+                                    <ui:fragment rendered="#{ref.type.equals('patient')}">
+                                        <p:outputLabel styleClass="mb-0" value="#{ref.user.name}"/>
+                                    </ui:fragment>
+                                </ui:repeat>
+
+                                <p:outputLabel
+                                        styleClass="mb-0 label-colorful #{newEditQuestionMg.data.caseStatusColor}"
+                                        value="#{newEditQuestionMg.data.caseStatus}"/>
+
+                                <p:outputLabel
+                                        styleClass="mb-0 #{newEditQuestionMg.data.isOnline?'led-green':'led-gray'}"
+                                        value=""/>
+
+                                <p:outputLabel styleClass="mb-0"
+                                               value="تاریخ ایجاد: #{newEditQuestionMg.data.createdAtStr}"/>
+                                <p:outputLabel styleClass="mb-0"
+                                               value="آخرین تغییر: #{newEditQuestionMg.data.updatedAtStr}"/>
+                            </div>
+
+                            <div class="divider-2 mt-3 mb-4"></div>
+
+                            <p:tabView id="tab" prependId="false">
+                                <p:tab title="پرسش و پاسخ">
+                                    <div class="row">
+                                        <div class="col">
+                                            <ui:insert>
+                                                <ui:include src="../components/chatComponent.xhtml">
+                                                    <ui:param name="chatList"
+                                                              value="#{newEditQuestionMg.chatList}"></ui:param>
+                                                    <ui:param name="user"
+                                                              value="#{newEditQuestionMg.patient}"></ui:param>
+                                                    <ui:param name="block"
+                                                              value="tabBlock"></ui:param>
+                                                </ui:include>
+                                            </ui:insert>
+                                        </div>
+                                    </div>
+                                </p:tab>
+
+                                <p:tab title="پرداخت">
+                                    <p:dataTable styleClass="my-3" value="#{newEditQuestionMg.paymentList}"
+                                                 reflow="true"
+                                                 rows="100"
+                                                 paginator="false"
+                                                 var="usr"
+                                                 id="tb"
+                                                 widgetVar="tb"
+                                                 rowIndexVar="index"
+                                                 rowKey="#{usr._id}">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="مبلغ">
+                                            <p:outputLabel value="#{usr.amount}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="دستگاه">
+                                            <p:outputLabel value="#{usr.device}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="تاریخ">
+                                            <p:outputLabel value="#{usr.createdAtStr}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="وضعیت">
+                                            <p:outputLabel styleClass="label-colorful font-xsm #{usr.statusColor}"
+                                                           value="#{usr.statusStr}"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+                            </p:tabView>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+
+</html>

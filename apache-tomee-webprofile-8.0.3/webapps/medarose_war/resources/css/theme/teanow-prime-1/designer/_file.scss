@@ -1,0 +1,44 @@
+.ui-fileupload {
+  margin: 0 !important;
+  display: inline-block !important;
+
+  .ui-fileupload-buttonbar {
+    padding: 0 !important;
+    border: none !important;
+
+    .ui-button {
+      margin: 0 !important;
+      background: $primaryColor;
+      color: $primaryTextColor;
+      padding: 0.2em 0.2em 0.2em 0.3em !important;
+
+      .ui-button-icon-left {
+        background: none !important;
+        font-family: 'primeicons';
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-indent: 0 !important;
+        font-size: 1.5rem;
+        left: 0.3em;
+
+        &:after {
+          content: '\e9a8';
+        }
+      }
+
+      .ui-button-text {
+        display: block !important;
+      }
+    }
+  }
+
+  .ui-fileupload-content {
+    display: none !important;
+  }
+}

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+    <div class="container-fluid">
+        <h:form prependId="false" id="mainform">
+            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{newEditPatientMg.save}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     value="ذخیره"></p:commandButton>
+                                </ui:fragment>
+
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionDelete and newEditPatientMg.data._id !=null}">
+                                    <p:commandButton actionListener="#{newEditPatientMg.deleteData}"
+                                                     onstart="return confdelete()"
+                                                     update="growl"
+                                                     styleClass="button-pink" icon="pi pi-times"
+                                                     value="حذف"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <p:tabView prependId="false" dir="rtl" style="margin: 5px 0">
+                                <p:tab title="اطلاعات شخصی">
+                                    <ui:fragment rendered="#{newEditPatientMg.data._id != null}">
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="تاریخ عضویت: #{newEditPatientMg.data.createdAtStr}"/>
+                                            <p:outputLabel styleClass="mb-0 light-black"
+                                                           value="آخرین تغییر: #{newEditPatientMg.data.updatedAtStr}"/>
+                                        </div>
+                                    </ui:fragment>
+
+                                    <div class="input-block-with-label">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="نام"></p:outputLabel>
+                                                    <p:inputText value="#{newEditPatientMg.data.name}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="ایمیل"></p:outputLabel>
+                                                    <p:inputText value="#{newEditPatientMg.data.email}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="تلفن"></p:outputLabel>
+                                                    <p:inputText value="#{newEditPatientMg.data.phone}"></p:inputText>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="اعتبار"></p:outputLabel>
+                                                    <p:inputText
+                                                            value="#{newEditPatientMg.data.credit}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="قد"></p:outputLabel>
+                                                    <p:inputText
+                                                            value="#{newEditPatientMg.data.height}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="وزن"></p:outputLabel>
+                                                    <p:inputText
+                                                            value="#{newEditPatientMg.data.weight}"></p:inputText>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سن"></p:outputLabel>
+                                                    <p:inputText value="#{newEditPatientMg.data.age}"></p:inputText>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="جنسیت"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.gender}">
+                                                        <f:selectItem itemLabel="مرد" itemValue="male"></f:selectItem>
+                                                        <f:selectItem itemLabel="زن" itemValue="female"></f:selectItem>
+                                                        <f:selectItem itemLabel="دیگر" itemValue="other"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="متاهل"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.family}">
+                                                        <f:selectItem itemLabel="خیر"
+                                                                      itemValue="no"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله"
+                                                                      itemValue="yes"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="فعالیت بدنی"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.activity}">
+                                                        <f:selectItem itemLabel="خیر"
+                                                                      itemValue="no"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله"
+                                                                      itemValue="yes"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="مصرف سیگار"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.smoke}">
+                                                        <f:selectItem itemLabel="خیر"
+                                                                      itemValue="no"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله"
+                                                                      itemValue="yes"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سابقه بستری"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.hospitalization}">
+                                                        <f:selectItem itemLabel="ندارد"
+                                                                      itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="دارد"
+                                                                      itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="توضیحات بستری"></p:outputLabel>
+                                                    <p:inputTextarea
+                                                            value="#{newEditPatientMg.data.hospitalizationDescription}"
+                                                            rows="1">
+                                                    </p:inputTextarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سرطان سینه مادر"></p:outputLabel>
+                                                    <p:selectOneMenu
+                                                            value="#{newEditPatientMg.data.breastCancerMother}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سرطان سینه پدر"></p:outputLabel>
+                                                    <p:selectOneMenu
+                                                            value="#{newEditPatientMg.data.breastCancerFather}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سرطان سینه خویشاوندان"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.breastCancerOther}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سرطان روده مادر"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.colonCancerMother}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سرطان روده پدر"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.colonCancerFather}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="سرطان روده خویشاوندان"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.colonCancerOther}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <ui:fragment rendered="#{newEditPatientMg.data._id==null}">
+                                                <div class="col-sm-4">
+                                                    <div class="input-wrapper">
+                                                        <p:outputLabel value="رمز عبور"></p:outputLabel>
+                                                        <p:password value="#{newEditPatientMg.password}"/>
+                                                    </div>
+                                                </div>
+                                            </ui:fragment>
+
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="آلرژی"></p:outputLabel>
+                                                    <p:selectOneMenu value="#{newEditPatientMg.data.allergies}">
+                                                        <f:selectItem itemLabel="خیر" itemValue="0"></f:selectItem>
+                                                        <f:selectItem itemLabel="بله" itemValue="1"></f:selectItem>
+                                                    </p:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-8">
+                                                <div class="input-wrapper">
+                                                    <p:outputLabel value="توضیحات آلرژی"></p:outputLabel>
+                                                    <p:inputTextarea
+                                                            value="#{newEditPatientMg.data.allergiesDescription}"
+                                                            rows="1">
+                                                    </p:inputTextarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper inline-label">
+                                                    <p:outputLabel value="فعال"></p:outputLabel>
+                                                    <p:selectBooleanCheckbox styleClass="mx-2"
+                                                                             value="#{newEditPatientMg.data.active}">
+                                                    </p:selectBooleanCheckbox>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="input-wrapper inline-label align-items-center">
+                                                    <p:fileUpload listener="#{newEditPatientMg.handleFileUpload}"
+                                                                  label="تصویر پروفایل"
+                                                                  mode="advanced"
+                                                                  update="growl, avatarImage"
+                                                                  auto="true"
+                                                                  sizeLimit="1000000"
+                                                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+
+                                                    <h:panelGroup id="avatarImage">
+                                                        <img width="120px"
+                                                             src="#{initParam['RFM']}#{newEditPatientMg.data.avatarRef.path}"
+                                                             alt="avatar"/>
+                                                    </h:panelGroup>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p:tab>
+
+                                <p:tab title="امتیازها">
+                                    <p:dataTable styleClass="mb-3" value="#{newEditPatientMg.rateLazyList}"
+                                                 lazy="true"
+                                                 reflow="true"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 paginatorAlwaysVisible="false"
+                                                 paginatorPosition="top"
+                                                 var="rate"
+                                                 id="rateTable"
+                                                 widgetVar="rateTable"
+                                                 rowIndexVar="index">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" styleClass="text-center" headerText="پزشک">
+                                            <ui:fragment rendered="#{rate.doctorRef != null}">
+                                                <a target="_blank"
+                                                   href="/admin/?page=22&amp;item=#{rate.doctorRef.name}">
+                                                    #{rate.doctorRef.name}
+                                                </a>
+                                            </ui:fragment>
+                                        </p:column>
+
+                                        <p:column colspan="1" styleClass="text-center" headerText="امتیاز">
+                                            <p:rating value="#{rate.rate}" styleClass="text-center" readonly="true"/>
+                                        </p:column>
+
+                                        <p:column colspan="2" headerText="متن">
+                                            <h:outputText value="#{rate.comment}"/>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" headerText="عملیات">
+                                            <p:commandButton onstart="return confdelete()"
+                                                             actionListener="#{newEditPatientMg.deleteRate(rate._id)}"
+                                                             update="growl, mainform"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="سوالات">
+                                    <p:dataTable styleClass="mb-3" value="#{newEditPatientMg.data.questionRefList}"
+                                                 lazy="true"
+                                                 reflow="true"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 paginatorAlwaysVisible="false"
+                                                 paginatorPosition="top"
+                                                 var="que"
+                                                 id="questionTable"
+                                                 widgetVar="rateTable"
+                                                 rowIndexVar="index">
+                                        <p:column styleClass="row-number" headerText="ردیف">
+                                            <h:outputText value="#{index+1}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" styleClass="text-center" headerText="گروه">
+                                            <p:outputLabel value="#{que.room.name}"/>
+                                        </p:column>
+
+                                        <p:column colspan="1" styleClass="text-center" headerText="وضعیت">
+                                            <p:outputLabel value="#{que.room.caseStatus}"></p:outputLabel>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" headerText="مشاهده دکتر">
+                                            <p:toggleSwitch styleClass="text-center" value="#{que.status}"
+                                                            disabled="true"></p:toggleSwitch>
+                                        </p:column>
+
+                                        <p:column styleClass="text-center" colspan="1" headerText="عملیات">
+                                            <a href="/admin/?page=34&amp;item=#{que.room._id}"
+                                               class="button-green ml-1">مشاهده</a>
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:tab>
+
+                                <p:tab title="نظرات">
+                                    <ui:insert>
+                                        <ui:include src="../components/commentTable.xhtml">
+                                            <ui:param name="commentLazy"
+                                                      value="#{newEditPatientMg.commentLazyList}"></ui:param>
+                                            <ui:param name="renderWriter" value="false"></ui:param>
+                                            <ui:param name="renderPost" value="true"></ui:param>
+                                        </ui:include>
+                                    </ui:insert>
+                                </p:tab>
+                            </p:tabView>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+
+</html>

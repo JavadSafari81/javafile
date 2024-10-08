@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <p:blockUI block="mainform" trigger="userSelectRadio,speciality"/>
+
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+                            <h4>
+                                گزارش مشترکین
+                            </h4>
+
+                            <p:selectOneRadio id="userSelectRadio"
+                                              value="#{reportsMg.selectedUserReportType}"
+                                              layout="responsive"
+                                              columns="5">
+                                <f:selectItems value="#{reportsMg.userReportTypeList}"
+                                               var="uType"
+                                               itemLabel="#{uType}"
+                                               itemValue="#{uType}"/>
+                                <p:ajax listener="#{reportsMg.buildUserReport}"
+                                        event="change"
+                                        update="mainform">
+                                </p:ajax>
+                            </p:selectOneRadio>
+
+                            <ui:fragment rendered="#{reportsMg.selectedUserReportType.equals('تاریخ دلخواه')}">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                     value="#{reportsMg.customDateStartStr}"/>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                     value="#{reportsMg.customDateEndStr}"/>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <p:commandButton actionListener="#{reportsMg.buildUserReport}"
+                                                         update="mainform"
+                                                         styleClass="button-blue"
+                                                         icon="pi pi-refresh"
+                                                         value="گزارش"></p:commandButton>
+                                    </div>
+
+                                    <h:outputScript>
+                                        renderCalendar();
+                                    </h:outputScript>
+                                </div>
+                            </ui:fragment>
+                            <div class="row">
+                                <div class="col-md-4 d-flex align-items-center justify-content-between my-2">
+                                    <h:outputLabel styleClass="mb-0" value="تخصص: "></h:outputLabel>
+                                    <p:selectOneMenu id="speciality" style="width: 70%"
+                                                     value="#{reportsMg.selectedSpeciality}">
+                                        <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                        <f:selectItems value="#{dataService.specialityList.entrySet().toArray()}"
+                                                       var="spe" itemLabel="#{spe.key}"
+                                                       itemValue="#{spe.value}">
+                                        </f:selectItems>
+                                        <p:ajax event="change"
+                                                listener="#{reportsMg.buildUserReport}"
+                                                update="userChart"></p:ajax>
+                                    </p:selectOneMenu>
+                                </div>
+                            </div>
+
+                            <p:barChart id="userChart" model="#{reportsMg.userBarModel}"
+                                        style="width: 100%;height: 500px"/>
+                        </h:form>
+
+                        <p:remoteCommand name="updateUserReport" update="userChart"
+                                         actionListener="#{reportsMg.buildUserReport}">
+                        </p:remoteCommand>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h:outputScript>
+        setTimeout(() => {
+            updateUserReport();
+        }, 2000)
+    </h:outputScript>
+</h:body>
+
+</html>

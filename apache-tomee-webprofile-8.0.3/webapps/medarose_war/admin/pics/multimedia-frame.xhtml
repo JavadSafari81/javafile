@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet name="css/bootstrap.min.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/testidesk.css"></h:outputStylesheet>
+    <!--<h:outputScript name="js/datepicker-fa.js"></h:outputScript>-->
+    <h:outputScript name="js/ktskey.js"></h:outputScript>
+    <h:outputScript name="js/bootstrap.min.js"></h:outputScript>
+</h:head>
+
+
+<h:body>
+    <h:form id="mainform" prependId="false" enctype="multipart/form-data">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:growl id="growlll" life="2000" showDetail="true" sticky="false"/>
+
+        <p:fileUpload fileUploadListener="#{multimediaMg.fileUploadListener}" process="@form" update="@form"
+                      mode="advanced"
+                      dragDropSupport="true"
+                      multiple="false"
+                      sizeLimit="9000000"
+                      allowTypes="/(\.|\/)(gif|jpe?g|png|jpg)$/"/>
+
+        <p:dataTable styleClass="gridView"
+                     value="#{multimediaMg.fileNamesList}"
+                     paginator="true"
+                     paginatorAlwaysVisible="false"
+                     paginatorPosition="top"
+                     rows="50"
+                     var="itm"
+                     id="tb"
+                     rowIndexVar="ridx"
+                     rowKey="#{itm.name}">
+
+            <p:column>
+                <img onclick="completeImageSelect('#{itm.name}')"
+                     src="#{initParam['fileBase']}/thumbnails/#{itm.name}" width="70" height="70"/>
+
+                <h:outputLabel style="direction: ltr;display: block" value="#{itm.size} KB"></h:outputLabel>
+                <h:commandLink actionListener="#{multimediaMg.deleteImageFile(itm.name)}" value="حذف"></h:commandLink>
+            </p:column>
+
+        </p:dataTable>
+
+        <script type="text/javascript">
+            function parse_query_string(query) {
+                var vars = query.split("&amp;");
+                var query_string = {};
+                for (var i = 0; i &lt; vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    // If first entry with this name
+                    if (typeof query_string[pair[0]] === "undefined") {
+                        query_string[pair[0]] = decodeURIComponent(pair[1]);
+                        // If second entry with this name
+                    } else if (typeof query_string[pair[0]] === "string") {
+                        var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+                        query_string[pair[0]] = arr;
+                        // If third or later entry with this name
+                    } else {
+                        query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                    }
+                }
+                return query_string;
+            }
+
+            function completeImageSelect(x) {
+                console.log(x);
+
+                var query = window.location.search.substring(1);
+                var params = parse_query_string(query);
+                var fileUrl = '#{initParam["fileBase"]}/thumbnails/' + x;
+                console.log("start");
+                console.log(params.itemId);
+                console.log(params.dialogId);
+                console.log(params.remoteCommandId);
+                console.log("end");
+
+                window.parent.document.getElementById(params.itemId).value = x;
+                window.parent[params.remoteCommandId]();
+                window.parent.PF(params.dialogId).hide();
+            }
+        </script>
+
+    </h:form>
+
+</h:body>
+
+</html>

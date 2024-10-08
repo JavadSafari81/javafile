@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <h:outputStylesheet>
+        .red {
+            color: #f53;
+        }
+
+        .green {
+            color: #3f5;
+        }
+
+        .tb-overflow {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .tb-overflow .ui-datatable {
+            width: 1700px;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <div>
+                                <h:inputTextarea styleClass="font-sm p-2 d-block w-100 border mb-2"
+                                                 style="border-color: #aaa!important;"
+                                                 a:placeholder="متن پیامک"
+                                                 value="#{doctorListMg.smsText}">
+                                    <p:ajax event="change" listener="#{doctorListMg.justUpdate}"></p:ajax>
+                                </h:inputTextarea>
+                            </div>
+                            <div>
+                                <h:commandLink styleClass="button-blue mb-2 d-inline-block" value="اکسل مالی">
+                                    <p:dataExporter type="xlsxstream" target="tb" fileName="docsCredit"/>
+                                </h:commandLink>
+
+                                <p:fileUpload sizeLimit="100000000"
+                                              listener="#{doctorListMg.uploadFromExcel}"
+                                              mode="advanced"
+                                              skinSimple="true"
+                                              auto="true"
+                                              process="@this"
+                                              oncomplete="PF('resultDialog').show()"
+                                              styleClass="mx-1"
+                                              update="mainform,growl,resultDialog"
+                                              label="آپلود اکسل">
+                                </p:fileUpload>
+                            </div>
+
+                            <p:accordionPanel activeIndex="-1" styleClass="input-block-with-label mb-3"
+                                              widgetVar="basic">
+                                <p:tab title="فیلتر">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="تاریخ ثبت(از)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{doctorListMg.customFilters[0].dateValue1Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="تاریخ ثبت(تا)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{doctorListMg.customFilters[0].dateValue2Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="دارای کیس(از)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{doctorListMg.customFilters[1].dateValue1Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="input-wrapper pt-0 mb-4">
+                                                <p:outputLabel value="دارای کیس(تا)"></p:outputLabel>
+                                                <div class="d-flex align-items-end">
+                                                    <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                                                 value="#{doctorListMg.customFilters[1].dateValue2Str}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <p:commandButton styleClass="button-blue mt-3"
+                                                             icon="pi pi-replay"
+                                                             value="فیلتر"
+                                                             update="tb"
+                                                             actionListener="#{doctorListMg.doFilter}"
+                                            ></p:commandButton>
+                                        </div>
+                                    </div>
+                                </p:tab>
+                            </p:accordionPanel>
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <div class="tb-overflow">
+                                <p:dataTable value="#{doctorListMg.usersLazyList}"
+                                             lazy="true"
+                                             reflow="true"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                             rowsPerPageTemplate="5,10,15"
+                                             paginatorAlwaysVisible="false"
+                                             paginatorPosition="top"
+                                             var="usr"
+                                             id="tb"
+                                             widgetVar="tb"
+                                             rowIndexVar="index" rowKey="#{usr.pk}">
+                                    <p:column styleClass="row-number" headerText="ردیف">
+                                        <h:outputText value="#{index+1}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="نام" filterBy="#{usr.name}"
+                                              filterMatchMode="contains">
+                                        <p:outputLabel value="#{usr.name}"/>
+                                    </p:column>
+
+                                    <p:column colspan="1" sortBy="#{usr.phone}" filterBy="#{usr.phone}"
+                                              filterMatchMode="contains"
+                                              filterStyle="text-align: center"
+                                              headerText="تلفن" styleClass="text-center">
+                                        <h:outputText value="#{usr.phone}"/>
+                                    </p:column>
+
+                                    <p:column exportable="false" colspan="2" sortBy="#{usr.email}"
+                                              filterBy="#{usr.email}"
+                                              filterMatchMode="contains"
+                                              filterStyle="text-align: center"
+                                              headerText="ایمیل" styleClass="text-center">
+                                        <h:outputText value="#{usr.email}"/>
+                                    </p:column>
+
+                                    <p:column exportable="false" styleClass="text-center" colspan="1"
+                                              filterBy="#{usr.speciality}"
+                                              filterMatchMode="exact"
+                                              filterStyle="text-align: center"
+                                              headerText="تخصص">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItems
+                                                        value="#{dataService.specialityList.entrySet().toArray()}"
+                                                        var="spe" itemLabel="#{spe.key}"
+                                                        itemValue="#{spe.value}">
+                                                </f:selectItems>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <h:outputText value="#{dataService.getSpecialityStr(usr.speciality)}"/>
+                                    </p:column>
+
+                                    <p:column exportable="false" styleClass="text-center" colspan="1"
+                                              sortBy="#{usr.createdAt}"
+                                              filterStyle="text-align: center"
+                                              headerText="تاریخ ثبت">
+                                        <h:outputText value="#{usr.createdAtStr}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="اعتبار(تومان)"
+                                              sortBy="#{usr.credit}"
+                                              filterBy="#{usr.credit}"
+                                              filterMatchMode="exact">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="0" itemValue="0"/>
+                                                <f:selectItem itemLabel="بزرگتر از 0" itemValue="1"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <h:outputText value="#{usr.credit}"/>
+                                    </p:column>
+
+
+                                    <p:column filterBy="#{usr.sheba}"
+                                              filterMatchMode="contains"
+                                              styleClass="text-center"
+                                              colspan="2"
+                                              headerText="شماره شبا">
+                                        <h:outputText value="#{usr.sheba}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" colspan="1"
+                                              headerText="کد ملی">
+                                        <h:outputText value="#{usr.nationalId}"/>
+                                    </p:column>
+
+                                    <p:column exportable="false" styleClass="text-center" headerText="فعال"
+                                              filterBy="#{usr.active}"
+                                              filterMatchMode="exact">
+                                        <f:facet name="filter">
+                                            <p:selectOneMenu onchange="PF('tb').filter()"
+                                                             styleClass="custom-filter">
+                                                <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                                <f:selectItem itemLabel="فعال" itemValue="true"/>
+                                                <f:selectItem itemLabel="غیر فعال" itemValue="false"/>
+                                            </p:selectOneMenu>
+                                        </f:facet>
+                                        <p:selectBooleanCheckbox disabled="true" value="#{usr.active}"/>
+                                    </p:column>
+
+                                    <p:column exportable="false" styleClass="text-center" colspan="2"
+                                              headerText="عملیات">
+                                        <ui:fragment rendered="#{adminIndexMg.userAccess.actionEdit}">
+                                            <a href="/admin/?page=22&amp;item=#{usr._id}"
+                                               class="button-green ml-1">مشاهده</a>
+                                        </ui:fragment>
+
+                                        <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                            <p:commandButton onstart="return confdelete()"
+                                                             update="mainform"
+                                                             actionListener="#{doctorListMg.deleteData(usr._id)}"
+                                                             styleClass="button-pink" value="حذف"></p:commandButton>
+                                        </ui:fragment>
+
+                                        <p:commandButton actionListener="#{doctorListMg.showSmsList(usr._id)}"
+                                                         update="growl, mainform" oncomplete="PF('smsDialog').show()"
+                                                         styleClass="button-blue mx-1" value="پیامک"></p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+
+                            <h:outputScript>
+                                renderCalendar();
+                            </h:outputScript>
+
+                            <p:dialog modal="true" width="900" widgetVar="smsDialog" resizable="false"
+                                      id="smsDialog">
+                                <p:dataTable value="#{doctorListMg.smsList}"
+                                             reflow="true"
+                                             rows="5"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                             rowsPerPageTemplate="5,10,15"
+                                             paginatorAlwaysVisible="false"
+                                             paginatorPosition="top"
+                                             var="sms"
+                                             id="smsTable"
+                                             widgetVar="smsTable"
+                                             rowIndexVar="index" rowKey="#{sms._id}">
+
+                                    <p:column styleClass="row-number text-center" headerText="ردیف">
+                                        <h:outputText value="#{index+1}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="متن">
+                                        <h:outputLabel value="#{sms.text}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="تاریخ">
+                                        <h:outputLabel value="#{sms.createdAtStr}"/>
+                                    </p:column>
+                                </p:dataTable>
+                                <div class="container input-block-with-label">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="input-wrapper">
+                                                <p:outputLabel value="متن"></p:outputLabel>
+                                                <p:inputTextarea id="smsText" rows="2"
+                                                                 value="#{doctorListMg.sms.text}"></p:inputTextarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <p:commandButton styleClass="button-blue"
+                                                             update="growl,smsTable"
+                                                             icon="pi pi-save"
+                                                             id="sendSMSButton"
+                                                             actionListener="#{doctorListMg.sendSms()}"
+                                                             value="ارسال پیام"></p:commandButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </p:dialog>
+
+
+                            <p:dialog modal="true" width="900" widgetVar="resultDialog" resizable="false"
+                                      id="resultDialog">
+
+                                <h3 class="green">پرداختی های موفق</h3>
+                                <p:dataTable value="#{doctorListMg.successUserList}"
+                                             reflow="true"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorAlwaysVisible="false"
+                                             paginatorPosition="top"
+                                             var="suc"
+                                             widgetVar="sucTable"
+                                             rowIndexVar="index">
+
+                                    <p:column styleClass="row-number text-center"
+                                              headerText="ردیف">
+                                        <h:outputText value="#{index+1}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center"
+                                              headerText="نام"
+                                              filterable="true"
+                                              filterBy="#{suc.name}">
+                                        <h:outputLabel value="#{suc.name}"/>
+                                    </p:column>
+
+                                    <p:column colspan="2" styleClass="text-center" headerText="شبا">
+                                        <h:outputLabel value="#{suc.sheba}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="واریز">
+                                        <h:outputLabel value="#{suc.payment}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="کد واریز">
+                                        <h:outputLabel value="#{suc.paymentCode}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="اعتبار قبلی">
+                                        <h:outputLabel value="#{suc.creditBefore}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="اعتبار تازه">
+                                        <h:outputLabel value="#{suc.creditAfter}"/>
+                                    </p:column>
+                                </p:dataTable>
+
+                                <h3 class="mt-5 red">پرداختی های ناموفق</h3>
+                                <p:dataTable value="#{doctorListMg.failedUserList}"
+                                             reflow="true"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorAlwaysVisible="false"
+                                             paginatorPosition="top"
+                                             var="fai"
+                                             widgetVar="faiTable"
+                                             rowIndexVar="index">
+
+                                    <p:column styleClass="row-number text-center" headerText="ردیف">
+                                        <h:outputText value="#{index+1}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center"
+                                              headerText="نام"
+                                              filterable="true"
+                                              filterBy="#{fai.name}">
+                                        <h:outputLabel value="#{fai.name}"/>
+                                    </p:column>
+
+                                    <p:column colspan="2" styleClass="text-center" headerText="شبا">
+                                        <h:outputLabel value="#{fai.sheba}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="واریز">
+                                        <h:outputLabel value="#{fai.payment}"/>
+                                    </p:column>
+
+                                    <p:column styleClass="text-center" headerText="کد واریز">
+                                        <h:outputLabel value="#{fai.paymentCode}"/>
+                                    </p:column>
+
+                                    <p:column colspan="2" styleClass="text-center" headerText="علت خطا">
+                                        <h:outputLabel value="#{fai.reason}"/>
+                                    </p:column>
+                                </p:dataTable>
+
+                            </p:dialog>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

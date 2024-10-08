@@ -1,0 +1,328 @@
+//Purchase the full version at https://www.primefaces.org/store to get full access to the complete UI suite
+
+body {
+  .ui-picklist {
+    .ui-picklist-buttons {
+      padding: 0 $inlineSpacing 0 $inlineSpacing;
+
+      .ui-button {
+        font-size: $fontSize + 2;
+        margin-bottom: $inlineSpacing;
+      }
+
+      .ui-icon-arrow-1-n {
+        @include icon-override("\f106");
+      }
+
+      .ui-icon-arrowstop-1-n {
+        @include icon-override("\f102");
+      }
+
+      .ui-icon-arrow-1-s {
+        @include icon-override("\f107");
+      }
+
+      .ui-icon-arrowstop-1-s {
+        @include icon-override("\f103");
+      }
+
+      .ui-icon-arrow-1-e {
+        @include icon-override("\f105");
+      }
+
+      .ui-icon-arrowstop-1-e {
+        @include icon-override("\f101");
+      }
+
+      .ui-icon-arrow-1-w {
+        @include icon-override("\f104");
+      }
+
+      .ui-icon-arrowstop-1-w {
+        @include icon-override("\f100");
+      }
+    }
+
+    .ui-picklist-caption {
+      background-color: $panelHeaderBgColor;
+      border: $panelHeaderBorder;
+      color: $panelHeaderTextColor;
+      padding: $panelHeaderPadding;
+      border-bottom: 0 none;
+      font-weight: $panelHeaderFontWeight;
+    }
+
+    .ui-picklist-filter-container {
+      .ui-picklist-filter {
+        padding: $inputPadding;
+        width: 100%;
+        padding-left: $inputPadding * 2 + $iconWidth;
+        margin-bottom: $inlineSpacing;
+      }
+
+      .ui-icon {
+        @include icon_override("\f002");
+        position: absolute;
+        left: $inputPadding;
+        top: 50%;
+        margin-top: -1 * $iconHeight / 2 - $inlineSpacing / 2;
+        color: $inputListHeaderSearchIconColor;
+      }
+    }
+
+    .ui-picklist-list {
+      border: $panelContentBorder;
+      background-color: $panelContentBgColor;
+      color: $panelContentTextColor;
+      padding: $inputListPadding;
+
+      .ui-picklist-item {
+        padding: $inputListItemPadding;
+        border: $inputListItemBorder;
+        margin: $inputListItemMargin;
+        color: $inputListItemTextColor;
+        @include border-radius($inputListItemBorderRadius);
+
+        &.ui-state-hover {
+          background-color: $inputListItemHoverBgColor;
+          color: $inputListItemHoverTextColor;
+        }
+
+        &.ui-state-highlight {
+          background-color: $inputListItemHighlightBgColor;
+          color: $inputListItemHighlightTextColor;
+        }
+      }
+    }
+  }
+
+  .ui-datatable {
+    .ui-helper-hidden {
+      display: none !important;
+    }
+
+    th {
+      //background-color: $primaryColor;
+      background: $primaryColor !important;
+      color: $primaryTextColor !important;
+      box-shadow: none !important;
+      border: none !important;
+      border-width: 0 !important;
+      font-size: 0.9rem - $fontRatio !important;
+
+      .ui-column-customfilter {
+        text-align: center !important;
+      }
+
+      .ui-sortable-column-icon {
+        font-family: 'primeicons';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-indent: 0 !important;
+        text-align: center;
+        background: 0;
+        display: inline-block;
+        font-size: 1em;
+      }
+
+      .ui-sortable-column-icon.ui-icon-carat-2-n-s:before {
+        content: "\e915";
+      }
+
+      .ui-sortable-column-icon.ui-icon-carat-2-n-s.ui-icon-triangle-1-n:before {
+        content: "\e914";
+      }
+
+      .ui-sortable-column-icon.ui-icon-carat-2-n-s.ui-icon-triangle-1-s:before {
+        content: "\e913";
+      }
+    }
+
+    .row-number {
+      width: 60px;
+      text-align: center;
+    }
+
+    tbody {
+      tr {
+        border: none !important;
+
+        td {
+          border: none;
+          padding: 0.8rem 10px 0.7rem 10px;
+
+          label {
+            margin: 2px 0 0 !important;
+            color: $primaryBlackColor;
+          }
+        }
+      }
+
+      .ui-state-hover {
+        background: inherit;
+        border: none !important;
+      }
+
+      .ui-datatable-odd {
+        background: none repeat scroll 0 0 #f2f5f9 !important;
+      }
+
+      .ui-datatable-even {
+        background: none repeat scroll 0 0 #fff !important;
+      }
+
+      .ui-state-highlight {
+        background: #70d2d2 !important;
+      }
+    }
+
+    tbody.ui-datatable-data {
+      border: none;
+    }
+
+    .ui-paginator {
+      padding: 0;
+      background: $secondaryColor;
+
+      .ui-state-default {
+        background: $secondaryColor;
+      }
+
+      .ui-paginator-next, .ui-paginator-prev, .ui-paginator-last, .ui-paginator-first {
+        border: none !important;
+        font-family: 'primeicons';
+        font-weight: 100;
+        position: relative;
+        top: 4px;
+
+        span {
+          display: none;
+        }
+      }
+
+      .ui-paginator-next:before {
+        content: '\e931';
+        font-size: 1.25em;
+      }
+
+      .ui-paginator-last:before {
+        content: '\e92d';
+        font-size: 1.25em;
+      }
+
+      .ui-paginator-prev:before {
+        content: '\e932';
+        font-size: 1.25em;
+      }
+
+      .ui-paginator-first:before {
+        content: '\e92e';
+        font-size: 1.25em;
+      }
+
+      .ui-paginator-next .ui-state-hover, .ui-paginator-prev .ui-state-hover, .ui-paginator-last .ui-state-hover, .ui-paginator-first .ui-state-hover {
+        background: $secondaryHoverColor;
+      }
+
+      .ui-paginator-pages {
+        padding: 0;
+        vertical-align: top;
+        display: inline-block;
+
+        .ui-paginator-page {
+          padding: 0;
+          border: 0 none;
+          text-align: center;
+          line-height: 2.643em;
+          min-width: 2.286em;
+          height: 2.643em;
+          color: $textSecondaryColor;
+        }
+
+        .ui-state-active {
+          background: $primaryColor;
+          color: $primaryTextColor;
+          border-radius: 0;
+        }
+
+        .ui-state-hover {
+          background: $secondaryHoverColor;
+        }
+      }
+    }
+
+    .ui-datatable-footer {
+      border: none;
+      background: $primaryColor;
+    }
+
+    .ui-datatable-footer .ui-button {
+      background: $secondaryColor !important;
+      color: $primaryColor;
+      padding: 0 !important;
+    }
+  }
+
+
+  @media (max-width: 640px) {
+    .ui-picklist {
+      .ui-picklist-buttons {
+        .ui-button {
+          margin-top: $inlineSpacing;
+          margin-right: $inlineSpacing;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          .ui-icon-arrow-1-e {
+            @include icon-override("\f107");
+          }
+
+          .ui-icon-arrowstop-1-e {
+            @include icon-override("\f103");
+          }
+
+          .ui-icon-arrow-1-w {
+            @include icon-override("\f106");
+          }
+
+          .ui-icon-arrowstop-1-w {
+            @include icon-override("\f102");
+          }
+        }
+
+      }
+    }
+
+    .ui-datatable-reflow {
+      width: 100% !important;
+
+      .ui-datatable-data td[role="gridcell"]:not(.ui-helper-hidden) {
+        text-align: $text-alignment !important;
+      }
+    }
+  }
+
+  .ui-tree {
+
+    .ui-treenode {
+      text-align: $text-alignment !important;
+
+      .ui-treenode-label.ui-state-hover {
+        background: $primaryColor !important;
+        color: $primaryTextColor !important;
+      }
+
+      .ui-treenode-children {
+        padding: 0 0.5rem 0 .5rem !important;
+      }
+    }
+  }
+}

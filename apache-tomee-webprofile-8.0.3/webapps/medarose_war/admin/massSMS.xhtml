@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <p:blockUI block="mainform" trigger="userSelectRadio,speciality"/>
+
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+                            <h4>
+                                ارسال پیامک گروهی
+                            </h4>
+
+                            <p:selectOneRadio id="userSelectRadio"
+                                              value="#{massSMSMg.selectedType}"
+                                              layout="responsive"
+                                              columns="5">
+                                <f:selectItems value="#{massSMSMg.smsTypeList}"
+                                               var="uType"
+                                               itemLabel="#{uType.second}"
+                                               itemValue="#{uType.first}"/>
+                                <p:ajax listener="#{massSMSMg.changeType}"
+                                        event="change"
+                                        update="mainform">
+                                </p:ajax>
+                            </p:selectOneRadio>
+
+                            <ui:fragment rendered="#{massSMSMg.selectedType == 4}">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p:inputText value="#{massSMSMg.customPaymentCount}"/>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <p:commandButton actionListener="#{massSMSMg.changeType}"
+                                                         update="mainform"
+                                                         styleClass="button-blue"
+                                                         icon="pi pi-refresh"
+                                                         value="فیلتر"></p:commandButton>
+                                    </div>
+                                </div>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{massSMSMg.selectedType == 5}">
+                                <div class="row">
+                                    <div class="col-md-4 d-flex align-items-center justify-content-between my-2">
+                                        <h:outputLabel styleClass="mb-0" value="تخصص: "></h:outputLabel>
+                                        <p:selectOneMenu id="speciality" style="width: 70%"
+                                                         value="#{massSMSMg.selectedSpeciality}">
+                                            <f:selectItem itemLabel="همه" itemValue="#{null}"/>
+                                            <f:selectItems value="#{dataService.specialityList.entrySet().toArray()}"
+                                                           var="spe" itemLabel="#{spe.key}"
+                                                           itemValue="#{spe.value}">
+                                            </f:selectItems>
+                                            <p:ajax event="change"
+                                                    listener="#{massSMSMg.changeType}"
+                                                    update="mainform"></p:ajax>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </ui:fragment>
+
+                            <div class="my-3 text-left">
+                                <h:inputTextarea value="#{massSMSMg.text}"
+                                                 rows="3"
+                                                 a:placeholder="متن پیامک"
+                                                 styleClass="d-block w-100 p-2 font-sm">
+                                </h:inputTextarea>
+
+
+                                <h:commandLink styleClass="button-blue mb-2 mx-2 d-inline-block" value="خروجی اکسل">
+                                    <p:dataExporter type="xlsxstream" target="tb" fileName="numbers"/>
+                                </h:commandLink>
+
+                                <p:commandButton actionListener="#{massSMSMg.sendSMS}"
+                                                 value="ارسال"
+                                                 styleClass="button-blue mt-1"
+                                                 onstart="return confsure()"
+                                                 update="growl, mainform">
+                                </p:commandButton>
+                            </div>
+
+
+                            <p:dataTable styleClass="my-3"
+                                         value="#{massSMSMg.selectedUsers}"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorAlwaysVisible="false"
+                                         var="usr"
+                                         id="tb"
+                                         widgetVar="tb"
+                                         rowIndexVar="index"
+                                         rowKey="#{usr._id}">
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="نام">
+                                    <p:outputLabel value="#{usr.name}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" headerText="تلفن">
+                                    <p:outputLabel value="#{usr.phone}"/>
+                                </p:column>
+
+                                <p:column exportable="false" styleClass="text-center" headerText="عملیات">
+                                    <p:commandButton styleClass="button-pink"
+                                                     value="حذف"
+                                                     actionListener="#{massSMSMg.removeFromUser(index)}"
+                                                     update="mainform">
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

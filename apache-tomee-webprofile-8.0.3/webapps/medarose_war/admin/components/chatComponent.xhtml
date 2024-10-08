@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<body>
+<ui:composition>
+    <p:panel id="chatComponent" class="chat-page">
+        <ui:repeat value="#{chatList}" var="chat">
+            <div class="chat-message py-1 px-3 #{user._id == chat.userRef._id?'self':'other'}">
+                <img src="#{initParam['RFM']}#{chat.userRef.avatarRef.path}"
+                     onerror="this.onerror=null;this.src='/resources/images/avatar.png';"/>
+                <div>
+                    <div class="m-0 mt-1 chat-name font-nt">
+                        #{chat.userRef.name}
+
+
+                        <i class="pi pi-ellipsis-h dropdown-toggle float-left d-inline-block mr-2"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
+                        <div class="dropdown-menu">
+                            <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                <p:commandLink actionListener="#{newEditQuestionMg.deleteChat(chat._id)}"
+                                               update="chatComponent"
+                                               onclick="PF('tabBlock').show()"
+                                               oncomplete="PF('tabBlock').hide()"
+                                               styleClass="dropdown-item" href="#">حذف</p:commandLink>
+                            </ui:fragment>
+                        </div>
+
+                        <span class="float-left gray font-xsm">#{chat.createdAtStr}</span>
+                    </div>
+                    <p class="m-0 mt-1 chat-text font-nr">#{chat.message}</p>
+
+                    <ui:fragment rendered="#{chat.fileRef != null}">
+                        <p class="m-0 mt-1 chat-text font-nr">
+                            <ui:fragment rendered="#{chat.fileRef.fileType == 1}">
+                                <img width="120px" src="#{initParam['RFM']}#{chat.fileRef.path}"/>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{chat.fileRef.fileType == 2}">
+                                <video controls="controls" width="120px" src="#{initParam['RFM']}#{chat.fileRef.path}"/>
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{chat.fileRef.fileType == 3}">
+                                <audio controls="controls" width="120px" src="#{initParam['RFM']}#{chat.fileRef.path}"/>
+                            </ui:fragment>
+                        </p>
+                    </ui:fragment>
+                </div>
+            </div>
+        </ui:repeat>
+    </p:panel>
+</ui:composition>
+</body>
+</html>

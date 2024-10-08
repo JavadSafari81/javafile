@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <h:form prependId="false" id="mainform">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{creditGroupMg.newData}"
+                                                     update="growl, creditDialog"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     oncomplete="PF('creditDialog').show()"
+                                                     value="افزودن گروه تخفیف"></p:commandButton>
+
+                                    <p:fileUpload sizeLimit="100000000"
+                                                  listener="#{creditGroupMg.uploadFromExcel}"
+                                                  mode="advanced"
+                                                  skinSimple="true"
+                                                  auto="true"
+                                                  process="@this"
+                                                  style="display: none!important;"
+                                                  id="creditUploadBtn"
+                                                  update="mainform,growl"
+                                                  label="آپلود اکسل">
+                                    </p:fileUpload>
+                                </ui:fragment>
+                            </div>
+
+                            <p:dataTable value="#{creditGroupMg.creditLazy}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="vch"
+                                         id="creditTable"
+                                         widgetVar="creditTable"
+                                         rowIndexVar="index">
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="عنوان"
+                                          filterable="true"
+                                          filterBy="#{vch.title}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.title}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="اعتبار"
+                                          sortBy="#{vch.credit}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.credit}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="تاریخ شروع"
+                                          sortBy="#{vch.startDate}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.startDateStr}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="تاریخ پایان"
+                                          sortBy="#{vch.endDate}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.endDateStr}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="تاریخ ایجاد"
+                                          sortBy="#{vch.createdAt}"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{vch.createdAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                    <p:commandButton actionListener="#{creditGroupMg.selectUploadRow(vch._id)}"
+                                                     oncomplete="document.getElementById('creditUploadBtn_label').click()"
+                                                     styleClass="button-blue mx-1"
+                                                     value="آپلود اکسل"></p:commandButton>
+
+                                    <p:commandButton onstart="return confdelete()"
+                                                     actionListener="#{creditGroupMg.deleteData(vch._id)}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-pink"
+                                                     value="حذف"></p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p:dialog modal="true"
+                  width="800" widgetVar="creditDialog"
+                  resizable="false" id="creditDialog">
+            <div class="container input-block-with-label">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="عنوان"></p:outputLabel>
+                            <p:inputText value="#{creditGroupMg.data.title}"></p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-6">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="اعتبار"></p:outputLabel>
+                            <p:inputNumber value="#{creditGroupMg.data.credit}"></p:inputNumber>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-6">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="تاریخ شروع"></p:outputLabel>
+                            <div class="d-flex align-items-end">
+                                <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                             value="#{creditGroupMg.data.startDateStr}"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-6">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="تاریخ پایان"></p:outputLabel>
+                            <div class="d-flex align-items-end">
+                                <p:inputMask styleClass="calendar" mask="9999/99/99"
+                                             value="#{creditGroupMg.data.endDateStr}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col">
+                        <p:commandButton styleClass="button-blue"
+                                         update="growl, creditTable"
+                                         icon="pi pi-save"
+                                         actionListener="#{creditGroupMg.saveData}"
+                                         oncomplete="PF('creditDialog').hide();"
+                                         value="ذخیره"></p:commandButton>
+                    </div>
+                </div>
+            </div>
+
+            <h:outputScript>
+                renderCalendar();
+            </h:outputScript>
+        </p:dialog>
+
+    </h:form>
+
+</h:body>
+
+</html>

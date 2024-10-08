@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+</h:head>
+<h:body>
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:growl id="growlll" showDetail="true" sticky="false" life="2000"/>
+
+        <a href="/admin/index?page=18" style="color: #1070a0">بازگشت</a>
+
+        <p:separator style="margin-top: 6px"></p:separator>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <h:panelGrid columns="2" styleClass="vertical-top">
+                        <p:outputLabel value="عنوان"></p:outputLabel>
+                        <p:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                     value="#{faqItemMg.data.name}"></p:inputText>
+
+                        <h:outputLabel value="والد"/>
+                        <p:selectOneMenu style="width: 100%" value="#{faqItemMg.data.parentId}">
+                            <f:selectItem itemLabel="- - -" itemValue=""></f:selectItem>
+                            <f:selectItems value="#{faqItemMg.faqList}" var="itm"
+                                           itemLabel="#{itm.name}" itemValue="#{itm.faqId}"></f:selectItems>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="متن"></p:outputLabel>
+                        <p:inputTextarea value="#{faqItemMg.ckEditorValue}" id="editor1">
+                        </p:inputTextarea>
+
+                        <script type="text/javascript">
+                            CKEDITOR.replace('editor1',{
+                                filebrowserBrowseUrl: dialogCkV,
+                                filebrowserUploadUrl: dialogCkV,
+                                filebrowserImageBrowseUrl: dialogCkI,
+                                filebrowserImageUploadUrl: dialogCkI,
+                                height:'500px'
+                            });
+                            CKEDITOR.config.extraPlugins="html5video";
+                            function ckUpdate()
+                            {
+                                for (instance in CKEDITOR.instances) {
+                                    CKEDITOR.instances[instance].updateElement();
+                                    instance.allowedContent=true;
+                                }
+                            }
+                        </script>
+
+                    </h:panelGrid>
+                </div>
+                <div class="col-md-4"
+                     style="border: 1px solid #ccc;border-radius: 3px;padding: 20px 10px;margin-top: 3px">
+                    <h:panelGrid columns="2" style="width: 100%">
+                        <p:outputLabel value="فعال"></p:outputLabel>
+                        <p:selectBooleanCheckbox value="#{faqItemMg.data.active}"></p:selectBooleanCheckbox>
+
+                        <p:outputLabel value="نمایش در صفحه اصلی"></p:outputLabel>
+                        <p:selectBooleanCheckbox value="#{faqItemMg.data.showInFaqPage}"></p:selectBooleanCheckbox>
+
+                        <p:outputLabel value="شماره ترتیب"></p:outputLabel>
+                        <p:inputText type="number" value="#{faqItemMg.data.sortNumber}"></p:inputText>
+                    </h:panelGrid>
+
+
+                    <p:commandButton styleClass="datatable-inline-edit" value="به روز رسانی"
+                                     actionListener="#{faqItemMg.saveUpdate}"
+                                     style="float: left;margin-top: 25px"
+                                     onclick="ckUpdate()"></p:commandButton>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>

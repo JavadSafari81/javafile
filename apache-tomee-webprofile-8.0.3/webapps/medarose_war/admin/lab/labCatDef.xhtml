@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <h:form prependId="false" id="mainform">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <f:event type="preRenderView" listener="#{adminIndexMg.checkPermissions}"/>
+
+                            <div class="top-buttons">
+                                <ui:fragment
+                                        rendered="#{adminIndexMg.userAccess.actionNew and adminIndexMg.userAccess.actionEdit}">
+                                    <p:commandButton actionListener="#{labCategoryMg.newData}"
+                                                     update="growl, catDialog"
+                                                     styleClass="button-blue" icon="pi pi-save"
+                                                     oncomplete="PF('catDialog').show()"
+                                                     value="افزودن دسته"></p:commandButton>
+                                </ui:fragment>
+                            </div>
+
+                            <p:dataTable value="#{labCategoryMg.labCategoriesLazy}"
+                                         lazy="true"
+                                         reflow="true"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                         rowsPerPageTemplate="5,10,15"
+                                         paginatorAlwaysVisible="false"
+                                         paginatorPosition="top"
+                                         var="cat"
+                                         id="catTable"
+                                         widgetVar="catTable"
+                                         rowIndexVar="index">
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="نام" styleClass="text-center">
+                                    <h:outputText value="#{cat.name}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="نام انگلیسی" styleClass="text-center">
+                                    <h:outputText value="#{cat.en_name}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="slug"
+                                          styleClass="text-center">
+                                    <h:outputText value="#{cat.slug}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1"
+                                          sortBy="#{cat.createdAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="تاریخ ایجاد">
+                                    <h:outputText value="#{cat.createdAtStr}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="1"
+                                          sortBy="#{cat.updatedAt}"
+                                          filterStyle="text-align: center"
+                                          headerText="آخرین تغییر">
+                                    <h:outputText value="#{cat.updatedAtStr}"/>
+                                </p:column>
+
+                                <p:column colspan="1" headerText="فعال" styleClass="text-center">
+                                    <p:selectBooleanCheckbox disabled="true" value="#{cat.active}"/>
+                                </p:column>
+
+                                <p:column styleClass="text-center" colspan="2" headerText="عملیات">
+                                    <p:commandButton actionListener="#{labCategoryMg.editData(cat._id)}"
+                                                     oncomplete="PF('catDialog').show()"
+                                                     update="catDialog"
+                                                     styleClass="button-blue mx-1"
+                                                     value="ویرایش"></p:commandButton>
+
+                                    <p:commandButton onstart="return confdelete()"
+                                                     actionListener="#{labCategoryMg.deleteData(cat._id)}"
+                                                     update="growl, mainform"
+                                                     styleClass="button-pink"
+                                                     value="حذف"></p:commandButton>
+                                </p:column>
+                            </p:dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p:dialog modal="true"
+                  width="600" widgetVar="catDialog"
+                  resizable="false" id="catDialog">
+            <div class="container input-block-with-label">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="نام"></p:outputLabel>
+                            <p:inputText value="#{labCategoryMg.data.name}"></p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="نام انگلیسی"></p:outputLabel>
+                            <p:inputText value="#{labCategoryMg.data.en_name}"></p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="input-wrapper">
+                            <p:outputLabel value="slug"></p:outputLabel>
+                            <p:inputText value="#{labCategoryMg.data.slug}"></p:inputText>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-12">
+                        <div class="input-wrapper inline-label">
+                            <p:outputLabel value="فعال"></p:outputLabel>
+                            <p:selectBooleanCheckbox value="#{labCategoryMg.data.active}"></p:selectBooleanCheckbox>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p:commandButton styleClass="button-blue"
+                                         update="growl, catTable"
+                                         icon="pi pi-save"
+                                         actionListener="#{labCategoryMg.saveData}"
+                                         oncomplete="PF('catDialog').hide();"
+                                         value="ذخیره"></p:commandButton>
+                    </div>
+                </div>
+            </div>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="rtl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <h:outputStylesheet name="extra-libs/c3/c3.min.css"></h:outputStylesheet>
+    <h:outputStylesheet name="extra-libs/jvector/jquery-jvectormap-2.0.2.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/admin.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/panel-rtl.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/theme/teanow-prime-1/theme.css"></h:outputStylesheet>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+    <h:outputScript name="js/ktskey.js"></h:outputScript>
+
+    <script type="application/javascript">
+        $(function () {
+            $('#fromdatestr').datepicker({
+                dateFormat: 'yy/mm/dd',
+                dateFormat: 'yy/mm/dd',
+                showOn: 'button',
+                buttonImage: '/images/calendar24.png',
+                buttonImageOnly: true,
+                onSelect: function (dateText, inst) {
+                    $('#todatestr').datepicker('option', 'minDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']), 'maxDate', new JalaliDate(inst['selectedYear'], inst['selectedMonth'], inst['selectedDay']));
+                }
+            });
+            $('#todatestr').datepicker({
+                dateFormat: 'yy/mm/dd',
+                dateFormat: 'yy/mm/dd',
+                showOn: 'button',
+                buttonImage: '/images/calendar24.png',
+                buttonImageOnly: true
+            });
+        });
+    </script>
+</h:head>
+
+<h:body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <!--<div class="preloader">-->
+    <!--<div class="lds-ripple">-->
+    <!--<div class="lds-pos"></div>-->
+    <!--<div class="lds-pos"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+
+        <h:form prependId="false">
+            <p:growl id="growl" showDetail="true" sticky="false" life="2000"></p:growl>
+        </h:form>
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-brand">
+                        <!-- Logo icon -->
+                        <a href="index.html">
+                            <b class="logo-icon">
+                                <!-- Dark Logo icon -->
+                                <img width="150px" src="/resources/images/logo/logo1.png" alt="homepage" class="dark-logo"/>
+                                <!-- Light Logo icon -->
+                                <!--<img src="/resources/images/logo-icon.png" alt="homepage" class="light-logo"/>-->
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text -->
+                            <span class="logo-text">
+                                <!--Kartoona-->
+                                <!-- dark Logo text -->
+                                <!--<img src="/resources/images/logo-text.png" alt="homepage" class="dark-logo"/>-->
+                                <!-- Light Logo text -->
+                                <!--<img src="/resources/images/logo-light-text.png" class="light-logo" alt="homepage"/>-->
+                            </span>
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                       data-toggle="collapse" data-target="#navbarSupportedContent"
+                       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-left ml-auto ml-3 pl-1">
+                        <!-- Notification -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-toggler waves-effect waves-light d-block"
+                               href="javascript:void(0)"><i
+                                    class="ti-menu ti-close"></i></a>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-right">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <!--<li class="nav-item d-none d-md-block">-->
+                        <!--<a class="nav-link" href="javascript:void(0)">-->
+                        <!--<form>-->
+                        <!--<div class="customize-input">-->
+                        <!--<input class="form-control custom-shadow custom-radius border-0 bg-white"-->
+                        <!--type="search" placeholder="Search" aria-label="Search"/>-->
+                        <!--<i class="form-control-icon" data-feather="search"></i>-->
+                        <!--</div>-->
+                        <!--</form>-->
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img src="http://5.152.223.138:4000/#{loginManager.user.avatarRef.path}" alt="user" class="rounded-circle"
+                                     width="40"/>
+                                <span class="ml-2 d-none d-lg-inline-block">
+                                    <span>خوش آمدید، </span>
+                                    <span class="text-dark">#{loginManager.user.name}</span>
+                                    <i data-feather="chevron-down" class="svg-icon"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i data-feather="user" class="svg-icon mr-2 ml-1"></i>
+                                    پروفایل من</a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i data-feather="settings" class="svg-icon mr-2 ml-1"></i>
+                                    تنظیمات
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <p:commandLink actionListener="#{adminIndexMg.exitadmin}" class="dropdown-item">
+                                    <i data-feather="power" class="svg-icon mr-2 ml-1"></i>
+                                    خروج
+                                </p:commandLink>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="/index"
+                               aria-expanded="false">
+                                <i data-feather="home" class="feather-icon"></i>
+                                <span class="hide-menu">
+                                    پیشخوان
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="list-divider"></li>
+
+                        <ui:repeat value="#{adminIndexMg.newmlist}" var="menu">
+                            <li class="nav-small-cap">
+                                <span class="hide-menu">#{menu.name}</span>
+                            </li>
+                            <ui:repeat value="#{menu.itemList}" var="submenu">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link" href="?page=#{submenu.adminMenuId}"
+                                       aria-expanded="false">
+                                        <i data-feather="#{submenu.icon}" class="feather-icon"></i>
+                                        <span class="hide-menu">#{submenu.name}</span>
+                                    </a>
+                                </li>
+                            </ui:repeat>
+
+                            <li class="list-divider"></li>
+                        </ui:repeat>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <ui:include src="#{adminIndexMg.pageName}"></ui:include>
+
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center text-muted">
+
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <!--<h:outputScript name="libs/jquery/dist/jquery.min.js"></h:outputScript>-->
+    <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+    <h:outputScript name="libs/popper.js/dist/umd/popper.min.js"></h:outputScript>
+    <h:outputScript name="libs/bootstrap/dist/js/bootstrap.min.js"></h:outputScript>
+    <!--&lt;!&ndash; apps &ndash;&gt;-->
+    <!--&lt;!&ndash; apps &ndash;&gt;-->
+    <h:outputScript name="js/app-style-switcher.js"></h:outputScript>
+    <h:outputScript name="js/feather.min.js"></h:outputScript>
+    <h:outputScript name="libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></h:outputScript>
+    <h:outputScript name="js/sidebarmenu.js"></h:outputScript>
+    <!--&lt;!&ndash;Custom JavaScript &ndash;&gt;-->
+    <h:outputScript name="js/custom.min.js"></h:outputScript>
+    <!--&lt;!&ndash;This page JavaScript &ndash;&gt;-->
+    <h:outputScript name="extra-libs/c3/d3.min.js"></h:outputScript>
+    <h:outputScript name="extra-libs/c3/c3.min.js"></h:outputScript>
+    <!--<h:outputScript name="libs/chartist/dist/chartist.min.js"></h:outputScript>-->
+    <!--<h:outputScript name="libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></h:outputScript>-->
+    <h:outputScript name="extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></h:outputScript>
+    <h:outputScript name="extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></h:outputScript>
+    <h:outputScript name="js/pages/dashboards/dashboard1.js"></h:outputScript>
+    <h:outputScript name="js/datepicker-fa.js"></h:outputScript>
+
+</h:body>
+
+
+</html>

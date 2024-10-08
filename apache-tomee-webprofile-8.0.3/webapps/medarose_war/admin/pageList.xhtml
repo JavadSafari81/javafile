@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:head>
+    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+</h:head>
+<h:body>
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:growl id="growlll" showDetail="true" sticky="false" life="2000"/>
+
+        <p:panel id="wrapperPnl">
+
+            <p:link style="color: #1070a0" value="افزودن صفحه"
+                    outcome="/admin/index?page=42">
+            </p:link>
+
+            <p:separator style="margin-top: 6px"></p:separator>
+
+            <p:dataTable value="#{pageMgN.pageList}" var="page" rowIndexVar="rowIndex" id="pageTb"
+                         styleClass="horizontal-line-table inline-button" emptyMessage="داده ای پیدا نشد">
+
+                <p:column headerText="ردیف">
+                    <p:outputLabel value="#{rowIndex+1}"></p:outputLabel>
+                </p:column>
+
+                <p:column headerText="نام">
+                    <p:outputLabel value="#{page.name}"></p:outputLabel>
+                </p:column>
+
+                <p:column headerText="تاریخ ایجاد">
+                    <p:outputLabel value="#{page.regDateStr}"></p:outputLabel>
+                </p:column>
+
+                <p:column headerText="آخرین تغییر">
+                    <p:outputLabel value="#{page.lastChangeDateStr}"></p:outputLabel>
+                </p:column>
+
+                <p:column headerText="عملیات">
+                    <p:link styleClass="datatable-inline-edit-link" value="ویرایش"
+                            update="wrapperPnl"
+                            outcome="/admin/index?page=42&amp;post=#{page.namingId}">
+                    </p:link>
+
+                    <p:commandButton styleClass="datatable-inline-delete" update="pageTb" onstart="return confsure()"
+                                     actionListener="#{pageMgN.deletePage(page.namingId)}"
+                                     value="حذف"></p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

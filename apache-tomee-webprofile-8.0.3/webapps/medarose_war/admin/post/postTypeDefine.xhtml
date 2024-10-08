@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h:form prependId="false" id="mainform">
+                            <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+                            <p:dataTable
+                                    value="#{postTypeMg.showList}"
+                                    reflow="true"
+                                    paginator="true"
+                                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    currentPageReportTemplate="{startRecord}-{endRecord} از {totalRecords} ردیف"
+                                    rowsPerPageTemplate="5,10,15"
+                                    paginatorAlwaysVisible="false"
+                                    paginatorPosition="top"
+                                    var="usr" id="tb"
+                                    widgetVar="tb"
+                                    rowIndexVar="index"
+                                    selection="#{postTypeMg.selectedData}"
+                                    selectionMode="single"
+                                    rowKey="#{usr.postTypeId}">
+
+                                <p:ajax event="rowSelect" listener="#{postTypeMg.rowSelect}"
+                                        update="editbut,deletebut"/>
+                                <p:ajax event="rowUnselect" listener="#{postTypeMg.rowUnSelect}"
+                                        update="editbut,deletebut"/>
+
+                                <p:column styleClass="row-number" headerText="ردیف">
+                                    <h:outputText value="#{index+1}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{usr.name}" filterBy="#{usr.name}" filterMatchMode="contains"
+                                          filterStyle="text-align: center"
+                                          headerText="نام" style="text-align:center ">
+
+                                    <h:outputText value="#{usr.name}"/>
+                                </p:column>
+
+                                <p:column sortBy="#{usr.englishName}" filterBy="#{usr.englishName}"
+                                          filterMatchMode="contains"
+                                          filterStyle="text-align: center"
+                                          headerText="نام انگلیسی" style="text-align:center ">
+                                    <h:outputText value="#{usr.englishName}"/>
+                                </p:column>
+
+                                <f:facet name="footer">
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionNew}">
+                                        <p:commandButton icon="pi pi-plus"
+                                                         id="newbut" oncomplete="PF('dialog').show();"
+                                                         update=":mainform" value="جدید"
+                                                         actionListener="#{postTypeMg.newData}"/>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionEdit}">
+                                        <p:commandButton icon="pi pi-pencil" id="editbut"
+                                                         disabled="#{postTypeMg.disBut}"
+                                                         value="ویرایش"
+                                                         oncomplete="PF('dialog').show();"
+                                                         update="dialog" actionListener="#{postTypeMg.editData}"/>
+                                    </ui:fragment>
+
+                                    <ui:fragment rendered="#{adminIndexMg.userAccess.actionDelete}">
+                                        <p:commandButton icon="pi pi-times" id="deletebut"
+                                                         disabled="#{postTypeMg.disBut}"
+                                                         onstart="return confdelete();"
+                                                         value="حذف"
+                                                         actionListener="#{postTypeMg.deleteData}" update=":mainform">
+                                        </p:commandButton>
+                                    </ui:fragment>
+                                </f:facet>
+                            </p:dataTable>
+
+                            <p:dialog modal="true" id="dialog" dir="rtl" header="تعریف دسته بندی" widgetVar="dialog"
+                                      resizable="false"
+                                      showEffect="clip" hideEffect="fold">
+                                <h:panelGrid styleClass="table-row-margin" columns="2">
+                                    <h:outputLabel value="نام"/>
+                                    <p:inputText styleClass="kts-mnl-2" value="#{postTypeMg.data.name}"/>
+
+                                    <h:outputLabel value="نام انگلیسی"/>
+                                    <p:inputText styleClass="kts-mnl-2" value="#{postTypeMg.data.englishName}"/>
+
+                                    <h:outputLabel value="عنوان سئو"/>
+                                    <p:inputText styleClass="kts-mnl-2" value="#{postTypeMg.data.seoTitle}"/>
+
+                                    <h:outputLabel value="خلاصه سئو"/>
+                                    <p:inputTextarea styleClass="kts-mnl-2"
+                                                     value="#{postTypeMg.data.seoSummaryDescription}"/>
+
+                                    <h:outputLabel value="توضیح"/>
+                                    <p:inputTextarea styleClass="kts-mnl-2" value="#{postTypeMg.data.description}"/>
+
+                                    <h:outputLabel value="فعال"/>
+                                    <h:selectBooleanCheckbox value="#{postTypeMg.data.active}"/>
+                                </h:panelGrid>
+
+                                <center>
+                                    <h:panelGrid>
+                                        <p:commandButton value="ذخیره"
+                                                         icon="ui-icon-save" onstart="return confsaveval();"
+                                                         oncomplete="PF('dialog').hide();" update=":mainform"
+                                                         actionListener="#{postTypeMg.saveData}"/>
+                                    </h:panelGrid>
+                                </center>
+                            </p:dialog>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>

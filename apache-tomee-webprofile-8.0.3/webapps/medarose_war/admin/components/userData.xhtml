@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<body>
+<ui:composition>
+    <h:panelGrid width="100%" border="1" columns="4"
+                 styleClass="user-info-table table-price panelgrid-column-even-item-100">
+        <p:outputLabel value="نام : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.name}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.name}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="ایمیل : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.email}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.email}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="درباره : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 0px"
+                           value="#{user.about}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputTextarea style="width: 100%;padding: 6px;margin-bottom: 0px"
+                             value="#{user.about}">
+            </h:inputTextarea>
+        </ui:fragment>
+
+        <p:outputLabel value="تصویر پروفایل : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <img style="width: 50px!important;height: 50px" src="#{user.avatar}"/>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:panelGroup id="selectedImg">
+                <img style="width: 50px!important;height: 50px" src="#{initParam['RFMT']}#{user.avatar}"/>
+                <p:commandButton style="width: 100px;margin-right: 10px" value="تصویر"
+                                 oncomplete="showDialog('imageTempSrc','imgdialog','updateThumbnailImage')">
+                </p:commandButton>
+            </h:panelGroup>
+        </ui:fragment>
+
+
+        <p:outputLabel value="گروه کاربری : "></p:outputLabel>
+        <ui:fragment rendered="#{editable}">
+            <p:selectOneMenu value="#{user.userGroupId}">
+                <f:selectItems value="#{userGroupList}" var="usg"
+                               itemValue="#{usg.usergroupId}" itemLabel="#{usg.name}"></f:selectItems>
+
+                <p:ajax listener="#{adminUsersMg.changeFilter}" update="tb"></p:ajax>
+            </p:selectOneMenu>
+        </ui:fragment>
+
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;"
+                           value="#{user.userGroupName}">
+            </h:outputLabel>
+        </ui:fragment>
+
+
+        <p:outputLabel value="کد ملی : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.nationalCode}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.nationalCode}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="موبایل : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.phone}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.phone}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel style="width: 110px" styleClass="dark-gray-font" value="شهر : "/>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.city}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.city}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="سایت : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.site}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.site}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="نام شرکت : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.companyName}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.companyName}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="شماره شرکت : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.companyNumber}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.companyNumber}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="شناسه ملی : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.shenaseMelli}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.shenaseMelli}">
+            </h:inputText>
+        </ui:fragment>
+
+
+        <p:outputLabel value="کد اقتصادی : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.codeEghtesadi}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.codeEghtesadi}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="سمت : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.position}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.position}">
+            </h:inputText>
+        </ui:fragment>
+
+
+        <p:outputLabel value="شماره کارت : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.cardNumber}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.cardNumber}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="نام صاحب حساب : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.ownerName}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.ownerName}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="شماره شبا : "></p:outputLabel>
+        <ui:fragment rendered="#{!editable}">
+            <h:outputLabel style="width: 100%;padding: 6px;margin-bottom: 10px"
+                           value="#{user.shebaNumber}">
+            </h:outputLabel>
+        </ui:fragment>
+        <ui:fragment rendered="#{editable}">
+            <h:inputText style="width: 100%;padding: 6px;margin-bottom: 10px"
+                         value="#{user.shebaNumber}">
+            </h:inputText>
+        </ui:fragment>
+
+        <p:outputLabel value="ادمین : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.admin}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="حقوقی : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.biAmHoghooghi}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="فاکتور میخواهم : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bneedFactor}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان ایمیل : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bemailNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان پیامک : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bsmsNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان پنل : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bpanelNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان ربات : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.brobotNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان تخفیف : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bdiscountNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان پکیج : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bpackageNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان پست : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bpostNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان لاگین : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bloginNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="اعلان خبر : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.bnewsNotif}">
+        </h:selectBooleanCheckbox>
+
+        <p:outputLabel value="فعال : "></p:outputLabel>
+        <h:selectBooleanCheckbox disabled="#{!editable}" style="width: 100%;padding: 6px;margin-bottom: 10px"
+                                 value="#{user.active}">
+        </h:selectBooleanCheckbox>
+
+    </h:panelGrid>
+
+    <h:panelGroup style="display: block;text-align: center">
+        <p:commandButton value="ذخیره"
+                         style="margin-top: 10px"
+                         styleClass="datatable-inline-edit"
+                         icon="ui-icon-disk" onstart="return confsaveval();"
+                         oncomplete="PF('userDialog').hide();" update="#{update}"
+                         actionListener="#{adminUsersMg.saveData}"/>
+    </h:panelGroup>
+
+    <h:inputHidden id="imageTempSrc" value="#{adminUsersMg.data.tempImageSrc}"/>
+
+    <p:remoteCommand update="selectedImg,imageTempSrc" name="updateThumbnailImage"
+                     actionListener="#{adminUsersMg.data.changethumbnailRender}"></p:remoteCommand>
+
+    <h:outputScript>
+        function showDialog(imageId, dialogId, remoteCommandId) {
+            open_popup(dialog + imageId);
+            remoteCommandname = remoteCommandId;
+        }
+
+        function open_popup(url) {
+            var w = 880;
+            var h = 570;
+            var l = Math.floor((screen.width - w) / 2);
+            var t = Math.floor((screen.height - h) / 2);
+            var win = window.open(url, 'ResponsiveFilemanager', "scrollbars=1,width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+        }
+
+        function responsive_filemanager_callback(field_id) {
+            window[remoteCommandname]();
+        }
+    </h:outputScript>
+</ui:composition>
+
+
+</body>
+</html>

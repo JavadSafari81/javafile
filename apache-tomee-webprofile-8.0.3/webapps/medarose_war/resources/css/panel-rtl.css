@@ -1,0 +1,37 @@
+* {
+    font-family: iranyekan;
+}
+
+.ui-spinner-input {
+    font-family: iranyekan !important;
+}
+
+.text-aligment {
+    text-align: right;
+}
+
+.card-body * {
+    text-align: right;
+}
+
+.activity .border-left-line {
+    border-left: none;
+    border-right: 1px solid #edf2f9;
+    margin-right: 17px;
+    margin-left: 0;
+}
+
+.activity .border-left-line .btn-item {
+    margin-right: -22px;
+    margin-left: 0;
+}
+
+.dropdown-item {
+    text-align: right;
+}
+
+@media (max-width: 640px) {
+    .ui-datatable-reflow .ui-datatable-data td[role="gridcell"] .ui-column-title {
+        margin: -.4em -0.4em -.4em .4em !important;
+    }
+}

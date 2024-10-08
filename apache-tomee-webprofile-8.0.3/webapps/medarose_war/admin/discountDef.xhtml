@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputScript name="js/datepicker-fa.js"></h:outputScript>
+
+    <style type="text/css">
+        #dialog td:first-child {
+            width: 100px;
+        }
+
+        #dialog td {
+            padding-top: 7px !important;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form prependId="false" id="mainform">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+
+        <p:dataTable value="#{discountMg.discountLazy}"
+                     lazy="true"
+                     paginator="true" paginatorAlwaysVisible="false"
+                     rows="8"
+                     selectionMode="single"
+                     selection="#{discountMg.selectedData}"
+                     widgetVar="discountTb"
+                     rowKey="#{dis.discountId}"
+                     var="dis" rowIndexVar="rowIndex" id="discountTb"
+                     styleClass="horizontal-line-table inline-button" emptyMessage="داده ای پیدا نشد">
+
+            <p:ajax event="rowSelect" listener="#{discountMg.rowSelect}" update="editbut,deletebut"/>
+            <p:ajax event="rowUnselect" listener="#{discountMg.rowUnSelect}" update="editbut,deletebut"/>
+
+            <p:column headerText="ردیف">
+                <p:outputLabel value="#{rowIndex+1}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="عنوان">
+                <p:outputLabel value="#{dis.title}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="کد">
+                <p:outputLabel value="#{dis.discountCode}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="پکیج">
+                <p:outputLabel value="#{dis.packageDiscount.name}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="نوع">
+                <p:outputLabel value="#{dis.typeStr}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="درصد تخفیف">
+                <p:outputLabel value="#{dis.percent}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="مبلغ تخفیف">
+                <p:outputLabel value="#{dis.price}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="دفعات استفاده شده">
+                <p:outputLabel value="#{dis.usedTimes}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="حداکثر استفاده مجاز">
+                <p:outputLabel value="#{dis.maxUseTimes}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="تاریخ انقضا">
+                <p:outputLabel value="#{dis.expireDateStr}"></p:outputLabel>
+            </p:column>
+
+            <p:column headerText="وضعیت">
+                <p:outputLabel value="#{dis.usedStr}"></p:outputLabel>
+            </p:column>
+
+
+            <f:facet name="footer">
+                <p:commandButton id="newbut" image="ui-icon-add"
+                                 oncomplete="PF('dialog').show();"
+                                 update="dialog" value="جدید"
+                                 process="@this"
+                                 actionListener="#{discountMg.newData}"/>
+
+
+                <p:commandButton id="editbut" disabled="#{discountMg.disBut}" image="ui-icon-edit" value="ویرایش"
+                                 oncomplete="PF('dialog').show();"
+                                 update="dialog" actionListener="#{discountMg.editData}"/>
+
+                <p:commandButton id="deletebut" disabled="#{discountMg.disBut}" onstart="return confdelete();"
+                                 image="ui-icon-reject2" value="حذف"
+                                 actionListener="#{discountMg.deleteData}" update=":mainform">
+                </p:commandButton>
+            </f:facet>
+        </p:dataTable>
+
+        <p:dialog modal="true" id="dialog" dir="rtl" header="تخفیف" widgetVar="dialog" resizable="false"
+                  width="350" showEffect="clip" hideEffect="fold">
+
+
+            <h:panelGrid styleClass="table-row-margin" columns="2">
+                <h:outputLabel value="عنوان"/>
+                <p:inputText styleClass="kts-mnl-2" value="#{discountMg.data.title}"/>
+
+                <h:outputLabel value="کد"/>
+                <p:inputText styleClass="kts-mnl-2" value="#{discountMg.data.discountCode}"/>
+
+                <p:outputLabel value="لندینگ : "/>
+                <p:selectOneMenu style="width: 100%;max-width: 200px" type="text"
+                                 value="#{discountMg.data.landing.landingId}">
+                    <f:selectItem itemLabel="- - -"></f:selectItem>
+                    <f:selectItems value="#{discountMg.landingList}"
+                                   var="lan" itemValue="#{lan.landingId}" itemLabel="#{lan.name}"></f:selectItems>
+
+                    <p:ajax event="change" listener="#{discountMg.loadLandingPackages}" update="packageList"></p:ajax>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="پکیج : "/>
+                <p:selectOneMenu style="width: 100%;max-width: 200px" id="packageList" type="text"
+                                 value="#{discountMg.data.packageDiscount.packageId}">
+                    <f:selectItem itemLabel="- - -"></f:selectItem>
+
+                    <f:selectItems value="#{discountMg.data.landing.packageList}"
+                                   var="pck" itemValue="#{pck.packageId}" itemLabel="#{pck.name}"></f:selectItems>
+                </p:selectOneMenu>
+
+            </h:panelGrid>
+
+            <!--<h:panelGrid styleClass="table-row-margin" columns="3">-->
+            <table>
+                <tr>
+                    <td>
+                        <h:outputLabel value="تاریخ"/>
+                    </td>
+                    <td>
+                        <p:inputMask styleClass="calendar" mask="9999/99/99" id="fromdate"
+                                     value="#{discountMg.data.expireDateStr}"/>
+                    </td>
+                </tr>
+            </table>
+
+            <script type="text/javascript" language="javascript">
+
+                $(function () {
+                    $('.calendar').datepicker({
+                        dateFormat: 'yy/mm/dd',
+                        showOn: 'button',
+                        changeMonth: true,
+                        changeYear: true,
+                        buttonImage: '../resources/img/calendar24.png',
+                        buttonImageOnly: true
+                    });
+                });
+            </script>
+            <!--</h:panelGrid>-->
+
+            <h:panelGrid styleClass="table-row-margin" columns="2">
+                <h:outputLabel value="نوع"/>
+                <p:selectOneMenu style="width: 100%" value="#{discountMg.data.type}">
+                    <f:selectItem itemValue="1" itemLabel="درصدی"></f:selectItem>
+                    <f:selectItem itemValue="2" itemLabel="مبلغی"></f:selectItem>
+                </p:selectOneMenu>
+
+                <h:outputLabel value="درصد تخفیف"/>
+                <p:inputText value="#{discountMg.data.percent}"></p:inputText>
+
+                <h:outputLabel value="مبلغ تخفیف"/>
+                <p:inputText value="#{discountMg.data.price}"></p:inputText>
+
+                <h:outputLabel value="حداکثر استفاده"/>
+                <p:inputText value="#{discountMg.data.maxUseTimes}"></p:inputText>
+
+                <h:outputLabel value="حداقل خرید"/>
+                <p:inputText value="#{discountMg.data.minimumPurchase}"></p:inputText>
+
+                <h:outputLabel value="اولین خرید"/>
+                <h:selectBooleanCheckbox value="#{discountMg.data.firstBuy}"></h:selectBooleanCheckbox>
+
+            </h:panelGrid>
+
+            <center>
+                <h:panelGrid>
+
+                    <p:commandButton value="ذخیره"
+                                     icon="ui-icon-save" onstart="return confsaveval();"
+                                     oncomplete="PF('dialog').hide();" update="discountTb,growl"
+                                     actionListener="#{discountMg.saveData}"/>
+                </h:panelGrid>
+            </center>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head></h:head>
+
+<h:body styleClass="row-margin-0">
+    <h:form prependId="false">
+        <f:event type="preRenderView" listener="#{adminIdexMg.checkPermissions}"/>
+        <div class="row">
+            <table class="rtl-table-padding">
+                <tr>
+                    <td>
+                        <h:outputLabel value="رمز فعلی"></h:outputLabel>
+                    </td>
+                    <td>
+                        <h:inputText value="#{changePassHashMg.oldPass}"></h:inputText>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:outputLabel value="رمز جدید"></h:outputLabel>
+                    </td>
+                    <td>
+                        <h:inputSecret value="#{changePassHashMg.newPass}"></h:inputSecret>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h:outputLabel value="تکرار رمز جدید"></h:outputLabel>
+                    </td>
+                    <td>
+                        <h:inputSecret value="#{changePassHashMg.confirmNewPass}"></h:inputSecret>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p:commandButton styleClass="btn-primary-costum"
+                                 update="growl"
+                                 value="ذخیره"
+                                 onstart="return confsaveval();"
+                                 actionListener="#{changePassHashMg.changePass}"></p:commandButton>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>
